@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " w ",
+    " w ",
+    " / "
+  ],
+  "key": {
+    "w": {
+      "item": "neverland:silver_ingot"
+    },
+    "/": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "neverland:silver_sword",
+    "count": 1
+  }
+}

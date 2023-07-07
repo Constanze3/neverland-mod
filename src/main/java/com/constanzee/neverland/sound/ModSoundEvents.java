@@ -7,6 +7,7 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
 
 public class ModSoundEvents {
+    public static final SoundEvent SPECIAL_EVIL_LAUGHTER;
     public static final SoundEvent SPECIAL_ZA_WARUDO;
 
     private static SoundEvent register(String id) {
@@ -23,5 +24,6 @@ public class ModSoundEvents {
 
     static {
         SPECIAL_ZA_WARUDO = register("special.za_warudo");
+        SPECIAL_EVIL_LAUGHTER = register("special.evil_laughter");
     }
 }

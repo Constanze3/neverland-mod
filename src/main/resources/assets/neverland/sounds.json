@@ -5,6 +5,12 @@
       "neverland:special.evil_laughter"
     ]
   },
+  "special.throwing_knife": {
+    "subtitle": "neverland.special.throwing_knife",
+    "sounds": [
+      "neverland:special.throwing_knife"
+    ]
+  },
   "special.za_warudo": {
     "subtitle": "neverland.special.za_warudo",
     "sounds": [

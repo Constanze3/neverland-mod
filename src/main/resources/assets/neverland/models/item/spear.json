@@ -1,0 +1,140 @@
+{
+	"credit": "Made with Blockbench",
+	"texture_size": [128, 128],
+	"textures": {
+		"0": "neverland:item/spear",
+		"particle": "neverland:item/spear_texture"
+	},
+	"elements": [
+		{
+			"name": "tip",
+			"from": [7.90391, 29.51152, 6.87794],
+			"to": [8.09572, 31.63284, 8.99926],
+			"rotation": {"angle": 45, "axis": "x", "origin": [8, 30.525, 8]},
+			"faces": {
+				"north": {"uv": [7, 0, 7.125, 1], "texture": "#0"},
+				"east": {"uv": [4.5, 0, 5.5, 1], "texture": "#0"},
+				"south": {"uv": [7, 1, 7.125, 2], "texture": "#0"},
+				"west": {"uv": [4.5, 1, 5.5, 2], "texture": "#0"},
+				"up": {"uv": [7.125, 3, 7, 2], "texture": "#0"},
+				"down": {"uv": [2.625, 7, 2.5, 8], "texture": "#0"}
+			}
+		},
+		{
+			"name": "tip_base",
+			"from": [7.9, 23.25178, 6.48995],
+			"to": [8.1, 30.60178, 9.48995],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 18.75178, 7.98995]},
+			"faces": {
+				"north": {"uv": [5, 5.5, 5.125, 9.125], "texture": "#0"},
+				"east": {"uv": [0, 0, 1.5, 3.625], "texture": "#0"},
+				"south": {"uv": [5.5, 5.5, 5.625, 9.125], "texture": "#0"},
+				"west": {"uv": [1.5, 0, 3, 3.625], "texture": "#0"},
+				"up": {"uv": [4.625, 8, 4.5, 6.5], "texture": "#0"},
+				"down": {"uv": [6.625, 5, 6.5, 6.5], "texture": "#0"}
+			}
+		},
+		{
+			"name": "tip_bottom_1",
+			"from": [7.7, 22.75, 5.5],
+			"to": [8.3, 23.75, 7.9],
+			"rotation": {"angle": 22.5, "axis": "x", "origin": [8, 23.25, 7.25]},
+			"faces": {
+				"north": {"uv": [7, 3, 7.25, 3.5], "texture": "#0"},
+				"east": {"uv": [5, 4, 6.25, 4.5], "texture": "#0"},
+				"south": {"uv": [7, 3.5, 7.25, 4], "texture": "#0"},
+				"west": {"uv": [5, 4.5, 6.25, 5], "texture": "#0"},
+				"up": {"uv": [5.75, 1.75, 5.5, 0.5], "texture": "#0"},
+				"down": {"uv": [5.75, 2, 5.5, 3.25], "texture": "#0"}
+			}
+		},
+		{
+			"name": "tip_bottom_2",
+			"from": [7.7, 22.75, 8.1],
+			"to": [8.3, 23.75, 10.5],
+			"rotation": {"angle": -22.5, "axis": "x", "origin": [8, 23.25, 8.75]},
+			"faces": {
+				"north": {"uv": [7, 4, 7.25, 4.5], "texture": "#0"},
+				"east": {"uv": [5, 5, 6.25, 5.5], "texture": "#0"},
+				"south": {"uv": [7, 4.5, 7.25, 5], "texture": "#0"},
+				"west": {"uv": [5.5, 0, 6.75, 0.5], "texture": "#0"},
+				"up": {"uv": [6.25, 1.75, 6, 0.5], "texture": "#0"},
+				"down": {"uv": [6.25, 2, 6, 3.25], "texture": "#0"}
+			}
+		},
+		{
+			"name": "tip_bottom_rod",
+			"from": [7.6, 22.55, 7.7],
+			"to": [8.4, 23.85, 8.3],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 18.75, 8]},
+			"faces": {
+				"north": {"uv": [6.5, 3, 6.875, 3.625], "texture": "#0"},
+				"east": {"uv": [6, 6.5, 6.25, 7.125], "texture": "#0"},
+				"south": {"uv": [6.5, 4, 6.875, 4.625], "texture": "#0"},
+				"west": {"uv": [6.5, 6.5, 6.75, 7.125], "texture": "#0"},
+				"up": {"uv": [7.375, 5.25, 7, 5], "texture": "#0"},
+				"down": {"uv": [7.375, 5.5, 7, 5.75], "texture": "#0"}
+			}
+		},
+		{
+			"name": "guard_rod",
+			"from": [7.425, 14.85, 7.45],
+			"to": [8.55, 22.62422, 8.55],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 18.75, 8]},
+			"faces": {
+				"north": {"uv": [0.5, 4, 1, 7.875], "texture": "#0"},
+				"east": {"uv": [1, 4, 1.5, 7.875], "texture": "#0"},
+				"south": {"uv": [1.5, 4, 2, 7.875], "texture": "#0"},
+				"west": {"uv": [2, 4, 2.5, 7.875], "texture": "#0"},
+				"up": {"uv": [6, 4, 5.5, 3.5], "texture": "#0"},
+				"down": {"uv": [3, 6, 2.5, 6.5], "texture": "#0"}
+			}
+		},
+		{
+			"name": "rod_base",
+			"from": [7.5, -6.5, 7.5],
+			"to": [8.5, 14.9, 8.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, -3, 0]},
+			"faces": {
+				"north": {"uv": [3, 0, 3.5, 10.75], "texture": "#0"},
+				"east": {"uv": [3.5, 0, 4, 10.75], "texture": "#0"},
+				"south": {"uv": [0, 4, 0.5, 14.75], "texture": "#0"},
+				"west": {"uv": [4, 0, 4.5, 10.75], "texture": "#0"},
+				"up": {"uv": [6.5, 4, 6, 3.5], "texture": "#0"},
+				"down": {"uv": [5, 6, 4.5, 6.5], "texture": "#0"}
+			}
+		},
+		{
+			"name": "rod_bottom_big",
+			"from": [7.425, -10.15, 7.45],
+			"to": [8.55, -6.37578, 8.55],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, -6.25, 8]},
+			"faces": {
+				"north": {"uv": [2.5, 4, 3, 5.875], "texture": "#0"},
+				"east": {"uv": [4.5, 2, 5, 3.875], "texture": "#0"},
+				"south": {"uv": [4.5, 4, 5, 5.875], "texture": "#0"},
+				"west": {"uv": [5, 2, 5.5, 3.875], "texture": "#0"},
+				"up": {"uv": [6.5, 6, 6, 5.5], "texture": "#0"},
+				"down": {"uv": [6.5, 6, 6, 6.5], "texture": "#0"}
+			}
+		},
+		{
+			"name": "rod_bottom",
+			"from": [7.5, -11, 7.5],
+			"to": [8.5, -10, 8.5],
+			"faces": {
+				"north": {"uv": [6.5, 0.5, 7, 1], "texture": "#0"},
+				"east": {"uv": [6.5, 1, 7, 1.5], "texture": "#0"},
+				"south": {"uv": [6.5, 1.5, 7, 2], "texture": "#0"},
+				"west": {"uv": [6.5, 2, 7, 2.5], "texture": "#0"},
+				"up": {"uv": [3, 7, 2.5, 6.5], "texture": "#0"},
+				"down": {"uv": [7, 2.5, 6.5, 3], "texture": "#0"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"translation": [0, -5, 0]
+		}
+	}
+}

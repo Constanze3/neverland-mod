@@ -1,8 +1,14 @@
 {
   "itemGroup.neverland.neverland_group": "Neverland",
+
   "item.neverland.silver_ingot": "Silver Ingot",
   "item.neverland.silver_sword": "Silver Sword",
   "item.neverland.silver_axe": "Silver Axe",
+
+  "item.neverland.spear": "Spear",
+
+  "item.neverland.umbrella": "Umbrella",
+
   "neverland.special.evil_laughter": "Evil Laughter",
   "neverland.special.throwing_knife": "Throwing Knife Flying",
   "neverland.special.za_warudo": "Speech: Za Warudo!"

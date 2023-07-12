@@ -28,7 +28,6 @@ public class ModItemGroups {
                     entries.add(ModItems.SILVER_INGOT);
                     entries.add(ModItems.SILVER_SWORD);
                     entries.add(ModItems.SILVER_AXE);
-                    entries.add(ModItems.SPEAR);
                     entries.add(ModItems.UMBRELLA);
                 })
                 .build();

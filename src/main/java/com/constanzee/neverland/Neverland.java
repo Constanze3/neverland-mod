@@ -1,5 +1,6 @@
 package com.constanzee.neverland;
 
+import com.constanzee.neverland.block.ModBlocks;
 import com.constanzee.neverland.datagen.GenerateLootTables;
 import com.constanzee.neverland.effect.ModStatusEffects;
 import com.constanzee.neverland.entity.ModEntityType;
@@ -19,6 +20,7 @@ public class Neverland implements ModInitializer {
 	public void onInitialize() {
 		LOGGER.info("Initializing Neverland mod!");
 
+		new ModBlocks();
 		new ModItems();
 		new ModItemGroups();
 		new ModStatusEffects();

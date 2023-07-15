@@ -33,7 +33,7 @@ public class ModItems {
         SILVER_ARROW = register("silver_arrow", new SilverArrowItem(new Item.Settings()));
         BOTTLE_OF_WEREWOLF_BLOOD = register("bottle_of_werewolf_blood", new ModPotionItem(new StatusEffectInstance(StatusEffects.NAUSEA, 200), false, new Item.Settings().maxCount(1)));
         POTION_OF_BLOOD_SENSE = register("potion_of_blood_sense", new ModPotionItem(new StatusEffectInstance(ModStatusEffects.BLOOD_SENSE, 1200), true, new Item.Settings().maxCount(1)));
-        ORB_OF_THE_STORM = register("orb_of_the_storm", new Item(new Item.Settings()));
+        ORB_OF_THE_STORM = register("orb_of_the_storm", new EnchantedItem(new Item.Settings()));
         SPEAR = register("spear", new Item(new Item.Settings()));
     }
 }

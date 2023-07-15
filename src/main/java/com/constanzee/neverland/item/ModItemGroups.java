@@ -31,6 +31,7 @@ public class ModItemGroups {
                     entries.add(ModItems.SILVER_ARROW);
                     entries.add(ModItems.BOTTLE_OF_WEREWOLF_BLOOD);
                     entries.add(ModItems.POTION_OF_BLOOD_SENSE);
+                    entries.add(ModItems.ORB_OF_THE_STORM);
                 })
                 .build();
     }

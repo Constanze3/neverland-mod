@@ -4,15 +4,15 @@
   "item.neverland.silver_ingot": "Silver Ingot",
   "item.neverland.silver_sword": "Silver Sword",
   "item.neverland.silver_axe": "Silver Axe",
+  "item.neverland.silver_arrow": "Silver Arrow",
+  "item.neverland.bottle_of_werewolf_blood": "Bottle of Werewolf Blood",
+  "item.neverland.potion_of_blood_sense": "Potion of Blood Sense",
+
+  "item.neverland.orb_of_the_storm": "Orb of the Storm",
 
   "item.neverland.spear": "Spear",
 
-  "item.neveland.the_world_21": "The World 21",
-  "item.neverland.umbrella": "Umbrella",
+  "effect.neverland.blood_sense": "Blood Sense",
 
-  "item.neverland.thunder_icon": "Thunder Icon",
-
-  "neverland.special.evil_laughter": "Evil Laughter",
-  "neverland.special.throwing_knife": "Throwing Knife Flying",
-  "neverland.special.za_warudo": "Speech: Za Warudo!"
+  "neverland.special.evil_laughter": "Evil Laughter"
 }

@@ -1,6 +1,6 @@
 package com.constanzee.neverland.item;
 
-import com.constanzee.neverland.Main;
+import com.constanzee.neverland.Neverland;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -14,7 +14,7 @@ public class ModItemGroups {
     }
 
     private static ItemGroup.Builder create(String id) {
-        return create(new Identifier(Main.MODID, id));
+        return create(new Identifier(Neverland.MODID, id));
     }
 
     private static ItemGroup.Builder create(Identifier id) {
@@ -28,7 +28,9 @@ public class ModItemGroups {
                     entries.add(ModItems.SILVER_INGOT);
                     entries.add(ModItems.SILVER_SWORD);
                     entries.add(ModItems.SILVER_AXE);
-                    entries.add(ModItems.UMBRELLA);
+                    entries.add(ModItems.SILVER_ARROW);
+                    entries.add(ModItems.BOTTLE_OF_WEREWOLF_BLOOD);
+                    entries.add(ModItems.POTION_OF_BLOOD_SENSE);
                 })
                 .build();
     }

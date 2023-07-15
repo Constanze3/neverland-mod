@@ -1,6 +1,6 @@
 package com.constanzee.neverland.sound;
 
-import com.constanzee.neverland.Main;
+import com.constanzee.neverland.Neverland;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.SoundEvent;
@@ -8,11 +8,9 @@ import net.minecraft.util.Identifier;
 
 public class ModSoundEvents {
     public static final SoundEvent SPECIAL_EVIL_LAUGHTER;
-    public static final SoundEvent SPECIAL_THROWING_KNIFE;
-    public static final SoundEvent SPECIAL_ZA_WARUDO;
 
     private static SoundEvent register(String id) {
-        return register(new Identifier(Main.MODID, id));
+        return register(new Identifier(Neverland.MODID, id));
     }
 
     private static SoundEvent register(Identifier id) {
@@ -25,7 +23,5 @@ public class ModSoundEvents {
 
     static {
         SPECIAL_EVIL_LAUGHTER = register("special.evil_laughter");
-        SPECIAL_THROWING_KNIFE = register("special.throwing_knife");
-        SPECIAL_ZA_WARUDO = register("special.za_warudo");
     }
 }

@@ -1,0 +1,18 @@
+{
+  "itemGroup.neverland.neverland_group": "Sohaország",
+
+  "item.neverland.silver_ingot": "Ezüstrúd",
+  "item.neverland.silver_sword": "Ezüst Kard",
+  "item.neverland.silver_axe": "Ezüst Balta",
+  "item.neverland.silver_arrow": "Ezüst Nyíl",
+  "item.neverland.bottle_of_werewolf_blood": "Palackozott Vérfarkas Vér",
+  "item.neverland.potion_of_blood_sense": "A Vér Érzékelés Bájitala",
+
+  "item.neverland.orb_of_the_storm": "A Vihar Gömbje",
+
+  "item.neverland.spear": "Lándzsa",
+
+  "effect.neverland.blood_sense": "Vér Érzékelés",
+
+  "neverland.special.evil_laughter": "Gonosz Nevetés"
+}

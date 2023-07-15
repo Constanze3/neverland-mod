@@ -1,29 +1,28 @@
 {
   "schemaVersion": 1,
   "id": "neverland",
-  "version": "1.2",
+  "version": "${version}",
 
   "name": "Neverland",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "description": "",
   "authors": [
     "Constanzee"
   ],
-  "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
-  },
-
-  "license": "CC0-1.0",
+  "contact": {},
+  "license": "MIT",
   "icon": "assets/neverland/icon.png",
 
   "environment": "*",
   "entrypoints": {
+    "client": [
+      "com.constanzee.neverland.client.NeverlandClient"
+    ],
     "main": [
-      "com.constanzee.neverland.Main"
+      "com.constanzee.neverland.Neverland"
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "neverland.mixins.json"
   ],
 
   "depends": {
@@ -33,6 +32,5 @@
     "java": ">=17"
   },
   "suggests": {
-    "another-mod": "*"
   }
 }

@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "neverland:item/the_world_21"
+    "layer0": "neverland:item/orb_of_the_storm"
   }
 }

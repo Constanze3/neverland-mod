@@ -9,16 +9,13 @@ import net.minecraft.util.Identifier;
 
 public class ModStatusEffects {
 
-    public static final StatusEffect BLOOD_SENSE;
-
-    public ModStatusEffects() {
-    }
+    public static StatusEffect BLOOD_SENSE;
 
     private static StatusEffect register(String id, StatusEffect effect) {
         return Registry.register(Registries.STATUS_EFFECT, new Identifier(Neverland.MODID, id), effect);
     }
 
-    static {
+    public static void register() {
         BLOOD_SENSE = register("blood_sense", new ModStatusEffect(StatusEffectCategory.BENEFICIAL));
     }
 }

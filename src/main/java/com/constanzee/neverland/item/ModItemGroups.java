@@ -8,10 +8,7 @@ import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
 
 public class ModItemGroups {
-    public static final ItemGroup NEVERLAND;
-
-    public ModItemGroups() {
-    }
+    public static ItemGroup NEVERLAND;
 
     private static ItemGroup.Builder create(String id) {
         return create(new Identifier(Neverland.MODID, id));
@@ -21,7 +18,7 @@ public class ModItemGroups {
         return FabricItemGroup.builder(id);
     }
 
-    static {
+    public static void register() {
         NEVERLAND = create("neverland_group")
                 .icon(() -> new ItemStack(Items.APPLE))
                 .entries((displayContext, entries) -> {

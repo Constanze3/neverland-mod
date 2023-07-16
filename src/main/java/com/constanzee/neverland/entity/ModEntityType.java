@@ -11,16 +11,13 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
 public class ModEntityType {
-    public static final EntityType<SilverArrowEntity> SILVER_ARROW;
-
-    public ModEntityType() {
-    }
+    public static EntityType<SilverArrowEntity> SILVER_ARROW;
 
     private static <T extends Entity> EntityType<T> register(String id, EntityType<T> entityType) {
         return Registry.register(Registries.ENTITY_TYPE, new Identifier(Neverland.MODID, id), entityType);
     }
 
-    static {
-       SILVER_ARROW = register("silver_arrow", FabricEntityTypeBuilder.create(SpawnGroup.MISC, (EntityType.EntityFactory<SilverArrowEntity>)SilverArrowEntity::new).dimensions(EntityDimensions.fixed(0.5f, 0.5f)).trackRangeBlocks(4).trackedUpdateRate(20).build());
+    public static void register() {
+       SILVER_ARROW = register("silver_arrow", FabricEntityTypeBuilder.create(SpawnGroup.MISC, (EntityType.EntityFactory<SilverArrowEntity>) SilverArrowEntity::new).dimensions(EntityDimensions.fixed(0.5f, 0.5f)).trackRangeBlocks(4).trackedUpdateRate(20).build());
     }
 }

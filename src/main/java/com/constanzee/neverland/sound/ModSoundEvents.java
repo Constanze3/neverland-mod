@@ -7,7 +7,7 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
 
 public class ModSoundEvents {
-    public static final SoundEvent SPECIAL_EVIL_LAUGHTER;
+    public static SoundEvent SPECIAL_EVIL_LAUGHTER;
 
     private static SoundEvent register(String id) {
         return register(new Identifier(Neverland.MODID, id));
@@ -21,7 +21,7 @@ public class ModSoundEvents {
         return Registry.register(Registries.SOUND_EVENT, id, SoundEvent.of(soundId));
     }
 
-    static {
+    public static void register() {
         SPECIAL_EVIL_LAUGHTER = register("special.evil_laughter");
     }
 }

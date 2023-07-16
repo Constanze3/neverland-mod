@@ -10,16 +10,13 @@ import net.minecraft.util.Identifier;
 
 public class ModBlocks {
 
-    public static final Block RUNE_BLOCK;
-
-    public ModBlocks() {
-    }
+    public static Block RUNE_BLOCK;
 
     private static Block register(String id, Block block) {
         return Registry.register(Registries.BLOCK, new Identifier(Neverland.MODID, id), block);
     }
 
-    static {
+    public static void register() {
         RUNE_BLOCK = register("rune_block", new Block(FabricBlockSettings.of(Material.STONE).requiresTool().strength(5.0f, 6.0f)));
     }
 }

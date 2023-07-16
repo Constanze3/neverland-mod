@@ -17,6 +17,6 @@ public class ModBlocks {
     }
 
     public static void register() {
-        RUNE_BLOCK = register("rune_block", new Block(FabricBlockSettings.of(Material.STONE).requiresTool().strength(5.0f, 6.0f)));
+        RUNE_BLOCK = register("rune_block", new Block(FabricBlockSettings.of(Material.STONE).requiresTool().strength(50.0f, 1200.0f)));
     }
 }

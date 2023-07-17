@@ -10,6 +10,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.Position;
 import net.minecraft.world.World;
+
 import java.lang.reflect.Constructor;
 
 public class ModDispenserBehavior {

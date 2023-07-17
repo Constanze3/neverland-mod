@@ -1,6 +1,5 @@
 package com.constanzee.neverland.item;
 
-import net.minecraft.item.Items;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
 

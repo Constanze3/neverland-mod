@@ -1,0 +1,38 @@
+{
+    "name": "Night Hunter",
+    "description": "TODO description",
+    "type": "origins:multiple",
+    "damage": {
+        "type": "origins:modify_damage_dealt",
+        "condition": {
+            "type": "origins:daytime",
+            "inverted": true
+        },
+        "modifier": {
+            "name": "extra damage at night",
+            "operation": "addition",
+            "value": 2
+        }
+    },
+    "night-vision": {
+        "type": "origins:night_vision",
+        "strength": 0.4,
+        "condition": {
+            "type": "origins:submerged_in",
+            "fluid": "minecraft:water",
+            "inverted": true
+        }
+    },
+    "particle-effect": {
+        "type": "origins:action_over_time",
+        "interval": 5,
+        "condition": {
+            "type": "origins:daytime",
+            "inverted": true
+        },
+        "entity_action": {
+            "type": "origins:execute_command",
+            "command": "particle minecraft:dust 0.7 0.05 0.03 1 ~ ~ ~ 0.4 1 0.4 50 15"
+        }
+    }
+}

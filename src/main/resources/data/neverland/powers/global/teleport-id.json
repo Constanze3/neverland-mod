@@ -1,0 +1,166 @@
+{
+    "hidden": true,
+    "type": "origins:multiple",
+    "on-callback": {
+        "type": "origins:action_on_callback",
+        "entity_action_gained": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "scoreboard objectives add neverland_teleport-id dummy"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scoreboard objectives add neverland_teleport-player-count dummy"
+                }
+            ]
+        }
+    },
+    "assigning-teleport-id": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "entity_action": {
+            "type": "origins:if_else_list",
+            "actions": [
+                {
+                    "condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:nbt",
+                                "nbt": "{Tags: ['neverland_has-teleport-id']}",
+                                "inverted": true
+                            },
+                            {
+                                "type": "origins:or",
+                                "conditions": [
+                                    {
+                                        "type": "origins:equipped_item",
+                                        "equipment_slot": "mainhand",
+                                        "item_condition": {
+                                            "type": "origins:ingredient",
+                                            "ingredient": {
+                                                "item": "neverland:orb_of_the_storm"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "origins:equipped_item",
+                                        "equipment_slot": "offhand",
+                                        "item_condition": {
+                                            "type": "origins:ingredient",
+                                            "ingredient": {
+                                                "item": "neverland:orb_of_the_storm"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:execute_command",
+                                "command": "execute store result score @s neverland_teleport-id run scoreboard players add #global neverland_teleport-id 1"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "tag @s add neverland_has-teleport-id"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:nbt",
+                                "nbt": "{Tags: ['neverland_has-teleport-id']}"
+                            },
+                            {
+                                "type": "origins:or",
+                                "conditions": [
+                                    {
+                                        "type": "origins:equipped_item",
+                                        "equipment_slot": "mainhand",
+                                        "item_condition": {
+                                            "type": "origins:ingredient",
+                                            "ingredient": {
+                                                "item": "neverland:orb_of_the_storm"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "origins:equipped_item",
+                                        "equipment_slot": "offhand",
+                                        "item_condition": {
+                                            "type": "origins:ingredient",
+                                            "ingredient": {
+                                                "item": "neverland:orb_of_the_storm"
+                                            }
+                                        }
+                                    }
+                                ],
+                                "inverted": true
+                            }
+                        ]
+                    },
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:execute_command",
+                                "command": "scoreboard players set #global neverland_teleport-id 0"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "tag @a remove neverland_has-teleport-id"
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+    "on-game-leave-or-join": {
+        "info": "recalculate teleport-ids if someone left/joined the game",
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "info": "this command asssigns the teleport-player-count, not an 'actual' condition",
+                    "type": "origins:command",
+                    "command": "execute store result score #global neverland_teleport-player-count run execute if entity @a[tag=neverland_has-teleport-id]",
+                    "comparison": ">",
+                    "compare_to": 0
+                },
+                {
+                    "info": "if the players tagged with having an id aren't matching the number of id's assigned someone must have left/joined the game",
+                    "type": "origins:command",
+                    "command": "execute if score #global neverland_teleport-id = #global neverland_teleport-player-count",
+                    "comparison": "==",
+                    "compare_to": 0
+                }
+            ]
+        },
+        "rising_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "scoreboard players set #global neverland_teleport-id 0"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "tag @a remove neverland_has-teleport-id"
+                }
+            ]
+        }
+    }
+}

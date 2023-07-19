@@ -1,0 +1,41 @@
+{
+    "name": "Carnivore",
+    "description": "TODO description",
+    "type": "origins:multiple",
+    "only-eat-raw-meat": {
+        "type": "origins:prevent_item_use",
+        "item_condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:food"
+                },
+                {
+                    "type": "origins:ingredient",
+                    "ingredient": {
+                        "tag": "neverland:raw_meat"
+                    },
+                    "inverted": true
+                }
+            ]
+        }
+    },
+    "raw-meat-bonus": {
+        "type": "origins:modify_food",
+        "item_condition": {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "tag": "neverland:raw_meat"
+            }
+        },
+        "food_modifier": {
+            "operation": "add_base_early",
+            "value": 5
+        },
+        "saturation_modifier": {
+            "operation": "add_base_early",
+            "value": 10
+        },
+        "prevent_effects": true
+    }
+}

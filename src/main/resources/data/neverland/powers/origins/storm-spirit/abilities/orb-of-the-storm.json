@@ -1,0 +1,47 @@
+{
+    "name": "Orb of the Storm",
+    "description": "TODO description",
+    "type": "origins:active_self",
+    "key": {
+        "key": "key.use"
+    },
+    "cooldown": 20,
+    "condition": {
+		"type": "origins:and",
+		"conditions": [
+			{
+				"type": "origins:sneaking"
+			},
+			{
+				"type": "origins:equipped_item",
+				"equipment_slot": "mainhand",
+				"item_condition": {
+					"type": "origins:ingredient",
+					"ingredient": {
+						"item": "minecraft:diamond"
+					}
+				}
+			}
+		]
+	},
+	"entity_action": {
+		"type": "origins:and",
+		"actions": [
+			{
+				"type": "origins:equipped_item_action",
+				"equipment_slot": "mainhand",
+				"action": {
+					"type": "origins:consume",
+					"amount": 1
+				}
+			},
+            {
+                "type": "origins:give",
+                "stack": {
+                    "item": "neverland:orb_of_the_storm"
+                },
+                "preferred_slot": "mainhand"
+            }
+		]
+	}
+}

@@ -1,0 +1,73 @@
+{
+    "name": "Backstab",
+    "description": "TODO description",
+    "type": "origins:modify_damage_dealt",
+    "bientity_condition": {
+        "type": "origins:and",
+        "conditions": [
+            {
+                "type": "origins:relative_rotation",
+                "actor_rotation": "head",
+                "target_rotation": "body",
+                "comparison": ">=",
+                "compare_to": 0.4
+            },
+            {
+                "type": "origins:target_condition",
+                "condition": {
+                    "type": "origins:entity_type",
+                    "entity_type": "minecraft:ender_dragon",
+                    "inverted": true
+                }
+            }
+        ]
+    },
+    "modifier": {
+        "operation": "addition",
+        "value": 3
+    },
+    "target_action": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:play_sound",
+                "sound": "minecraft:block.anvil.place"
+            },
+            {
+                "type": "origins:if_else",
+                "condition": {
+                    "type": "origins:or",
+                    "conditions": [
+                        {
+                            "type": "origins:entity_group",
+                            "group": "undead"
+                        },
+                        {
+                            "type": "origins:entity_group",
+                            "group": "arthropod"
+                        }
+                    ],
+                    "inverted": true
+                },
+                "if_action": {
+                    "type": "origins:and",
+                    "actions": [
+                        {
+                            "type": "origins:apply_effect",
+                            "effect": {
+                                "effect": "minecraft:poison",
+                                "duration": 40,
+                                "amplifier": 1
+                            }
+                        }
+                    ]
+                },
+                "else_action": {
+                    "type": "origins:damage",
+                    "amount": 3,
+                    "damage_type": "minecraft:generic"
+                }
+            }
+        ]
+    }
+}

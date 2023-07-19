@@ -1,0 +1,51 @@
+{
+	"name": "Blood Donation",
+	"description": "TODO description",
+	"type": "origins:active_self",
+	"key": {
+		"key": "key.use"
+	},
+	"cooldown": 20,
+	"condition": {
+		"type": "origins:and",
+		"conditions": [
+			{
+				"type": "origins:sneaking"
+			},
+			{
+				"type": "origins:equipped_item",
+				"equipment_slot": "mainhand",
+				"item_condition": {
+					"type": "origins:ingredient",
+					"ingredient": {
+						"item": "minecraft:glass_bottle"
+					}
+				}
+			}
+		]
+	},
+	"entity_action": {
+		"type": "origins:and",
+		"actions": [
+			{
+				"type": "origins:damage",
+				"amount": 3,
+				"damage_type": "minecraft:generic"
+			},
+			{
+				"type": "origins:equipped_item_action",
+				"equipment_slot": "mainhand",
+				"action": {
+					"type": "origins:consume",
+					"amount": 1
+				}
+			},
+			{
+				"type": "origins:give",
+				"stack": {
+					"item": "neverland:bottle_of_werewolf_blood"
+				}
+			}
+		]
+	}
+}

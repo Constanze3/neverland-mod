@@ -1,0 +1,14 @@
+{
+  "name": "Photosynthesis",
+  "description": "You are a literal plant and plants eat sunlight so you do it too.",
+  "type": "origins:action_over_time",
+  "interval": 400,
+  "condition": {
+    "type": "origins:exposed_to_sun"
+  },
+  "entity_action": {
+    "type": "origins:feed",
+    "food": 3,
+    "saturation": 3
+  }
+}

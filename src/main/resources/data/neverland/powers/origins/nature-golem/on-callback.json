@@ -1,0 +1,133 @@
+{
+    "hidden": true,
+    "type": "origins:action_on_callback",
+    "entity_action_gained": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:execute_command",
+                "command": "tag @s add neverland_nature-golem"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "scale persist set pehkui:base true @s"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "scale set pehkui:base 1.1 @s"
+            }
+        ]
+    },
+    "entity_action_lost": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:execute_command",
+                "command": "tag @s remove neverland_nature-golem"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "scale persist reset @s"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "scale reset @s"
+            }
+        ]
+    },
+    "entity_action_respawned": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "info": "reset bind",
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:change_resource",
+                        "resource": "*:origins/nature-golem/abilities/bind_b-can-use",
+                        "operation": "set",
+                        "change": 1
+                    },
+                    {
+                        "type": "origins:change_resource",
+                        "resource": "*:origins/nature-golem/abilities/bind_b-active",
+                        "operation": "set",
+                        "change": 0
+                    },
+                    {
+                        "type": "origins:change_resource",
+                        "resource": "*:origins/nature-golem/abilities/bind_bar-duration",
+                        "operation": "set",
+                        "change": 80
+                    },
+                    {
+                        "type": "origins:change_resource",
+                        "resource": "*:origins/nature-golem/abilities/bind_bar-cooldown",
+                        "operation": "set",
+                        "change": 280
+                    }
+                ]
+            },
+            {
+                "info": "reset bonemeal-heal",
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:change_resource",
+                        "resource": "*:origins/nature-golem/abilities/bonemeal-heal_b-can-use",
+                        "operation": "set",
+                        "change": 1
+                    },
+                    {
+                        "type": "origins:change_resource",
+                        "resource": "*:origins/nature-golem/abilities/bonemeal-heal_bar-cooldown",
+                        "operation": "set",
+                        "change": 200
+                    }
+                ]
+            },
+            {
+                "info": "reset potion-effect-on-weapon",
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:change_resource",
+                        "resource": "*:origins/nature-golem/abilities/potion-effect-on-weapon_b-apply-potion",
+                        "operation": "set",
+                        "change": 0
+                    },
+                    {
+                        "type": "origins:change_resource",
+                        "resource": "*:origins/nature-golem/abilities/potion-effect-on-weapon_b-can-use",
+                        "operation": "set",
+                        "change": 1
+                    },
+                    {
+                        "type": "origins:change_resource",
+                        "resource": "*:origins/nature-golem/abilities/potion-effect-on-weapon_bar-cooldown",
+                        "operation": "set",
+                        "change": 400
+                    }
+                ]
+            },
+            {
+                "info": "reset wall-of-moss",
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:change_resource",
+                        "resource": "*:origins/nature-golem/abilities/wall-of-moss_b-can-use",
+                        "operation": "set",
+                        "change": 1
+                    },
+                    {
+                        "type": "origins:change_resource",
+                        "resource": "*:origins/nature-golem/abilities/wall-of-moss_bar-cooldown",
+                        "operation": "set",
+                        "change": 400
+                    }
+                ]
+            }
+        ]
+    }
+}

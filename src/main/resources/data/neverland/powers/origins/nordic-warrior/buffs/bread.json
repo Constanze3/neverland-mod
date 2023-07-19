@@ -1,0 +1,19 @@
+{
+    "name": "Viking Feast",
+    "description": "TODO description",
+    "type": "origins:modify_food",
+    "item_condition": {
+        "type": "origins:ingredient",
+        "ingredient": {
+            "item": "minecraft:bread"
+        }
+    },
+    "entity_action": {
+        "type": "origins:apply_effect",
+        "effect": {
+            "effect": "minecraft:regeneration",
+            "duration": 80
+        }
+    },
+    "always_edible": true
+}

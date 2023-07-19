@@ -1,0 +1,180 @@
+{
+    "name": "Trap",
+    "description": "TODO description",
+    "type": "origins:multiple",
+    "bar-duration": {
+        "type": "origins:cooldown",
+        "cooldown": 140,
+        "hud_render": {
+            "should_render": true,
+            "bar_index": 5,
+            "inverted": true
+        }
+    },
+    "bar-cooldown": {
+        "type": "origins:cooldown",
+        "cooldown": 1800,
+        "hud_render": {
+            "should_render": true,
+            "bar_index": 5
+        }
+    },
+    "b-can-use": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1,
+        "start_value": 1
+    },
+    "b-active": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1
+    },
+    "main": {
+        "type": "origins:active_self",
+        "key": {
+            "key": "key.origins.primary_active"
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_b-can-use",
+                    "comparison": "==",
+                    "compare_to": 1
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "*:origins/jester/abilities/mark_b-active",
+                    "comparison": "==",
+                    "compare_to": 1
+                }
+            ]
+        },
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_b-can-use",
+                    "operation": "set",
+                    "change": 0
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:origins/jester/abilities/mark_bar-duration",
+                    "operation": "set",
+                    "change": 100
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_b-active",
+                    "operation": "set",
+                    "change": 1
+                },
+                {
+                    "type": "origins:play_sound",
+                    "sound": "minecraft:entity.wither.spawn"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "summon minecraft:armor_stand ~ ~ ~ {Marker:1b, Invisible:1b, Tags:[neverland_trapmarker]}"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute store result score @e[distance=..1, tag=neverland_trapmarker, sort=nearest, limit=1] neverland_id run scoreboard players get @s neverland_id"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "power grant @e[tag=neverland_trapmarker] neverland:origins/jester/given/trapmarker"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute as @e if score @s neverland_marked-by-jester = @p neverland_id run tp @s @p"
+                },
+                {
+                    "type": "origins:trigger_cooldown",
+                    "power": "*:*_bar-duration"
+                }
+            ]
+        }
+    },
+    "on-duration-over": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_b-active",
+                    "comparison": "==",
+                    "compare_to": 1
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_bar-duration",
+                    "comparison": "==",
+                    "compare_to": 0
+                }
+            ]
+        },
+        "rising_action": {
+            "type": "origins:delay",
+            "ticks": 2,
+            "action": {
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_b-active",
+                        "operation": "set",
+                        "change": 0
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "execute as @e[tag=neverland_trapmarker] if score @s neverland_id = @p neverland_id run resource set @s neverland:origins/jester/given/trapmarker_bar-cooldown 100"
+                    },
+                    {
+                        "type": "origins:trigger_cooldown",
+                        "power": "*:*_bar-cooldown"
+                    }
+                ]
+            }
+        }
+    },
+    "on-cooldown-over": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_b-active",
+                    "comparison": "==",
+                    "compare_to": 0
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_b-can-use",
+                    "comparison": "==",
+                    "compare_to": 0
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_bar-cooldown",
+                    "comparison": "==",
+                    "compare_to": 0
+                }
+            ]
+        },
+        "rising_action": {
+            "type": "origins:change_resource",
+            "resource": "*:*_b-can-use",
+            "operation": "set",
+            "change": 1
+        }
+    }
+}

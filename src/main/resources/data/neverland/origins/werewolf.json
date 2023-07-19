@@ -1,0 +1,27 @@
+{
+	"name": "Werewolf",
+	"description": "The true beast of the night with amazing strenght and agility.",
+	"icon": "minecraft:redstone",
+	"impact": 3,
+	"powers": [
+		"neverland:origins/werewolf/abilities/dash",
+		"neverland:origins/werewolf/abilities/blood-donation",
+
+		"neverland:origins/werewolf/buffs/blood-sense",
+		"neverland:origins/werewolf/buffs/lifesteal",
+		"neverland:origins/werewolf/buffs/night-hunter",
+		"neverland:origins/werewolf/buffs/speed",
+
+		"neverland:origins/werewolf/debuffs/carnivore",
+		"neverland:origins/werewolf/debuffs/silver",
+		"neverland:origins/werewolf/debuffs/water",
+
+		"neverland:origins/werewolf/on-callback",
+
+		"neverland:global/id",
+        "neverland:global/iron-vines",
+		"neverland:global/remove-stolen-tags",
+		"neverland:global/teleport-id"
+	],
+	"order": 5
+}

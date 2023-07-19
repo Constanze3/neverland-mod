@@ -1,0 +1,94 @@
+{
+    "name": "Tyr's Blessing",
+    "description": "TODO description",
+    "type": "origins:multiple",
+    "bar-cooldown": {
+        "type": "origins:cooldown",
+        "cooldown": 200,
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_03.png",
+            "bar_index": 5
+        }
+    },
+    "main": {
+        "type": "origins:action_on_entity_use",
+        "bientity_condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:actor_condition",
+                    "condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:resource",
+                                "resource": "neverland:origins/nordic-warrior/buffs/taming_bar-cooldown",
+                                "comparison": "==",
+                                "compare_to": 0
+                            },
+                            {
+                                "type": "origins:xp_levels",
+                                "comparison": ">=",
+                                "compare_to": 1
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "origins:target_condition",
+                    "condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:entity_type",
+                                "entity_type": "minecraft:wolf"
+                            },
+                            {
+                                "type": "origins:tamed",
+                                "inverted": true
+                            },
+                            {
+                                "type": "origins:command",
+                                "command": "data get entity @s AngerTime",
+                                "comparison": "==",
+                                "compare_to": 0
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "bientity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:target_action",
+                    "action": {
+                        "type": "origins:execute_command",
+                        "command": "particle heart ~ ~0.5 ~ 0.3 0.3 0.3 0.009 4 normal"
+                    }
+                },
+                {
+                    "type": "origins:tame"
+                },
+                {
+                    "type": "origins:actor_action",
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:add_xp",
+                                "levels": -1
+                            },
+                            {
+                                "type": "origins:trigger_cooldown",
+                                "power": "neverland:origins/nordic-warrior/buffs/taming_bar-cooldown"
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    }
+}

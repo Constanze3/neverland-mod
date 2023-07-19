@@ -1,0 +1,57 @@
+{
+    "name": "Bloodthirst",
+    "description": "TODO description",
+    "type": "origins:multiple",
+    "i-amount": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 10,
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_01.png",
+            "bar_index": 5,
+            "inverted": true
+        }
+    },
+    "increase-bloodthirst-over-time": {
+        "type": "origins:action_over_time",
+        "interval": 4800,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_i-amount",
+            "comparison": "<",
+            "compare_to": 10
+        },
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "*:*_i-amount",
+            "operation": "add",
+            "change": 1
+        }
+    },
+    "damage": {
+        "type": "origins:action_over_time",
+        "interval": 10,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_i-amount",
+            "comparison": ">=",
+            "compare_to": 10
+        },
+        "entity_action": {
+            "type": "origins:damage",
+            "amount": 1,
+            "damage_type": "minecraft:generic"
+        }
+    },
+    "decrease-bloodthrist-on-kill": {
+        "type": "origins:self_action_on_kill",
+        "cooldown": 0,
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "*:*_i-amount",
+            "operation": "add",
+            "change": -1
+        }
+    }
+}

@@ -1,0 +1,464 @@
+{
+    "hidden": true,
+    "type": "origins:multiple",
+    "bar-cooldown": {
+        "type": "origins:cooldown",
+        "cooldown": 300,
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "origins:textures/gui/community/huang/resource_bar_02.png",
+            "bar_index": 15,
+            "condition": {
+                "type": "origins:resource",
+                "resource": "*:*_b-show-cooldown",
+                "comparison": "==",
+                "compare_to": 1
+            }
+        }
+    },
+    "b-active": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1
+    },
+    "b-show-cooldown": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1,
+        "start_value": 1
+    },
+    "i-meat": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 6
+    },
+    "check-raw-meat": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_b-active",
+                    "comparison": "==",
+                    "compare_to": 0
+                },
+                {
+                    "type": "origins:command",
+                    "command": "clear @s #neverland:raw_cookable_meat 0",
+                    "comparison": ">",
+                    "compare_to": 0
+                }
+            ]
+        },
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_b-active",
+                    "operation": "set",
+                    "change": 1
+                },
+                {
+                    "type": "origins:if_else_list",
+                    "actions": [
+                        {
+                            "condition": {
+                                "type": "origins:command",
+                                "command": "clear @s minecraft:beef 0",
+                                "comparison": ">",
+                                "compare_to": 0
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-meat",
+                                "operation": "set",
+                                "change": 0
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:command",
+                                "command": "clear @s minecraft:porkchop 0",
+                                "comparison": ">",
+                                "compare_to": 0
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-meat",
+                                "operation": "set",
+                                "change": 1
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:command",
+                                "command": "clear @s minecraft:mutton 0",
+                                "comparison": ">",
+                                "compare_to": 0
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-meat",
+                                "operation": "set",
+                                "change": 2
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:command",
+                                "command": "clear @s minecraft:chicken 0",
+                                "comparison": ">",
+                                "compare_to": 0
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-meat",
+                                "operation": "set",
+                                "change": 3
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:command",
+                                "command": "clear @s minecraft:rabbit 0",
+                                "comparison": ">",
+                                "compare_to": 0
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-meat",
+                                "operation": "set",
+                                "change": 4
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:command",
+                                "command": "clear @s minecraft:cod 0",
+                                "comparison": ">",
+                                "compare_to": 0
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-meat",
+                                "operation": "set",
+                                "change": 5
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:command",
+                                "command": "clear @s minecraft:salmon 0",
+                                "comparison": ">",
+                                "compare_to": 0
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-meat",
+                                "operation": "set",
+                                "change": 6
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:living"
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_b-active",
+                                "operation": "set",
+                                "change": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type": "origins:resource",
+                        "resource": "*:*_b-active",
+                        "comparison": "==",
+                        "compare_to": 1
+                    },
+                    "if_action": {
+                        "type": "origins:trigger_cooldown",
+                        "power": "*:*_bar-cooldown"
+                    }
+                }
+            ]
+        }
+    },
+    "on-cooldown-over": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_b-active",
+                    "comparison": "==",
+                    "compare_to": 1
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_bar-cooldown",
+                    "comparison": "==",
+                    "compare_to": 0
+                }
+            ]
+        },
+        "rising_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:if_else_list",
+                    "actions": [
+                        {
+                            "condition": {
+                                "type": "origins:resource",
+                                "resource": "*:*_i-meat",
+                                "comparison": "==",
+                                "compare_to": 0
+                            },
+                            "action": {
+                                "type": "origins:and",
+                                "actions": [
+                                    {
+                                        "type": "origins:execute_command",
+                                        "command": "clear @s minecraft:beef 1"
+                                    },
+                                    {
+                                        "type": "origins:give",
+                                        "stack": {
+                                            "item": "minecraft:cooked_beef"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:resource",
+                                "resource": "*:*_i-meat",
+                                "comparison": "==",
+                                "compare_to": 1
+                            },
+                            "action": {
+                                "type": "origins:and",
+                                "actions": [
+                                    {
+                                        "type": "origins:execute_command",
+                                        "command": "clear @s minecraft:porkchop 1"
+                                    },
+                                    {
+                                        "type": "origins:give",
+                                        "stack": {
+                                            "item": "minecraft:cooked_porkchop"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:resource",
+                                "resource": "*:*_i-meat",
+                                "comparison": "==",
+                                "compare_to": 2
+                            },
+                            "action": {
+                                "type": "origins:and",
+                                "actions": [
+                                    {
+                                        "type": "origins:execute_command",
+                                        "command": "clear @s minecraft:mutton 1"
+                                    },
+                                    {
+                                        "type": "origins:give",
+                                        "stack": {
+                                            "item": "minecraft:cooked_mutton"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:resource",
+                                "resource": "*:*_i-meat",
+                                "comparison": "==",
+                                "compare_to": 3
+                            },
+                            "action": {
+                                "type": "origins:and",
+                                "actions": [
+                                    {
+                                        "type": "origins:execute_command",
+                                        "command": "clear @s minecraft:chicken 1"
+                                    },
+                                    {
+                                        "type": "origins:give",
+                                        "stack": {
+                                            "item": "minecraft:cooked_chicken"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:resource",
+                                "resource": "*:*_i-meat",
+                                "comparison": "==",
+                                "compare_to": 4
+                            },
+                            "action": {
+                                "type": "origins:and",
+                                "actions": [
+                                    {
+                                        "type": "origins:execute_command",
+                                        "command": "clear @s minecraft:rabbit 1"
+                                    },
+                                    {
+                                        "type": "origins:give",
+                                        "stack": {
+                                            "item": "minecraft:cooked_rabbit"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:resource",
+                                "resource": "*:*_i-meat",
+                                "comparison": "==",
+                                "compare_to": 5
+                            },
+                            "action": {
+                                "type": "origins:and",
+                                "actions": [
+                                    {
+                                        "type": "origins:execute_command",
+                                        "command": "clear @s minecraft:cod 1"
+                                    },
+                                    {
+                                        "type": "origins:give",
+                                        "stack": {
+                                            "item": "minecraft:cooked_cod"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:resource",
+                                "resource": "*:*_i-meat",
+                                "comparison": "==",
+                                "compare_to": 6
+                            },
+                            "action": {
+                                "type": "origins:and",
+                                "actions": [
+                                    {
+                                        "type": "origins:execute_command",
+                                        "command": "clear @s minecraft:salmon 1"
+                                    },
+                                    {
+                                        "type": "origins:give",
+                                        "stack": {
+                                            "item": "minecraft:cooked_salmon"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_b-active",
+                    "operation": "set",
+                    "change": 0
+                }
+            ]
+        }
+    },
+    "anti-cheat": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "condition": {
+            "type": "origins:command",
+            "command": "clear @s #neverland:raw_cookable_meat 0",
+            "comparison": "==",
+            "compare_to": 0
+        },
+        "rising_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_b-active",
+                    "operation": "set",
+                    "change": 0
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_bar-cooldown",
+                    "operation": "set",
+                    "change": 300
+                }
+            ]
+        }
+    },
+    "toggle-show-cooldown": {
+        "type": "origins:active_self",
+        "key": {
+            "key": "key.attack"
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:equipped_item",
+                    "equipment_slot": "mainhand",
+                    "item_condition": {
+                        "type": "origins:ingredient",
+                        "ingredient": {
+                            "tag": "origins:meat"
+                        }
+                    }
+                },
+                {
+                    "type": "origins:sneaking"
+                }
+            ]
+        },
+        "entity_action": {
+            "type": "origins:if_else",
+            "condition": {
+                "type": "origins:resource",
+                "resource": "*:*_b-show-cooldown",
+                "comparison": "==",
+                "compare_to": 0
+            },
+            "if_action": {
+                "type": "origins:change_resource",
+                "resource": "*:*_b-show-cooldown",
+                "operation": "set",
+                "change": 1
+            },
+            "else_action": {
+                "type": "origins:change_resource",
+                "resource": "*:*_b-show-cooldown",
+                "operation": "set",
+                "change": 0
+            }
+        }
+    }
+}

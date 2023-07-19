@@ -1,0 +1,138 @@
+{
+    "name": "Mass Teleport",
+    "description": "TODO description",
+    "type": "origins:multiple",
+    "bar-cooldown": {
+        "type": "origins:cooldown",
+        "cooldown": 2400,
+        "hud_render": {
+            "sprite_location": "origins:textures/gui/community/huang/resource_bar_02.png",
+            "bar_index": 5
+        }
+    },
+    "b-can-use": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1,
+        "start_value": 1
+    },
+    "b-active": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1
+    },
+    "activation": {
+        "type": "origins:active_self",
+        "key": {
+            "key": "key.origins.secondary_active"
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "*:origins/storm-spirit/abilities/mass-teleport_b-can-use",
+                    "comparison": "==",
+                    "compare_to": 1
+                },
+                {
+                    "type": "origins:command",
+                    "command": "scoreboard players get #global neverland_teleportmarker-id",
+                    "comparison": "<=",
+                    "compare_to": 0
+                }
+            ]
+        },
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:play_sound",
+                    "sound": "minecraft:entity.wither.spawn"
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 1,
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_b-can-use",
+                                "operation": "set",
+                                "change": 0
+                            },
+                            {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_b-active",
+                                "operation": "set",
+                                "change": 1
+                            }
+                        ]
+                    }
+                },
+                {
+                    "info": "grant the teleportmarker power to the 'summoned' armor stands",
+                    "type": "origins:delay",
+                    "ticks": 5,
+                    "action": {
+                        "type": "origins:execute_command",
+                        "command": "power grant @e[type=minecraft:armor_stand, tag=neverland_teleportmarker] neverland:origins/storm-spirit/given/teleportmarker"
+                    }
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 30,
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_b-active",
+                                "operation": "set",
+                                "change": 0
+                            },
+                            {
+                                "type": "origins:trigger_cooldown",
+                                "power": "*:*_bar-cooldown"
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+    "on-cooldown-over": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_b-active",
+                    "comparison": "==",
+                    "compare_to": 0
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_b-can-use",
+                    "comparison": "==",
+                    "compare_to": 0
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_bar-cooldown",
+                    "comparison": "==",
+                    "compare_to": 0
+                }
+            ]
+        },
+        "rising_action": {
+            "type": "origins:change_resource",
+            "resource": "*:*_b-can-use",
+            "operation": "set",
+            "change": 1
+        }
+    }
+}

@@ -1,0 +1,209 @@
+{
+    "name": "Steal",
+    "description": "TODO description",
+    "type": "origins:multiple",
+    "bar-duration": {
+        "type": "origins:cooldown",
+        "cooldown": 50
+    },
+    "bar-cooldown": {
+        "type": "origins:cooldown",
+        "cooldown": 1800,
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "origins:textures/gui/community/huang/resource_bar_02.png",
+            "bar_index": 13
+        }
+    },
+    "b-can-use": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1,
+        "start_value": 1
+    },
+    "b-active": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1
+    },
+    "activation": {
+        "type": "origins:active_self",
+        "key": {
+            "key": "key.use"
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_b-can-use",
+                    "comparison": "==",
+                    "compare_to": 1
+                },
+                {
+                    "type": "origins:equipped_item",
+                    "equipment_slot": "mainhand",
+                    "item_condition": {
+                        "type": "origins:empty"
+                    }
+                },
+                {
+                    "type": "origins:sneaking"
+                }
+            ]
+        },
+        "entity_action": {
+            "type": "origins:raycast",
+            "distance": 5.0,
+            "block": false,
+            "entity": true,
+            "bientity_condition": {
+                "type": "origins:target_condition",
+                "condition": {
+                    "type": "origins:entity_type",
+                    "entity_type": "minecraft:player"
+                }
+            },
+            "bientity_action": {
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type": "origins:drop_inventory",
+                            "slot": "weapon.mainhand",
+                            "item_condition": {
+                                "type": "origins:ingredient",
+                                "ingredient": {
+                                    "tag": "neverland:unstealable"
+                                },
+                                "inverted": true
+                            },
+                            "item_action": {
+                                "type": "origins:merge_nbt",
+                                "nbt": "{neverland_stolen: 1b}"
+                            },
+                            "throw_randomly": true,
+                            "amount": 1
+                        }
+                    },
+                    {
+                        "type": "origins:actor_action",
+                        "action": {
+                            "type": "origins:and",
+                            "actions": [
+                                {
+                                    "type": "origins:change_resource",
+                                    "resource": "*:*_b-can-use",
+                                    "operation": "set",
+                                    "change": 0
+                                },
+                                {
+                                    "type": "origins:play_sound",
+                                    "sound": "minecraft:entity.shulker.hurt"
+                                },
+                                {
+                                    "type": "origins:change_resource",
+                                    "resource": "*:*_b-active",
+                                    "operation": "set",
+                                    "change": 1
+                                },
+                                {
+                                    "type": "origins:trigger_cooldown",
+                                    "power": "*:*_bar-duration"
+                                },
+                                {
+                                    "type": "origins:trigger_cooldown",
+                                    "power": "*:*_bar-cooldown"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "teleport-to-player": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_b-active",
+            "comparison": "==",
+            "compare_to": 1
+        },
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "tp @e[type=minecraft:item, distance=0.1..15, nbt={Item:{tag:{neverland_stolen:1b}}}, sort=nearest, limit=1] @s"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "data merge entity @e[type=minecraft:item, distance=..3, nbt={Item: {tag: {neverland_stolen: 1b}}}] {Motion:[0d, 0d, 0d], PickupDelay: 0s}"
+                }
+            ]
+        }
+    },
+    "on-duration-over": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_b-active",
+                    "comparison": "==",
+                    "compare_to": 1
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_bar-duration",
+                    "comparison": "==",
+                    "compare_to": 0
+                }
+            ]
+        },
+        "rising_action": {
+            "type": "origins:change_resource",
+            "resource": "*:*_b-active",
+            "operation": "set",
+            "change": 0
+        }
+    },
+    "on-cooldown-over": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_b-active",
+                    "comparison": "==",
+                    "compare_to": 0
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_b-can-use",
+                    "comparison": "==",
+                    "compare_to": 0
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_bar-cooldown",
+                    "comparison": "==",
+                    "compare_to": 0
+                }
+            ]
+        },
+        "rising_action": {
+            "type": "origins:change_resource",
+            "resource": "*:*_b-can-use",
+            "operation": "set",
+            "change": 1
+        }
+    }
+}

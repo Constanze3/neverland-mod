@@ -1,0 +1,17 @@
+{
+    "name": "Human",
+    "description": "A highly intelligent, bipedal primate mammal.",
+    "icon": {
+        "item": "minecraft:player_head"
+    },
+    "impact": 0,
+    "powers": [
+        "neverland:global/blood-sense-effect",
+        "neverland:global/id",
+        "neverland:global/iron-vines",
+        "neverland:global/remove-stolen-tags",
+        "neverland:global/silver-arrow-pickup-fix",
+        "neverland:global/teleport-id"
+    ],
+    "order": 0
+}

@@ -1,0 +1,32 @@
+{
+	"name": "Strom Spirit",
+	"description": "A powerful elemental that can destroy as it wills.",
+	"icon": "neverland:orb_of_the_storm",
+	"impact": 3,
+	"powers": [
+		"neverland:origins/storm-spirit/abilities/air-launch",
+		"neverland:origins/storm-spirit/abilities/mass-teleport-setup",
+		"neverland:origins/storm-spirit/abilities/mass-teleport",
+		"neverland:origins/storm-spirit/abilities/orb-of-the-storm",
+
+		"neverland:origins/storm-spirit/buffs/arrow-damage",
+		"neverland:origins/storm-spirit/buffs/lightning-resistance",
+		"neverland:origins/storm-spirit/buffs/speed",
+		"neverland:origins/storm-spirit/buffs/slow-falling",
+
+		"neverland:origins/storm-spirit/debuffs/less-axe-damage",
+		"neverland:origins/storm-spirit/debuffs/more-armor-less-speed",
+
+		"neverland:origins/storm-spirit/visual/skin",
+
+		"neverland:origins/storm-spirit/on-callback",
+		
+		"neverland:global/blood-sense-effect",
+		"neverland:global/id",
+        "neverland:global/iron-vines",
+		"neverland:global/remove-stolen-tags",
+		"neverland:global/silver-arrow-pickup-fix",
+		"neverland:global/teleport-id"
+	],
+	"order": 4
+}

@@ -1,0 +1,73 @@
+{
+    "name": "Faster Boat",
+    "description": "TODO description",
+    "type": "origins:action_over_time",
+    "interval": 1,
+    "condition": {
+        "type": "origins:riding",
+        "bientity_condition": {
+            "type": "origins:target_condition",
+            "condition": {
+                "type": "origins:and",
+                "conditions": [
+                    {
+                        "type": "origins:entity_type",
+                        "entity_type": "minecraft:boat"
+                    },
+                    {
+                        "type": "origins:fluid_height",
+                        "fluid": "minecraft:water",
+                        "comparison": ">",
+                        "compare_to": 0
+                    }
+                ]
+            }
+        }
+    },
+    "rising_action": {
+        "type": "origins:riding_action",
+        "action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale easing set pehkui:base pehkui:exponential_in_out"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale set pehkui:base 1.3"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale set pehkui:motion 1.3"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute store result score @s neverland_id run scoreboard players get @a[tag=neverland_nordic-warrior, distance=..2, sort=nearest, limit=1] neverland_id"
+                },
+                {
+                    "type": "origins:chance",
+                    "action": {
+                        "type": "origins:play_sound",
+                        "sound": "minecraft:item.goat_horn.sound.2",
+                        "volume": 2
+                    },
+                    "chance": 0.1
+                }
+            ]
+        }
+    },
+    "falling_action": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:execute_command",
+                "command": "execute as @e[type=minecraft:boat] if score @s neverland_id = @p neverland_id run scale set pehkui:motion 1"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "execute as @e[type=minecraft:boat] if score @s neverland_id = @p neverland_id run scale set pehkui:base 1"
+            }
+        ]
+    }
+}

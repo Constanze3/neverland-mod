@@ -1,0 +1,28 @@
+{
+	"name": "Jester",
+	"description": "Secretly evil trickster.",
+	"icon": "minecraft:wither_rose",
+	"impact": 3,
+	"powers": [
+		"neverland:origins/jester/abilities/mark",
+		"neverland:origins/jester/abilities/trap",
+		"neverland:origins/jester/abilities/finish-trap",
+		"neverland:origins/jester/abilities/phase",
+
+		"neverland:origins/jester/buffs/backstab",
+		"neverland:origins/jester/buffs/stun-mobs",
+
+		"neverland:origins/jester/debuffs/bloodthirst",
+		"neverland:origins/jester/debuffs/uncontrollable-laughter",
+
+		"neverland:origins/jester/on-callback",
+
+		"neverland:global/blood-sense-effect",
+		"neverland:global/id",
+        "neverland:global/iron-vines",
+		"neverland:global/remove-stolen-tags",
+		"neverland:global/silver-arrow-pickup-fix",
+		"neverland:global/teleport-id"
+	],
+	"order": 1
+}

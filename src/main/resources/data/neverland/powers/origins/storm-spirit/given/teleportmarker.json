@@ -1,0 +1,84 @@
+{
+    "type": "origins:multiple",
+    "bar-cooldown": {
+        "info": "deletion cooldown",
+        "type": "origins:cooldown",
+        "cooldown": 50
+    },
+    "on-callback": {
+        "type": "origins:action_on_callback",
+        "entity_action_gained": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "info": "assign teleportmarker-id to self",
+                    "type": "origins:execute_command",
+                    "command": "execute if entity @s[tag=!neverland_has-teleport-id] store result score @s neverland_teleportmarker-id run scoreboard players add #global neverland_teleportmarker-id 1"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute if entity @s[tag=!neverland_has-teleport-id] tag @s add neverland_has-teleport-id"
+                },
+                {
+                    "type": "origins:trigger_cooldown",
+                    "power": "*:*_bar-cooldown"
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 20,
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:spawn_entity",
+                                "entity_type": "minecraft:lightning_bolt",
+                                "tag": "{NoFire:1b}"
+                            },
+                            {
+                                "type": "origins:delay",
+                                "ticks": 10,
+                                "action": {
+                                    "type": "origins:execute_command",
+                                    "command": "execute as @a[tag=neverland_has-teleport-id] if score @s neverland_teleport-id = @e[distance=..0.1, sort=nearest, limit=1] neverland_teleportmarker-id rotated as @s run tp @s ~ ~ ~ ~ ~"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+    "faster-falling": {
+        "type": "origins:modify_velocity",
+        "modifier": {
+            "value": 20,
+            "operation": "multiply_total"
+        },
+        "axes": [
+            "y"
+        ]
+    },
+    "on-cooldown-over": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_bar-cooldown",
+            "comparison": "==",
+            "compare_to": 0
+        },
+        "rising_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "scoreboard players set #global neverland_teleportmarker-id 0"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "kill @s"
+                }
+            ]
+        }
+    }
+}

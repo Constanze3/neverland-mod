@@ -1,0 +1,601 @@
+{
+    "hidden": true,
+    "type": "origins:multiple",
+    "b-active": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1
+    },
+    "i-color": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 15
+    },
+    "main": {
+        "type": "origins:action_over_time",
+        "interval": 10,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:equipped_item",
+                    "equipment_slot": "offhand",
+                    "item_condition": {
+                        "type": "origins:ingredient",
+                        "ingredient": {
+                            "tag": "c:dyes"
+                        }
+                    }
+                },
+                {
+                    "type": "origins:command",
+                    "command": "clear @s minecraft:cobblestone 0",
+                    "comparison": ">",
+                    "compare_to": 0
+                }
+            ]
+        },
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_b-active",
+                    "operation": "set",
+                    "change": 1
+                },
+                {
+                    "type": "origins:if_else_list",
+                    "actions": [
+                        {
+                            "condition": {
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "offhand",
+                                "item_condition": {
+                                    "type": "origins:ingredient",
+                                    "ingredient": {
+                                        "item": "minecraft:black_dye"
+                                    }
+                                }
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-color",
+                                "operation": "set",
+                                "change": 0
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "offhand",
+                                "item_condition": {
+                                    "type": "origins:ingredient",
+                                    "ingredient": {
+                                        "item": "minecraft:blue_dye"
+                                    }
+                                }
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-color",
+                                "operation": "set",
+                                "change": 1
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "offhand",
+                                "item_condition": {
+                                    "type": "origins:ingredient",
+                                    "ingredient": {
+                                        "item": "minecraft:brown_dye"
+                                    }
+                                }
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-color",
+                                "operation": "set",
+                                "change": 2
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "offhand",
+                                "item_condition": {
+                                    "type": "origins:ingredient",
+                                    "ingredient": {
+                                        "item": "minecraft:cyan_dye"
+                                    }
+                                }
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-color",
+                                "operation": "set",
+                                "change": 3
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "offhand",
+                                "item_condition": {
+                                    "type": "origins:ingredient",
+                                    "ingredient": {
+                                        "item": "minecraft:gray_dye"
+                                    }
+                                }
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-color",
+                                "operation": "set",
+                                "change": 4
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "offhand",
+                                "item_condition": {
+                                    "type": "origins:ingredient",
+                                    "ingredient": {
+                                        "item": "minecraft:green_dye"
+                                    }
+                                }
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-color",
+                                "operation": "set",
+                                "change": 5
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "offhand",
+                                "item_condition": {
+                                    "type": "origins:ingredient",
+                                    "ingredient": {
+                                        "item": "minecraft:light_blue_dye"
+                                    }
+                                }
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-color",
+                                "operation": "set",
+                                "change": 6
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "offhand",
+                                "item_condition": {
+                                    "type": "origins:ingredient",
+                                    "ingredient": {
+                                        "item": "minecraft:light_gray_dye"
+                                    }
+                                }
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-color",
+                                "operation": "set",
+                                "change": 7
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "offhand",
+                                "item_condition": {
+                                    "type": "origins:ingredient",
+                                    "ingredient": {
+                                        "item": "minecraft:lime_dye"
+                                    }
+                                }
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-color",
+                                "operation": "set",
+                                "change": 8
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "offhand",
+                                "item_condition": {
+                                    "type": "origins:ingredient",
+                                    "ingredient": {
+                                        "item": "minecraft:magenta_dye"
+                                    }
+                                }
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-color",
+                                "operation": "set",
+                                "change": 9
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "offhand",
+                                "item_condition": {
+                                    "type": "origins:ingredient",
+                                    "ingredient": {
+                                        "item": "minecraft:orange_dye"
+                                    }
+                                }
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-color",
+                                "operation": "set",
+                                "change": 10
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "offhand",
+                                "item_condition": {
+                                    "type": "origins:ingredient",
+                                    "ingredient": {
+                                        "item": "minecraft:pink_dye"
+                                    }
+                                }
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-color",
+                                "operation": "set",
+                                "change": 11
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "offhand",
+                                "item_condition": {
+                                    "type": "origins:ingredient",
+                                    "ingredient": {
+                                        "item": "minecraft:purple_dye"
+                                    }
+                                }
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-color",
+                                "operation": "set",
+                                "change": 12
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "offhand",
+                                "item_condition": {
+                                    "type": "origins:ingredient",
+                                    "ingredient": {
+                                        "item": "minecraft:red_dye"
+                                    }
+                                }
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-color",
+                                "operation": "set",
+                                "change": 13
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "offhand",
+                                "item_condition": {
+                                    "type": "origins:ingredient",
+                                    "ingredient": {
+                                        "item": "minecraft:white_dye"
+                                    }
+                                }
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-color",
+                                "operation": "set",
+                                "change": 14
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "offhand",
+                                "item_condition": {
+                                    "type": "origins:ingredient",
+                                    "ingredient": {
+                                        "item": "minecraft:yellow_dye"
+                                    }
+                                }
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-color",
+                                "operation": "set",
+                                "change": 15
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:living"
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_b-active",
+                                "operation": "set",
+                                "change": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type": "origins:resource",
+                        "resource": "*:*_b-active",
+                        "comparison": "==",
+                        "compare_to": 1
+                    },
+                    "if_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:execute_command",
+                                "command": "clear @s minecraft:cobblestone 1"
+                            },
+                            {
+                                "type": "origins:if_else_list",
+                                "actions": [
+                                    {
+                                        "condition": {
+                                            "type": "origins:resource",
+                                            "resource": "*:*_i-color",
+                                            "comparison": "==",
+                                            "compare_to": 0
+                                        },
+                                        "action": {
+                                            "type": "origins:give",
+                                            "stack": {
+                                                "item": "minecraft:black_concrete"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "condition": {
+                                            "type": "origins:resource",
+                                            "resource": "*:*_i-color",
+                                            "comparison": "==",
+                                            "compare_to": 1
+                                        },
+                                        "action": {
+                                            "type": "origins:give",
+                                            "stack": {
+                                                "item": "minecraft:blue_concrete"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "condition": {
+                                            "type": "origins:resource",
+                                            "resource": "*:*_i-color",
+                                            "comparison": "==",
+                                            "compare_to": 2
+                                        },
+                                        "action": {
+                                            "type": "origins:give",
+                                            "stack": {
+                                                "item": "minecraft:brown_concrete"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "condition": {
+                                            "type": "origins:resource",
+                                            "resource": "*:*_i-color",
+                                            "comparison": "==",
+                                            "compare_to": 3
+                                        },
+                                        "action": {
+                                            "type": "origins:give",
+                                            "stack": {
+                                                "item": "minecraft:cyan_concrete"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "condition": {
+                                            "type": "origins:resource",
+                                            "resource": "*:*_i-color",
+                                            "comparison": "==",
+                                            "compare_to": 4
+                                        },
+                                        "action": {
+                                            "type": "origins:give",
+                                            "stack": {
+                                                "item": "minecraft:gray_concrete"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "condition": {
+                                            "type": "origins:resource",
+                                            "resource": "*:*_i-color",
+                                            "comparison": "==",
+                                            "compare_to": 5
+                                        },
+                                        "action": {
+                                            "type": "origins:give",
+                                            "stack": {
+                                                "item": "minecraft:green_concrete"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "condition": {
+                                            "type": "origins:resource",
+                                            "resource": "*:*_i-color",
+                                            "comparison": "==",
+                                            "compare_to": 6
+                                        },
+                                        "action": {
+                                            "type": "origins:give",
+                                            "stack": {
+                                                "item": "minecraft:light_blue_concrete"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "condition": {
+                                            "type": "origins:resource",
+                                            "resource": "*:*_i-color",
+                                            "comparison": "==",
+                                            "compare_to": 7
+                                        },
+                                        "action": {
+                                            "type": "origins:give",
+                                            "stack": {
+                                                "item": "minecraft:light_gray_concrete"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "condition": {
+                                            "type": "origins:resource",
+                                            "resource": "*:*_i-color",
+                                            "comparison": "==",
+                                            "compare_to": 8
+                                        },
+                                        "action": {
+                                            "type": "origins:give",
+                                            "stack": {
+                                                "item": "minecraft:lime_concrete"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "condition": {
+                                            "type": "origins:resource",
+                                            "resource": "*:*_i-color",
+                                            "comparison": "==",
+                                            "compare_to": 9
+                                        },
+                                        "action": {
+                                            "type": "origins:give",
+                                            "stack": {
+                                                "item": "minecraft:magenta_concrete"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "condition": {
+                                            "type": "origins:resource",
+                                            "resource": "*:*_i-color",
+                                            "comparison": "==",
+                                            "compare_to": 10
+                                        },
+                                        "action": {
+                                            "type": "origins:give",
+                                            "stack": {
+                                                "item": "minecraft:orange_concrete"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "condition": {
+                                            "type": "origins:resource",
+                                            "resource": "*:*_i-color",
+                                            "comparison": "==",
+                                            "compare_to": 11
+                                        },
+                                        "action": {
+                                            "type": "origins:give",
+                                            "stack": {
+                                                "item": "minecraft:pink_concrete"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "condition": {
+                                            "type": "origins:resource",
+                                            "resource": "*:*_i-color",
+                                            "comparison": "==",
+                                            "compare_to": 12
+                                        },
+                                        "action": {
+                                            "type": "origins:give",
+                                            "stack": {
+                                                "item": "minecraft:purple_concrete"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "condition": {
+                                            "type": "origins:resource",
+                                            "resource": "*:*_i-color",
+                                            "comparison": "==",
+                                            "compare_to": 13
+                                        },
+                                        "action": {
+                                            "type": "origins:give",
+                                            "stack": {
+                                                "item": "minecraft:red_concrete"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "condition": {
+                                            "type": "origins:resource",
+                                            "resource": "*:*_i-color",
+                                            "comparison": "==",
+                                            "compare_to": 14
+                                        },
+                                        "action": {
+                                            "type": "origins:give",
+                                            "stack": {
+                                                "item": "minecraft:white_concrete"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "condition": {
+                                            "type": "origins:resource",
+                                            "resource": "*:*_i-color",
+                                            "comparison": "==",
+                                            "compare_to": 15
+                                        },
+                                        "action": {
+                                            "type": "origins:give",
+                                            "stack": {
+                                                "item": "minecraft:yellow_concrete"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    }
+}

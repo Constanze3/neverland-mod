@@ -1,0 +1,280 @@
+{
+    "name": "Ragnarök",
+    "description": "TODO description",
+    "type": "origins:multiple",
+    "bar-duration": {
+        "type": "origins:cooldown",
+        "cooldown": 200,
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_02.png",
+            "bar_index": 1,
+            "inverted": true
+        }
+    },
+    "bar-cooldown": {
+        "type": "origins:cooldown",
+        "cooldown": 700,
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_02.png",
+            "bar_index": 1
+        }
+    },
+    "b-can-use": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1,
+        "start_value": 1
+    },
+    "b-active": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1
+    },
+    "activation": {
+        "type": "origins:active_self",
+        "key": {
+            "key": "key.origins.primary_active"
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_b-can-use",
+            "comparison": "==",
+            "compare_to": 1
+        },
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_b-can-use",
+                    "operation": "set",
+                    "change": 0
+                },
+                {
+                    "type": "origins:play_sound",
+                    "sound": "entity.ender_dragon.growl",
+                    "volume": 2
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_b-active",
+                    "operation": "set",
+                    "change": 1
+                },
+                {
+                    "type": "origins:trigger_cooldown",
+                    "power": "*:*_bar-duration"
+                }
+            ]
+        }
+    },
+    "on-duriation-over": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_b-active",
+                    "comparison": "==",
+                    "compare_to": 1
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_bar-duration",
+                    "comparison": "==",
+                    "compare_to": 0
+                }
+            ]
+        },
+        "rising_action": {
+            "type": "origins:delay",
+            "ticks": 2,
+            "action": {
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_b-active",
+                        "operation": "set",
+                        "change": 0
+                    },
+                    {
+                        "type": "origins:trigger_cooldown",
+                        "power": "*:*_bar-cooldown"
+                    }
+                ]
+            }
+        }
+    },
+    "on-cooldown-over": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_b-active",
+                    "comparison": "==",
+                    "compare_to": 0
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_b-can-use",
+                    "comparison": "==",
+                    "compare_to": 0
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_bar-cooldown",
+                    "comparison": "==",
+                    "compare_to": 0
+                }
+            ]
+        },
+        "rising_action": {
+            "type": "origins:change_resource",
+            "resource": "*:*_b-can-use",
+            "operation": "set",
+            "change": 1
+        }
+    },
+    "effects": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_b-active",
+                    "comparison": "==",
+                    "compare_to": 1
+                }
+            ]
+        },
+        "entity_action": {
+            "type": "origins:apply_effect",
+            "effects": [
+                {
+                    "effect": "minecraft:speed",
+                    "duration": 210,
+                    "amplifier": 2,
+                    "show_particles": false,
+                    "show_icon": true
+                },
+                {
+                    "effect": "minecraft:dolphins_grace",
+                    "duration": 210,
+                    "amplifier": 2,
+                    "show_particles": false,
+                    "show_icon": true
+                }
+            ]
+        }
+    },
+    "shader": {
+        "type": "origins:shader",
+        "shader": "minecraft:shaders/post/desaturate.json",
+        "toggleable": false,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_b-active",
+            "comparison": "==",
+            "compare_to": 1
+        }
+    },
+    "vignette": {
+        "type": "origins:overlay",
+        "texture": "minecraft:textures/misc/vignette.png",
+        "strength": 0.15,
+        "red": 1.0,
+        "green": 0.0,
+        "blue": 0.0,
+        "draw_mode": "texture",
+        "draw_phase": "below_hud",
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_b-active",
+            "comparison": "==",
+            "compare_to": 1
+        }
+    },
+    "entity-glow": {
+        "type": "origins:entity_glow",
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_b-active",
+            "comparison": "==",
+            "compare_to": 1
+        },
+        "bientity_condition": {
+            "type": "origins:can_see"
+        },
+        "entity_condition": {
+            "type": "origins:living"
+        },
+        "use_teams": false,
+        "red": 1.0,
+        "green": 0.0,
+        "blue": 0.0
+    },
+    "on-kill-increase-duration": {
+        "type": "origins:action_on_hit",
+        "cooldown": 0,
+        "bientity_condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:actor_condition",
+                    "condition": {
+                        "type": "origins:resource",
+                        "resource": "*:*_b-active",
+                        "comparison": "==",
+                        "compare_to": 1
+                    }
+                },
+                {
+                    "type": "origins:target_condition",
+                    "condition": {
+                        "type": "origins:health",
+                        "comparison": "<=",
+                        "compare_to": 0
+                    }
+                }
+            ]
+        },
+        "bientity_action": {
+            "type": "origins:if_else",
+            "condition": {
+                "type": "origins:target_condition",
+                "condition": {
+                    "type": "origins:entity_type",
+                    "entity_type": "minecraft:player"
+                }
+            },
+            "if_action": {
+                "type": "origins:actor_action",
+                "action": {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_bar-duration",
+                    "operation": "add",
+                    "change": 200
+                }
+            },
+            "else_action": {
+                "type": "origins:actor_action",
+                "action": {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_bar-duration",
+                    "operation": "add",
+                    "change": 40
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "name": "Lightning Resistance",
+    "description": "TODO description",
+    "type": "origins:modify_damage_taken",
+    "damage_condition": {
+        "type": "origins:in_tag",
+        "tag": "minecraft:is_lightning"
+    },
+    "modifier": {
+        "name": "lightning resistance",
+        "operation": "set_total",
+        "value": 0
+    }
+}

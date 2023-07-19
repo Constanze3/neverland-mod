@@ -1,0 +1,33 @@
+{
+	"name": "Nature Golem",
+	"description": "Elemental guardian, a nature golem defends the wild's delicate balance.",
+	"icon": "minecraft:vine",
+	"impact": 3,
+	"powers": [
+		"neverland:origins/nature-golem/abilities/bind",
+		"neverland:origins/nature-golem/abilities/bonemeal-heal",
+		"neverland:origins/nature-golem/abilities/potion-effect-on-weapon",
+		"neverland:origins/nature-golem/abilities/wall-of-moss",
+
+		"neverland:origins/nature-golem/buffs/in-water-effects",
+		"neverland:origins/nature-golem/buffs/iron-vines",
+		"neverland:origins/nature-golem/buffs/photosynthesis",
+		"neverland:origins/nature-golem/buffs/thorny",
+
+		"neverland:origins/nature-golem/debuffs/anti-vegan",
+		"neverland:origins/nature-golem/debuffs/increased-fire-damage",
+
+		"neverland:origins/nature-golem/visual/skin",
+		"neverland:origins/nature-golem/visual/spore-particles",
+
+		"neverland:origins/nature-golem/on-callback",
+
+		"neverland:global/blood-sense-effect",
+		"neverland:global/id",
+        "neverland:global/iron-vines",
+		"neverland:global/remove-stolen-tags",
+		"neverland:global/silver-arrow-pickup-fix",
+		"neverland:global/teleport-id"
+	],
+	"order": 2
+}

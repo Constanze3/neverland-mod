@@ -1,0 +1,38 @@
+{
+	"hidden": true,
+	"type": "origins:entity_glow",
+	"use_teams": false,
+	"red": 1,
+	"green": 0,
+	"blue": 0,
+	"bientity_condition": {
+		"type": "origins:or",
+		"conditions": [
+			{
+				"type": "origins:distance",
+				"comparison": "<=",
+				"compare_to": 25
+			},
+			{
+				"type": "origins:can_see"
+			}
+		]
+	},
+	"entity_condition": {
+		"type": "origins:and",
+		"conditions": [
+			{
+				"type": "origins:relative_health",
+				"comparison": "<=",
+				"compare_to": 0.5
+			},
+			{
+				"type": "origins:living"
+			}
+		]
+	},
+	"condition": {
+		"type": "origins:status_effect",
+		"effect": "neverland:blood_sense"
+	}
+}

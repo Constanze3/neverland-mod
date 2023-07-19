@@ -1,0 +1,22 @@
+{
+	"hidden": true,
+	"type": "origins:action_over_time",
+	"interval": 5,
+	"entity_action": {
+		"type": "origins:and",
+		"actions": [
+			{
+				"type": "origins:execute_command",
+				"command": "particle minecraft:dust 0.14 0.3 0.13 1 ~ ~ ~ 0.5 1 0.5 50 7"
+			},
+			{
+				"type": "origins:execute_command",
+				"command": "particle minecraft:dust 0.2 0.56 0.2 1 ~ ~ ~ 0.5 1 0.5 50 7"
+			},
+			{
+				"type": "origins:execute_command",
+				"command": "particle minecraft:dust 0.41 0.74 0.4 1 ~ ~ ~ 0.5 1 0.5 50 7"
+			}
+		]
+	}
+}

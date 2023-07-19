@@ -1,0 +1,169 @@
+{
+    "name": "Bind",
+    "description": "Use your primary to launch a strand of vines that form an area, where any entities other than nature golems get bound by the greenery.",
+    "type": "origins:multiple",
+    "bar-duration": {
+        "type": "origins:cooldown",
+        "cooldown": 80,
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "origins:textures/gui/resource_bar.png",
+            "bar_index": 8,
+            "inverted": true
+        }
+    },
+    "bar-cooldown": {
+        "type": "origins:cooldown",
+        "cooldown": 280,
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "origins:textures/gui/resource_bar.png",
+            "bar_index": 8
+        }
+    },
+    "b-can-use": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1,
+        "start_value": 1
+    },
+    "b-active": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1
+    },
+    "raycast": {
+        "type": "origins:active_self",
+        "key": {
+            "key": "key.origins.primary_active"
+        },
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_b-can-use",
+            "comparison": "==",
+            "compare_to": 1
+        },
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_b-can-use",
+                    "operation": "set",
+                    "change": 0
+                },
+                {
+                    "type": "origins:raycast",
+                    "distance": 16,
+                    "block": true,
+                    "entity": true,
+                    "shape_type": "collider",
+                    "before_action": {
+                        "type": "origins:play_sound",
+                        "sound": "minecraft:entity.warden.sonic_boom",
+                        "volume": 2
+                    },
+                    "command_along_ray": "particle minecraft:dust 0.1 0.36 0.1 1",
+                    "command_step": 0.1,
+                    "miss_action": {
+                        "type": "origins:trigger_cooldown",
+                        "power": "*:*_bar-cooldown"
+                    },
+                    "command_at_hit": "summon minecraft:armor_stand ~ ~ ~ {Marker:1b, Invisible:1b, Tags:[neverland_bindmarker]}",
+                    "hit_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:execute_command",
+                                "command": "power grant @e[tag=neverland_bindmarker] neverland:origins/nature-golem/given/bindmarker"
+                            },
+                            {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_b-active",
+                                "operation": "set",
+                                "change": 1
+                            },
+                            {
+                                "type": "origins:trigger_cooldown",
+                                "power": "*:*_bar-duration"
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+    "on-duration-over": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_b-active",
+                    "comparison": "==",
+                    "compare_to": 1
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_bar-duration",
+                    "comparison": "==",
+                    "compare_to": 0
+                }
+            ]
+        },
+        "rising_action": {
+            "type": "origins:delay",
+            "ticks": 2,
+            "action": {
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:trigger_cooldown",
+                        "power": "*:*_bar-cooldown"
+                    },
+                    {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_b-active",
+                        "operation": "set",
+                        "change": 0
+                    }
+                ]
+            }
+        }
+    },
+    "on-cooldown-over": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_b-active",
+                    "comparison": "==",
+                    "compare_to": 0
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_b-can-use",
+                    "comparison": "==",
+                    "compare_to": 0
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_bar-cooldown",
+                    "comparison": "==",
+                    "compare_to": 0
+                }
+            ]
+        },
+        "rising_action": {
+            "type": "origins:change_resource",
+            "resource": "*:*_b-can-use",
+            "operation": "set",
+            "change": 1
+        }
+    }
+}

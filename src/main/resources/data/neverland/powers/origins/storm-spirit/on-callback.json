@@ -1,0 +1,21 @@
+{
+    "hidden": true,
+    "type": "origins:action_on_callback",
+    "entity_action_gained": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:execute_command",
+                "command": "tag @s add neverland_storm-spirit"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "scoreboard objectives add neverland_teleportmarker-id dummy"
+            }
+        ]
+    },
+    "entity_action_lost": {
+        "type": "origins:execute_command",
+        "command": "tag @s remove neverland_storm-spirit"
+    }
+}

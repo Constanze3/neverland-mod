@@ -1,0 +1,45 @@
+{
+    "hidden": true,
+    "type": "origins:multiple",
+    "b-run": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1
+    },
+    "main": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_b-run",
+            "comparison": "==",
+            "compare_to": 1
+        },
+        "rising_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_b-run",
+                    "operation": "set",
+                    "change": 0
+                },
+                {
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type": "origins:resource",
+                        "resource": "*:origins/jester/abilities/trap_b-active",
+                        "comparison": "==",
+                        "compare_to": 1
+                    },
+                    "if_action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:origins/jester/abilities/trap_bar-duration",
+                        "operation": "set",
+                        "change": 140
+                    }
+                }
+            ]
+        }
+    }
+}

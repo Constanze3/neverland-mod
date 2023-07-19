@@ -1,0 +1,94 @@
+{
+    "type": "origins:multiple",
+    "bar-cooldown": {
+        "type": "origins:cooldown",
+        "cooldown": 140
+    },
+    "on-callback": {
+        "type": "origins:action_on_callback",
+        "entity_action_gained": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "info": "building the structure",
+                    "type": "origins:and",
+                    "actions": [
+                        {
+                            "type": "origins:execute_command",
+                            "command": "execute at @s run fill ~2 ~-1 ~2 ~2 ~2 ~-2 minecraft:structure_block keep"
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "execute at @s run fill ~-2 ~-1 ~2 ~-2 ~2 ~-2 minecraft:structure_block keep"
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "execute at @s run fill ~-1 ~-1 ~2 ~1 ~2 ~2 minecraft:structure_block keep"
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "execute at @s run fill ~-1 ~-1 ~-2 ~1 ~2 ~-2 minecraft:structure_block keep"
+                        }
+                    ]
+                },
+                {
+                    "type": "origins:trigger_cooldown",
+                    "power": "*:*_bar-cooldown"
+                }
+            ]
+        }
+    },
+    "on-jester-too-far": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "condition": {
+            "type": "origins:command",
+            "command": "execute at @a[distance=10..] if score @p neverland_id = @s neverland_id",
+            "comparison": "!=",
+            "compare_to": 0
+        },
+        "rising_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute at @a[tag=neverland_jester] if score @p neverland_id = @s neverland_id run resource set @p neverland:origins/jester/abilities/finish-trap_b-run 1"
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_bar-cooldown",
+                    "operation": "set",
+                    "change": 140
+                }
+            ]
+        }
+    },
+    "on-cooldown-over": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_bar-cooldown",
+            "comparison": "==",
+            "compare_to": 0
+        },
+        "rising_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:play_sound",
+                    "sound": "minecraft:entity.iron_golem.damage",
+                    "volume": 2.0
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "fill ~2 ~-1 ~2 ~-2 ~2 ~-2 minecraft:air replace minecraft:structure_block"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "kill @s"
+                }
+            ]
+        }
+    }
+}

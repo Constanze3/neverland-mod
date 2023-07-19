@@ -1,0 +1,15 @@
+{
+  "name": "Air burst",
+  "description": "TODO description",
+  "type": "origins:launch",
+  "key": {
+    "key": "key.origins.primary_active"
+  },
+  "speed": 2,
+  "sound": "minecraft:ui.toast.in",
+  "cooldown": 380,
+  "hud_render": {
+    "sprite_location": "origins:textures/gui/resource_bar.png",
+    "bar_index": 4
+  }
+}

@@ -1,0 +1,46 @@
+{
+    "type": "origins:multiple",
+    "bar-cooldown": {
+        "type": "origins:cooldown",
+        "cooldown": 40
+    },
+    "on_callback": {
+        "type": "origins:action_on_callback",
+        "entity_action_gained": {
+            "type": "origins:trigger_cooldown",
+            "power": "*:*_bar-cooldown"
+        }
+    },
+    "prevent_movement": {
+        "type": "origins:modify_velocity",
+        "modifier": {
+            "value": -1,
+            "operation": "multiply_total"
+        },
+        "axes": [
+            "x",
+            "z"
+        ]
+    },
+    "prevent_jumping": {
+        "type": "origins:modify_jump",
+        "modifier": {
+            "operation": "multiply_total",
+            "value": -1
+        }
+    },
+    "on-cooldown-over": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_bar-cooldown",
+            "comparison": "==",
+            "compare_to": 0
+        },
+        "rising_action": {
+            "type": "origins:execute_command",
+            "command": "power remove @s neverland:origins/jester/given/lock-movement"
+        }
+    }
+}

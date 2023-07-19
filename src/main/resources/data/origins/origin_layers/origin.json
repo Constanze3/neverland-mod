@@ -1,0 +1,13 @@
+{
+  "replace": true,
+  "order": 0,
+  "name": "Origin",
+  "origins": [
+    "neverland:human",
+    "neverland:jester",
+    "neverland:nature-golem",
+    "neverland:nordic-warrior",
+    "neverland:storm-spirit",
+    "neverland:werewolf"
+  ]
+}

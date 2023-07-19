@@ -1,0 +1,13 @@
+{
+	"name": "Wind and Arrow",
+	"description": "TODO description",
+	"type": "origins:modify_projectile_damage",
+	"damage_condition": {
+		"type": "origins:name",
+		"name": "arrow"
+	},
+	"modifier": {
+		"operation": "addition",
+		"value": 3
+	}
+}

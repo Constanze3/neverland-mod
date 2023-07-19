@@ -1,0 +1,387 @@
+{
+    "hidden": true,
+    "type": "origins:multiple",
+    "shulker-glow": {
+        "type": "origins:entity_glow",
+        "use_teams": false,
+        "red": 0.2,
+        "blue": 0.8,
+        "green": 0.9,
+        "bientity_condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:target_condition",
+                    "condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:entity_type",
+                                "entity_type": "minecraft:shulker"
+                            },
+                            {
+                                "type": "origins:invisible"
+                            },
+                            {
+                                "info": "only glow when fully covered",
+                                "type": "origins:in_block",
+                                "block_condition": {
+                                    "type": "origins:adjacent",
+                                    "adjacent_condition": {
+                                        "type": "origins:block",
+                                        "block": "minecraft:air"
+                                    },
+                                    "comparison": "==",
+                                    "compare_to": 0
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "origins:can_see",
+                    "inverted": true,
+                    "shape_type": "collider"
+                },
+                {
+                    "type": "origins:distance",
+                    "comparison": "<",
+                    "compare_to": 9
+                }
+            ]
+        }
+    },
+    "handle-shulkers": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "info": "if too far from diamond ore then kill it's diamarker shulker",
+                    "type": "origins:and",
+                    "actions": [
+                        {
+                            "type": "origins:execute_command",
+                            "command": "execute as @e[tag=neverland_diamarker, distance=9..] at @s unless entity @a[distance=..9] run tag @s add dead"
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "tp @e[tag=dead] ~ 2000 ~"
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "kill @e[tag=dead]"
+                        }
+                    ]
+                },
+                {
+                    "info": "if a diamond ore doesn't exist anymore (i.e. was mined) then kill it's diamarker shulker",
+                    "type": "origins:and",
+                    "actions": [
+                        {
+                            "type": "origins:execute_command",
+                            "command": "execute as @e[tag=neverland_diamarker] at @s unless block ~ ~ ~ minecraft:diamond_ore unless block ~ ~ ~ minecraft:deepslate_diamond_ore run tag @s add dead"
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "tp @e[tag=dead] ~ 2000 ~"
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "kill @e[tag=dead]"
+                        }
+                    ]
+                },
+                {
+                    "info": "if there is a diamond ore at ~2 ~ ~ without an diamarker shulker then summon one",
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:or",
+                                "conditions": [
+                                    {
+                                        "type": "origins:command",
+                                        "command": "execute as @s at @s if block ~2 ~ ~ minecraft:diamond_ore",
+                                        "comparison": ">",
+                                        "compare_to": 0
+                                    },
+                                    {
+                                        "type": "origins:command",
+                                        "command": "execute as @s at @s if block ~2 ~ ~ minecraft:deepslate_diamond_ore",
+                                        "comparison": ">",
+                                        "compare_to": 0
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "origins:command",
+                                "command": "execute as @s at @s positioned ~2 ~ ~ if entity @e[tag=neverland_diamarker, distance=..1]",
+                                "comparison": "==",
+                                "compare_to": 0
+                            }
+                        ]
+                    },
+                    "if_action": {
+                        "type": "origins:execute_command",
+                        "command": "summon minecraft:shulker ~2 ~ ~ {Invisible:1, Invulnerable:1, NoAI:1, Silent:1, Tags:[neverland_diamarker], ActiveEffects:[{Id:14,Amplifier:0,Duration:20000000,ShowParticles:0b}], DeathLootTable:\"minecraft:empty\"}"
+                    }
+                },
+                {
+                    "info": "if there is a diamond ore at ~2 ~1 ~ without an diamarker shulker then summon one",
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:or",
+                                "conditions": [
+                                    {
+                                        "type": "origins:command",
+                                        "command": "execute as @s at @s if block ~2 ~1 ~ minecraft:diamond_ore",
+                                        "comparison": ">",
+                                        "compare_to": 0
+                                    },
+                                    {
+                                        "type": "origins:command",
+                                        "command": "execute as @s at @s if block ~2 ~1 ~ minecraft:deepslate_diamond_ore",
+                                        "comparison": ">",
+                                        "compare_to": 0
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "origins:command",
+                                "command": "execute as @s at @s positioned ~2 ~1 ~ if entity @e[tag=neverland_diamarker, distance=..1]",
+                                "comparison": "==",
+                                "compare_to": 0
+                            }
+                        ]
+                    },
+                    "if_action": {
+                        "type": "origins:execute_command",
+                        "command": "summon minecraft:shulker ~2 ~1 ~ {Invisible:1, Invulnerable:1, NoAI:1, Silent:1, Tags:[neverland_diamarker], ActiveEffects:[{Id:14,Amplifier:0,Duration:20000000,ShowParticles:0b}], DeathLootTable:\"minecraft:empty\"}"
+                    }
+                },
+                {
+                    "info": "if there is a diamond ore at ~-2 ~ ~ without an diamarker shulker then summon one",
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:or",
+                                "conditions": [
+                                    {
+                                        "type": "origins:command",
+                                        "command": "execute as @s at @s if block ~-2 ~ ~ minecraft:diamond_ore",
+                                        "comparison": ">",
+                                        "compare_to": 0
+                                    },
+                                    {
+                                        "type": "origins:command",
+                                        "command": "execute as @s at @s if block ~-2 ~ ~ minecraft:deepslate_diamond_ore",
+                                        "comparison": ">",
+                                        "compare_to": 0
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "origins:command",
+                                "command": "execute as @s at @s positioned ~-2 ~ ~ if entity @e[tag=neverland_diamarker, distance=..1]",
+                                "comparison": "==",
+                                "compare_to": 0
+                            }
+                        ]
+                    },
+                    "if_action": {
+                        "type": "origins:execute_command",
+                        "command": "summon minecraft:shulker ~-2 ~ ~ {Invisible:1, Invulnerable:1, NoAI:1, Silent:1, Tags:[neverland_diamarker], ActiveEffects:[{Id:14,Amplifier:0,Duration:20000000,ShowParticles:0b}], DeathLootTable:\"minecraft:empty\"}"
+                    }
+                },
+                {
+                    "info": "if there is a diamond ore at ~-2 ~1 ~ without an diamarker shulker then summon one",
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:or",
+                                "conditions": [
+                                    {
+                                        "type": "origins:command",
+                                        "command": "execute as @s at @s if block ~-2 ~1 ~ minecraft:diamond_ore",
+                                        "comparison": ">",
+                                        "compare_to": 0
+                                    },
+                                    {
+                                        "type": "origins:command",
+                                        "command": "execute as @s at @s if block ~-2 ~1 ~ minecraft:deepslate_diamond_ore",
+                                        "comparison": ">",
+                                        "compare_to": 0
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "origins:command",
+                                "command": "execute as @s at @s positioned ~-2 ~1 ~ if entity @e[tag=neverland_diamarker, distance=..1]",
+                                "comparison": "==",
+                                "compare_to": 0
+                            }
+                        ]
+                    },
+                    "if_action": {
+                        "type": "origins:execute_command",
+                        "command": "summon minecraft:shulker ~-2 ~1 ~ {Invisible:1, Invulnerable:1, NoAI:1, Silent:1, Tags:[neverland_diamarker], ActiveEffects:[{Id:14,Amplifier:0,Duration:20000000,ShowParticles:0b}], DeathLootTable:\"minecraft:empty\"}"
+                    }
+                },
+                {
+                    "info": "if there is a diamond ore at ~ ~ ~2 without an diamarker shulker then summon one",
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:or",
+                                "conditions": [
+                                    {
+                                        "type": "origins:command",
+                                        "command": "execute as @s at @s if block ~ ~ ~2 minecraft:diamond_ore",
+                                        "comparison": ">",
+                                        "compare_to": 0
+                                    },
+                                    {
+                                        "type": "origins:command",
+                                        "command": "execute as @s at @s if block ~ ~ ~2 minecraft:deepslate_diamond_ore",
+                                        "comparison": ">",
+                                        "compare_to": 0
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "origins:command",
+                                "command": "execute as @s at @s positioned ~ ~ ~2 if entity @e[tag=neverland_diamarker, distance=..1]",
+                                "comparison": "==",
+                                "compare_to": 0
+                            }
+                        ]
+                    },
+                    "if_action": {
+                        "type": "origins:execute_command",
+                        "command": "summon minecraft:shulker ~ ~ ~2 {Invisible:1, Invulnerable:1, NoAI:1, Silent:1, Tags:[neverland_diamarker], ActiveEffects:[{Id:14,Amplifier:0,Duration:20000000,ShowParticles:0b}], DeathLootTable:\"minecraft:empty\"}"
+                    }
+                },
+                {
+                    "info": "if there is a diamond ore at ~ ~1 ~2 without an diamarker shulker then summon one",
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:or",
+                                "conditions": [
+                                    {
+                                        "type": "origins:command",
+                                        "command": "execute as @s at @s if block ~ ~1 ~2 minecraft:diamond_ore",
+                                        "comparison": ">",
+                                        "compare_to": 0
+                                    },
+                                    {
+                                        "type": "origins:command",
+                                        "command": "execute as @s at @s if block ~ ~1 ~2 minecraft:deepslate_diamond_ore",
+                                        "comparison": ">",
+                                        "compare_to": 0
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "origins:command",
+                                "command": "execute as @s at @s positioned ~ ~1 ~2 if entity @e[tag=neverland_diamarker, distance=..1]",
+                                "comparison": "==",
+                                "compare_to": 0
+                            }
+                        ]
+                    },
+                    "if_action": {
+                        "type": "origins:execute_command",
+                        "command": "summon minecraft:shulker ~ ~1 ~2 {Invisible:1, Invulnerable:1, NoAI:1, Silent:1, Tags:[neverland_diamarker], ActiveEffects:[{Id:14,Amplifier:0,Duration:20000000,ShowParticles:0b}], DeathLootTable:\"minecraft:empty\"}"
+                    }
+                },
+                {
+                    "info": "if there is a diamond ore at ~ ~ ~-2 without an diamarker shulker then summon one",
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:or",
+                                "conditions": [
+                                    {
+                                        "type": "origins:command",
+                                        "command": "execute as @s at @s if block ~ ~ ~-2 minecraft:diamond_ore",
+                                        "comparison": ">",
+                                        "compare_to": 0
+                                    },
+                                    {
+                                        "type": "origins:command",
+                                        "command": "execute as @s at @s if block ~ ~ ~-2 minecraft:deepslate_diamond_ore",
+                                        "comparison": ">",
+                                        "compare_to": 0
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "origins:command",
+                                "command": "execute as @s at @s positioned ~ ~ ~-2 if entity @e[tag=neverland_diamarker, distance=..1]",
+                                "comparison": "==",
+                                "compare_to": 0
+                            }
+                        ]
+                    },
+                    "if_action": {
+                        "type": "origins:execute_command",
+                        "command": "summon minecraft:shulker ~ ~ ~-2 {Invisible:1, Invulnerable:1, NoAI:1, Silent:1, Tags:[neverland_diamarker], ActiveEffects:[{Id:14,Amplifier:0,Duration:20000000,ShowParticles:0b}], DeathLootTable:\"minecraft:empty\"}"
+                    }
+                },
+                {
+                    "info": "if there is a diamond ore at ~ ~1 ~-2 without an diamarker shulker then summon one",
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:or",
+                                "conditions": [
+                                    {
+                                        "type": "origins:command",
+                                        "command": "execute as @s at @s if block ~ ~1 ~-2 minecraft:diamond_ore",
+                                        "comparison": ">",
+                                        "compare_to": 0
+                                    },
+                                    {
+                                        "type": "origins:command",
+                                        "command": "execute as @s at @s if block ~ ~1 ~-2 minecraft:deepslate_diamond_ore",
+                                        "comparison": ">",
+                                        "compare_to": 0
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "origins:command",
+                                "command": "execute as @s at @s positioned ~ ~1 ~-2 if entity @e[tag=neverland_diamarker, distance=..1]",
+                                "comparison": "==",
+                                "compare_to": 0
+                            }
+                        ]
+                    },
+                    "if_action": {
+                        "type": "origins:execute_command",
+                        "command": "summon minecraft:shulker ~ ~1 ~-2 {Invisible:1, Invulnerable:1, NoAI:1, Silent:1, Tags:[neverland_diamarker], ActiveEffects:[{Id:14,Amplifier:0,Duration:20000000,ShowParticles:0b}], DeathLootTable:\"minecraft:empty\"}"
+                    }
+                }
+            ]
+        }
+    }
+}

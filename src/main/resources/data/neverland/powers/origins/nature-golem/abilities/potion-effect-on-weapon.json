@@ -1,0 +1,1974 @@
+{
+    "name": "Potion Effect on Weapon",
+    "description": "Take a weapon in your offhand, a potion in your mainhand and sneak+attack to pour the potion on the weapon.",
+    "type": "origins:multiple",
+    "bar-duration": {
+        "type": "origins:cooldown",
+        "cooldown": 400,
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_02.png",
+            "bar_index": 13,
+            "inverted": true
+        }
+    },
+    "b-can-use": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1,
+        "start_value": 1
+    },
+    "b-active": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1
+    },
+    "i-potion": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 33
+    },
+    "try-apply-potion": {
+        "type": "origins:active_self",
+        "key": {
+            "key": "key.attack"
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_b-can-use",
+                    "comparison": "==",
+                    "compare_to": 1
+                },
+                {
+                    "type": "origins:sneaking"
+                }
+            ]
+        },
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_b-active",
+                    "operation": "set",
+                    "change": 1
+                },
+                {
+                    "info": "set potion id according to potion in mainhand",
+                    "type": "origins:if_else_list",
+                    "actions": [
+                        {
+                            "condition": {
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "mainhand",
+                                "item_condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:ingredient",
+                                            "ingredient": {
+                                                "item": "minecraft:potion"
+                                            }
+                                        },
+                                        {
+                                            "type": "origins:nbt",
+                                            "nbt": "{Potion:'minecraft:fire_resistance'}"
+                                        }
+                                    ]
+                                }
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-potion",
+                                "operation": "set",
+                                "change": 0
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "mainhand",
+                                "item_condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:ingredient",
+                                            "ingredient": {
+                                                "item": "minecraft:potion"
+                                            }
+                                        },
+                                        {
+                                            "type": "origins:nbt",
+                                            "nbt": "{Potion:'minecraft:long_fire_resistance'}"
+                                        }
+                                    ]
+                                }
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-potion",
+                                "operation": "set",
+                                "change": 1
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "mainhand",
+                                "item_condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:ingredient",
+                                            "ingredient": {
+                                                "item": "minecraft:potion"
+                                            }
+                                        },
+                                        {
+                                            "type": "origins:nbt",
+                                            "nbt": "{Potion:'minecraft:invisibility'}"
+                                        }
+                                    ]
+                                }
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-potion",
+                                "operation": "set",
+                                "change": 2
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "mainhand",
+                                "item_condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:ingredient",
+                                            "ingredient": {
+                                                "item": "minecraft:potion"
+                                            }
+                                        },
+                                        {
+                                            "type": "origins:nbt",
+                                            "nbt": "{Potion:'minecraft:long_invisibility'}"
+                                        }
+                                    ]
+                                }
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-potion",
+                                "operation": "set",
+                                "change": 3
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "mainhand",
+                                "item_condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:ingredient",
+                                            "ingredient": {
+                                                "item": "minecraft:potion"
+                                            }
+                                        },
+                                        {
+                                            "type": "origins:nbt",
+                                            "nbt": "{Potion:'minecraft:leaping'}"
+                                        }
+                                    ]
+                                }
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-potion",
+                                "operation": "set",
+                                "change": 4
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "mainhand",
+                                "item_condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:ingredient",
+                                            "ingredient": {
+                                                "item": "minecraft:potion"
+                                            }
+                                        },
+                                        {
+                                            "type": "origins:nbt",
+                                            "nbt": "{Potion:'minecraft:long_leaping'}"
+                                        }
+                                    ]
+                                }
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-potion",
+                                "operation": "set",
+                                "change": 5
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "mainhand",
+                                "item_condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:ingredient",
+                                            "ingredient": {
+                                                "item": "minecraft:potion"
+                                            }
+                                        },
+                                        {
+                                            "type": "origins:nbt",
+                                            "nbt": "{Potion:'minecraft:strong_leaping'}"
+                                        }
+                                    ]
+                                }
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-potion",
+                                "operation": "set",
+                                "change": 6
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "mainhand",
+                                "item_condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:ingredient",
+                                            "ingredient": {
+                                                "item": "minecraft:potion"
+                                            }
+                                        },
+                                        {
+                                            "type": "origins:nbt",
+                                            "nbt": "{Potion:'minecraft:luck'}"
+                                        }
+                                    ]
+                                }
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-potion",
+                                "operation": "set",
+                                "change": 7
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "mainhand",
+                                "item_condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:ingredient",
+                                            "ingredient": {
+                                                "item": "minecraft:potion"
+                                            }
+                                        },
+                                        {
+                                            "type": "origins:nbt",
+                                            "nbt": "{Potion:'minecraft:night_vision'}"
+                                        }
+                                    ]
+                                }
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-potion",
+                                "operation": "set",
+                                "change": 8
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "mainhand",
+                                "item_condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:ingredient",
+                                            "ingredient": {
+                                                "item": "minecraft:potion"
+                                            }
+                                        },
+                                        {
+                                            "type": "origins:nbt",
+                                            "nbt": "{Potion:'minecraft:long_night_vision'}"
+                                        }
+                                    ]
+                                }
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-potion",
+                                "operation": "set",
+                                "change": 9
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "mainhand",
+                                "item_condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:ingredient",
+                                            "ingredient": {
+                                                "item": "minecraft:potion"
+                                            }
+                                        },
+                                        {
+                                            "type": "origins:nbt",
+                                            "nbt": "{Potion:'minecraft:poison'}"
+                                        }
+                                    ]
+                                }
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-potion",
+                                "operation": "set",
+                                "change": 10
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "mainhand",
+                                "item_condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:ingredient",
+                                            "ingredient": {
+                                                "item": "minecraft:potion"
+                                            }
+                                        },
+                                        {
+                                            "type": "origins:nbt",
+                                            "nbt": "{Potion:'minecraft:long_poison'}"
+                                        }
+                                    ]
+                                }
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-potion",
+                                "operation": "set",
+                                "change": 11
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "mainhand",
+                                "item_condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:ingredient",
+                                            "ingredient": {
+                                                "item": "minecraft:potion"
+                                            }
+                                        },
+                                        {
+                                            "type": "origins:nbt",
+                                            "nbt": "{Potion:'minecraft:strong_poison'}"
+                                        }
+                                    ]
+                                }
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-potion",
+                                "operation": "set",
+                                "change": 12
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "mainhand",
+                                "item_condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:ingredient",
+                                            "ingredient": {
+                                                "item": "minecraft:potion"
+                                            }
+                                        },
+                                        {
+                                            "type": "origins:nbt",
+                                            "nbt": "{Potion:'minecraft:regeneration'}"
+                                        }
+                                    ]
+                                }
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-potion",
+                                "operation": "set",
+                                "change": 13
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "mainhand",
+                                "item_condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:ingredient",
+                                            "ingredient": {
+                                                "item": "minecraft:potion"
+                                            }
+                                        },
+                                        {
+                                            "type": "origins:nbt",
+                                            "nbt": "{Potion:'minecraft:long_regeneration'}"
+                                        }
+                                    ]
+                                }
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-potion",
+                                "operation": "set",
+                                "change": 14
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "mainhand",
+                                "item_condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:ingredient",
+                                            "ingredient": {
+                                                "item": "minecraft:potion"
+                                            }
+                                        },
+                                        {
+                                            "type": "origins:nbt",
+                                            "nbt": "{Potion:'minecraft:strong_regeneration'}"
+                                        }
+                                    ]
+                                }
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-potion",
+                                "operation": "set",
+                                "change": 15
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "mainhand",
+                                "item_condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:ingredient",
+                                            "ingredient": {
+                                                "item": "minecraft:potion"
+                                            }
+                                        },
+                                        {
+                                            "type": "origins:nbt",
+                                            "nbt": "{Potion:'minecraft:slow_falling'}"
+                                        }
+                                    ]
+                                }
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-potion",
+                                "operation": "set",
+                                "change": 16
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "mainhand",
+                                "item_condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:ingredient",
+                                            "ingredient": {
+                                                "item": "minecraft:potion"
+                                            }
+                                        },
+                                        {
+                                            "type": "origins:nbt",
+                                            "nbt": "{Potion:'minecraft:long_slow_falling'}"
+                                        }
+                                    ]
+                                }
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-potion",
+                                "operation": "set",
+                                "change": 17
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "mainhand",
+                                "item_condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:ingredient",
+                                            "ingredient": {
+                                                "item": "minecraft:potion"
+                                            }
+                                        },
+                                        {
+                                            "type": "origins:nbt",
+                                            "nbt": "{Potion:'minecraft:slowness'}"
+                                        }
+                                    ]
+                                }
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-potion",
+                                "operation": "set",
+                                "change": 18
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "mainhand",
+                                "item_condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:ingredient",
+                                            "ingredient": {
+                                                "item": "minecraft:potion"
+                                            }
+                                        },
+                                        {
+                                            "type": "origins:nbt",
+                                            "nbt": "{Potion:'minecraft:long_slowness'}"
+                                        }
+                                    ]
+                                }
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-potion",
+                                "operation": "set",
+                                "change": 19
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "mainhand",
+                                "item_condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:ingredient",
+                                            "ingredient": {
+                                                "item": "minecraft:potion"
+                                            }
+                                        },
+                                        {
+                                            "type": "origins:nbt",
+                                            "nbt": "{Potion:'minecraft:strong_slowness'}"
+                                        }
+                                    ]
+                                }
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-potion",
+                                "operation": "set",
+                                "change": 20
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "mainhand",
+                                "item_condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:ingredient",
+                                            "ingredient": {
+                                                "item": "minecraft:potion"
+                                            }
+                                        },
+                                        {
+                                            "type": "origins:nbt",
+                                            "nbt": "{Potion:'minecraft:strength'}"
+                                        }
+                                    ]
+                                }
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-potion",
+                                "operation": "set",
+                                "change": 21
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "mainhand",
+                                "item_condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:ingredient",
+                                            "ingredient": {
+                                                "item": "minecraft:potion"
+                                            }
+                                        },
+                                        {
+                                            "type": "origins:nbt",
+                                            "nbt": "{Potion:'minecraft:long_strength'}"
+                                        }
+                                    ]
+                                }
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-potion",
+                                "operation": "set",
+                                "change": 22
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "mainhand",
+                                "item_condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:ingredient",
+                                            "ingredient": {
+                                                "item": "minecraft:potion"
+                                            }
+                                        },
+                                        {
+                                            "type": "origins:nbt",
+                                            "nbt": "{Potion:'minecraft:strong_strength'}"
+                                        }
+                                    ]
+                                }
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-potion",
+                                "operation": "set",
+                                "change": 23
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "mainhand",
+                                "item_condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:ingredient",
+                                            "ingredient": {
+                                                "item": "minecraft:potion"
+                                            }
+                                        },
+                                        {
+                                            "type": "origins:nbt",
+                                            "nbt": "{Potion:'minecraft:swiftness'}"
+                                        }
+                                    ]
+                                }
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-potion",
+                                "operation": "set",
+                                "change": 24
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "mainhand",
+                                "item_condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:ingredient",
+                                            "ingredient": {
+                                                "item": "minecraft:potion"
+                                            }
+                                        },
+                                        {
+                                            "type": "origins:nbt",
+                                            "nbt": "{Potion:'minecraft:long_swiftness'}"
+                                        }
+                                    ]
+                                }
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-potion",
+                                "operation": "set",
+                                "change": 25
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "mainhand",
+                                "item_condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:ingredient",
+                                            "ingredient": {
+                                                "item": "minecraft:potion"
+                                            }
+                                        },
+                                        {
+                                            "type": "origins:nbt",
+                                            "nbt": "{Potion:'minecraft:strong_swiftness'}"
+                                        }
+                                    ]
+                                }
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-potion",
+                                "operation": "set",
+                                "change": 26
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "mainhand",
+                                "item_condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:ingredient",
+                                            "ingredient": {
+                                                "item": "minecraft:potion"
+                                            }
+                                        },
+                                        {
+                                            "type": "origins:nbt",
+                                            "nbt": "{Potion:'minecraft:turtle_master'}"
+                                        }
+                                    ]
+                                }
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-potion",
+                                "operation": "set",
+                                "change": 27
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "mainhand",
+                                "item_condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:ingredient",
+                                            "ingredient": {
+                                                "item": "minecraft:potion"
+                                            }
+                                        },
+                                        {
+                                            "type": "origins:nbt",
+                                            "nbt": "{Potion:'minecraft:long_turtle_master'}"
+                                        }
+                                    ]
+                                }
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-potion",
+                                "operation": "set",
+                                "change": 28
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "mainhand",
+                                "item_condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:ingredient",
+                                            "ingredient": {
+                                                "item": "minecraft:potion"
+                                            }
+                                        },
+                                        {
+                                            "type": "origins:nbt",
+                                            "nbt": "{Potion:'minecraft:strong_turtle_master'}"
+                                        }
+                                    ]
+                                }
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-potion",
+                                "operation": "set",
+                                "change": 29
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "mainhand",
+                                "item_condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:ingredient",
+                                            "ingredient": {
+                                                "item": "minecraft:potion"
+                                            }
+                                        },
+                                        {
+                                            "type": "origins:nbt",
+                                            "nbt": "{Potion:'minecraft:water_breathing'}"
+                                        }
+                                    ]
+                                }
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-potion",
+                                "operation": "set",
+                                "change": 30
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "mainhand",
+                                "item_condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:ingredient",
+                                            "ingredient": {
+                                                "item": "minecraft:potion"
+                                            }
+                                        },
+                                        {
+                                            "type": "origins:nbt",
+                                            "nbt": "{Potion:'minecraft:long_water_breathing'}"
+                                        }
+                                    ]
+                                }
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-potion",
+                                "operation": "set",
+                                "change": 31
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "mainhand",
+                                "item_condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:ingredient",
+                                            "ingredient": {
+                                                "item": "minecraft:potion"
+                                            }
+                                        },
+                                        {
+                                            "type": "origins:nbt",
+                                            "nbt": "{Potion:'minecraft:weakness'}"
+                                        }
+                                    ]
+                                }
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-potion",
+                                "operation": "set",
+                                "change": 32
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:equipped_item",
+                                "equipment_slot": "mainhand",
+                                "item_condition": {
+                                    "type": "origins:and",
+                                    "conditions": [
+                                        {
+                                            "type": "origins:ingredient",
+                                            "ingredient": {
+                                                "item": "minecraft:potion"
+                                            }
+                                        },
+                                        {
+                                            "type": "origins:nbt",
+                                            "nbt": "{Potion:'minecraft:long_weakness'}"
+                                        }
+                                    ]
+                                }
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_i-potion",
+                                "operation": "set",
+                                "change": 33
+                            }
+                        },
+                        {
+                            "condition": {
+                                "type": "origins:living"
+                            },
+                            "action": {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_b-active",
+                                "operation": "set",
+                                "change": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "info": "check if offhand item is incorrect",
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type": "origins:equipped_item",
+                        "equipment_slot": "offhand",
+                        "item_condition": {
+                            "type": "origins:or",
+                            "conditions": [
+                                {
+                                    "type": "origins:ingredient",
+                                    "ingredient": {
+                                        "tag": "minecraft:swords"
+                                    }
+                                },
+                                {
+                                    "type": "origins:ingredient",
+                                    "ingredient": {
+                                        "tag": "minecraft:axes"
+                                    }
+                                }
+                            ],
+                            "inverted": true
+                        }
+                    },
+                    "if_action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_b-active",
+                        "operation": "set",
+                        "change": 0
+                    }
+                },
+                {
+                    "info": "on activation",
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type": "origins:resource",
+                        "resource": "*:*_b-active",
+                        "comparison": "==",
+                        "compare_to": 1
+                    },
+                    "if_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:play_sound",
+                                "sound": "minecraft:entity.shulker.hurt",
+                                "volume": 1.0,
+                                "pitch": 1.0
+                            },
+                            {
+                                "type": "origins:change_resource",
+                                "resource": "*:*_b-can-use",
+                                "operation": "set",
+                                "change": 0
+                            },
+                            {
+                                "type": "origins:equipped_item_action",
+                                "equipment_slot": "mainhand",
+                                "action": {
+                                    "type": "origins:consume",
+                                    "amount": 1
+                                }
+                            },
+                            {
+                                "info": "clear previous tag(s)",
+                                "type": "origins:modify_inventory",
+                                "inventory_type": "inventory",
+                                "item_condition": {
+                                    "type": "origins:nbt",
+                                    "nbt": "{neverland_potion-weapon: 1b}"
+                                },
+                                "item_action": {
+                                    "type": "origins:merge_nbt",
+                                    "nbt": "{neverland_potion-weapon: 0b}"
+                                }
+                            },
+                            {
+                                "type": "origins:equipped_item_action",
+                                "equipment_slot": "offhand",
+                                "action": {
+                                    "type": "origins:merge_nbt",
+                                    "nbt": "{neverland_potion-weapon: 1b}"
+                                }
+                            },
+                            {
+                                "type": "origins:trigger_cooldown",
+                                "power": "*:*_bar-duration"
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+    "apply-potion-on-hit": {
+        "type": "origins:action_on_hit",
+        "bientity_condition": {
+            "type": "origins:actor_condition",
+            "condition": {
+                "type": "origins:and",
+                "conditions": [
+                    {
+                        "type": "origins:resource",
+                        "resource": "*:*_b-active",
+                        "comparison": "==",
+                        "compare_to": 1
+                    },
+                    {
+                        "type": "origins:equipped_item",
+                        "equipment_slot": "mainhand",
+                        "item_condition": {
+                            "type": "origins:nbt",
+                            "nbt": "{neverland_potion-weapon: 1b}"
+                        }
+                    }
+                ]
+            }
+        },
+        "bientity_action": {
+            "type": "origins:if_else_list",
+            "actions": [
+                {
+                    "condition": {
+                        "type": "origins:actor_condition",
+                        "condition": {
+                            "type": "origins:resource",
+                            "resource": "*:*_i-potion",
+                            "comparison": "==",
+                            "compare_to": 0
+                        }
+                    },
+                    "action": {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type": "origins:apply_effect",
+                            "effect": {
+                                "effect": "minecraft:fire_resistance",
+                                "duration": 3200,
+                                "amplifier": 0
+                            }
+                        }
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:actor_condition",
+                        "condition": {
+                            "type": "origins:resource",
+                            "resource": "*:*_i-potion",
+                            "comparison": "==",
+                            "compare_to": 1
+                        }
+                    },
+                    "action": {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type": "origins:apply_effect",
+                            "effect": {
+                                "effect": "minecraft:fire_resistance",
+                                "duration": 9200,
+                                "amplifier": 0
+                            }
+                        }
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:actor_condition",
+                        "condition": {
+                            "type": "origins:resource",
+                            "resource": "*:*_i-potion",
+                            "comparison": "==",
+                            "compare_to": 2
+                        }
+                    },
+                    "action": {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type": "origins:apply_effect",
+                            "effect": {
+                                "effect": "minecraft:invisibility",
+                                "duration": 3200,
+                                "amplifier": 0
+                            }
+                        }
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:actor_condition",
+                        "condition": {
+                            "type": "origins:resource",
+                            "resource": "*:*_i-potion",
+                            "comparison": "==",
+                            "compare_to": 3
+                        }
+                    },
+                    "action": {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type": "origins:apply_effect",
+                            "effect": {
+                                "effect": "minecraft:invisibility",
+                                "duration": 9200,
+                                "amplifier": 0
+                            }
+                        }
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:actor_condition",
+                        "condition": {
+                            "type": "origins:resource",
+                            "resource": "*:*_i-potion",
+                            "comparison": "==",
+                            "compare_to": 4
+                        }
+                    },
+                    "action": {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type": "origins:apply_effect",
+                            "effect": {
+                                "effect": "minecraft:jump_boost",
+                                "duration": 3200,
+                                "amplifier": 0
+                            }
+                        }
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:actor_condition",
+                        "condition": {
+                            "type": "origins:resource",
+                            "resource": "*:*_i-potion",
+                            "comparison": "==",
+                            "compare_to": 5
+                        }
+                    },
+                    "action": {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type": "origins:apply_effect",
+                            "effect": {
+                                "effect": "minecraft:jump_boost",
+                                "duration": 9200,
+                                "amplifier": 0
+                            }
+                        }
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:actor_condition",
+                        "condition": {
+                            "type": "origins:resource",
+                            "resource": "*:*_i-potion",
+                            "comparison": "==",
+                            "compare_to": 6
+                        }
+                    },
+                    "action": {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type": "origins:apply_effect",
+                            "effect": {
+                                "effect": "minecraft:jump_boost",
+                                "duration": 1400,
+                                "amplifier": 1
+                            }
+                        }
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:actor_condition",
+                        "condition": {
+                            "type": "origins:resource",
+                            "resource": "*:*_i-potion",
+                            "comparison": "==",
+                            "compare_to": 7
+                        }
+                    },
+                    "action": {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type": "origins:apply_effect",
+                            "effect": {
+                                "effect": "minecraft:luck",
+                                "duration": 4600,
+                                "amplifier": 0
+                            }
+                        }
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:actor_condition",
+                        "condition": {
+                            "type": "origins:resource",
+                            "resource": "*:*_i-potion",
+                            "comparison": "==",
+                            "compare_to": 8
+                        }
+                    },
+                    "action": {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type": "origins:apply_effect",
+                            "effect": {
+                                "effect": "minecraft:night_vision",
+                                "duration": 3200,
+                                "amplifier": 0
+                            }
+                        }
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:actor_condition",
+                        "condition": {
+                            "type": "origins:resource",
+                            "resource": "*:*_i-potion",
+                            "comparison": "==",
+                            "compare_to": 9
+                        }
+                    },
+                    "action": {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type": "origins:apply_effect",
+                            "effect": {
+                                "effect": "minecraft:night_vision",
+                                "duration": 9200,
+                                "amplifier": 0
+                            }
+                        }
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:actor_condition",
+                        "condition": {
+                            "type": "origins:resource",
+                            "resource": "*:*_i-potion",
+                            "comparison": "==",
+                            "compare_to": 10
+                        }
+                    },
+                    "action": {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type": "origins:apply_effect",
+                            "effect": {
+                                "effect": "minecraft:poison",
+                                "duration": 500,
+                                "amplifier": 0
+                            }
+                        }
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:actor_condition",
+                        "condition": {
+                            "type": "origins:resource",
+                            "resource": "*:*_i-potion",
+                            "comparison": "==",
+                            "compare_to": 11
+                        }
+                    },
+                    "action": {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type": "origins:apply_effect",
+                            "effect": {
+                                "effect": "minecraft:poison",
+                                "duration": 2000,
+                                "amplifier": 0
+                            }
+                        }
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:actor_condition",
+                        "condition": {
+                            "type": "origins:resource",
+                            "resource": "*:*_i-potion",
+                            "comparison": "==",
+                            "compare_to": 12
+                        }
+                    },
+                    "action": {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type": "origins:apply_effect",
+                            "effect": {
+                                "effect": "minecraft:poison",
+                                "duration": 40,
+                                "amplifier": 1
+                            }
+                        }
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:actor_condition",
+                        "condition": {
+                            "type": "origins:resource",
+                            "resource": "*:*_i-potion",
+                            "comparison": "==",
+                            "compare_to": 13
+                        }
+                    },
+                    "action": {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type": "origins:apply_effect",
+                            "effect": {
+                                "effect": "minecraft:regeneration",
+                                "duration": 500,
+                                "amplifier": 0
+                            }
+                        }
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:actor_condition",
+                        "condition": {
+                            "type": "origins:resource",
+                            "resource": "*:*_i-potion",
+                            "comparison": "==",
+                            "compare_to": 14
+                        }
+                    },
+                    "action": {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type": "origins:apply_effect",
+                            "effect": {
+                                "effect": "minecraft:regeneration",
+                                "duration": 1400,
+                                "amplifier": 0
+                            }
+                        }
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:actor_condition",
+                        "condition": {
+                            "type": "origins:resource",
+                            "resource": "*:*_i-potion",
+                            "comparison": "==",
+                            "compare_to": 15
+                        }
+                    },
+                    "action": {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type": "origins:apply_effect",
+                            "effect": {
+                                "effect": "minecraft:regeneration",
+                                "duration": 40,
+                                "amplifier": 1
+                            }
+                        }
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:actor_condition",
+                        "condition": {
+                            "type": "origins:resource",
+                            "resource": "*:*_i-potion",
+                            "comparison": "==",
+                            "compare_to": 16
+                        }
+                    },
+                    "action": {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type": "origins:apply_effect",
+                            "effect": {
+                                "effect": "minecraft:slow_falling",
+                                "duration": 1400,
+                                "amplifier": 0
+                            }
+                        }
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:actor_condition",
+                        "condition": {
+                            "type": "origins:resource",
+                            "resource": "*:*_i-potion",
+                            "comparison": "==",
+                            "compare_to": 17
+                        }
+                    },
+                    "action": {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type": "origins:apply_effect",
+                            "effect": {
+                                "effect": "minecraft:slow_falling",
+                                "duration": 4400,
+                                "amplifier": 0
+                            }
+                        }
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:actor_condition",
+                        "condition": {
+                            "type": "origins:resource",
+                            "resource": "*:*_i-potion",
+                            "comparison": "==",
+                            "compare_to": 18
+                        }
+                    },
+                    "action": {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type": "origins:apply_effect",
+                            "effect": {
+                                "effect": "minecraft:slowness",
+                                "duration": 1400,
+                                "amplifier": 0
+                            }
+                        }
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:actor_condition",
+                        "condition": {
+                            "type": "origins:resource",
+                            "resource": "*:*_i-potion",
+                            "comparison": "==",
+                            "compare_to": 19
+                        }
+                    },
+                    "action": {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type": "origins:apply_effect",
+                            "effect": {
+                                "effect": "minecraft:slowness",
+                                "duration": 4400,
+                                "amplifier": 0
+                            }
+                        }
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:actor_condition",
+                        "condition": {
+                            "type": "origins:resource",
+                            "resource": "*:*_i-potion",
+                            "comparison": "==",
+                            "compare_to": 20
+                        }
+                    },
+                    "action": {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type": "origins:apply_effect",
+                            "effect": {
+                                "effect": "minecraft:slowness",
+                                "duration": 20,
+                                "amplifier": 3
+                            }
+                        }
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:actor_condition",
+                        "condition": {
+                            "type": "origins:resource",
+                            "resource": "*:*_i-potion",
+                            "comparison": "==",
+                            "compare_to": 21
+                        }
+                    },
+                    "action": {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type": "origins:apply_effect",
+                            "effect": {
+                                "effect": "minecraft:strength",
+                                "duration": 3200,
+                                "amplifier": 0
+                            }
+                        }
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:actor_condition",
+                        "condition": {
+                            "type": "origins:resource",
+                            "resource": "*:*_i-potion",
+                            "comparison": "==",
+                            "compare_to": 22
+                        }
+                    },
+                    "action": {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type": "origins:apply_effect",
+                            "effect": {
+                                "effect": "minecraft:strength",
+                                "duration": 9200,
+                                "amplifier": 0
+                            }
+                        }
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:actor_condition",
+                        "condition": {
+                            "type": "origins:resource",
+                            "resource": "*:*_i-potion",
+                            "comparison": "==",
+                            "compare_to": 23
+                        }
+                    },
+                    "action": {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type": "origins:apply_effect",
+                            "effect": {
+                                "effect": "minecraft:strength",
+                                "duration": 1400,
+                                "amplifier": 1
+                            }
+                        }
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:actor_condition",
+                        "condition": {
+                            "type": "origins:resource",
+                            "resource": "*:*_i-potion",
+                            "comparison": "==",
+                            "compare_to": 24
+                        }
+                    },
+                    "action": {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type": "origins:apply_effect",
+                            "effect": {
+                                "effect": "minecraft:speed",
+                                "duration": 3200,
+                                "amplifier": 0
+                            }
+                        }
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:actor_condition",
+                        "condition": {
+                            "type": "origins:resource",
+                            "resource": "*:*_i-potion",
+                            "comparison": "==",
+                            "compare_to": 25
+                        }
+                    },
+                    "action": {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type": "origins:apply_effect",
+                            "effect": {
+                                "effect": "minecraft:speed",
+                                "duration": 9200,
+                                "amplifier": 0
+                            }
+                        }
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:actor_condition",
+                        "condition": {
+                            "type": "origins:resource",
+                            "resource": "*:*_i-potion",
+                            "comparison": "==",
+                            "compare_to": 26
+                        }
+                    },
+                    "action": {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type": "origins:apply_effect",
+                            "effect": {
+                                "effect": "minecraft:speed",
+                                "duration": 1400,
+                                "amplifier": 1
+                            }
+                        }
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:actor_condition",
+                        "condition": {
+                            "type": "origins:resource",
+                            "resource": "*:*_i-potion",
+                            "comparison": "==",
+                            "compare_to": 27
+                        }
+                    },
+                    "action": {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type": "origins:and",
+                            "actions": [
+                                {
+                                    "type": "origins:apply_effect",
+                                    "effect": {
+                                        "effect": "minecraft:slowness",
+                                        "duration": 20,
+                                        "amplifier": 3
+                                    }
+                                },
+                                {
+                                    "type": "origins:apply_effect",
+                                    "effect": {
+                                        "effect": "minecraft:resistance",
+                                        "duration": 20,
+                                        "amplifier": 2
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:actor_condition",
+                        "condition": {
+                            "type": "origins:resource",
+                            "resource": "*:*_i-potion",
+                            "comparison": "==",
+                            "compare_to": 28
+                        }
+                    },
+                    "action": {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type": "origins:and",
+                            "actions": [
+                                {
+                                    "type": "origins:apply_effect",
+                                    "effect": {
+                                        "effect": "minecraft:slowness",
+                                        "duration": 400,
+                                        "amplifier": 3
+                                    }
+                                },
+                                {
+                                    "type": "origins:apply_effect",
+                                    "effect": {
+                                        "effect": "minecraft:resistance",
+                                        "duration": 400,
+                                        "amplifier": 2
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:actor_condition",
+                        "condition": {
+                            "type": "origins:resource",
+                            "resource": "*:*_i-potion",
+                            "comparison": "==",
+                            "compare_to": 29
+                        }
+                    },
+                    "action": {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type": "origins:and",
+                            "actions": [
+                                {
+                                    "type": "origins:apply_effect",
+                                    "effect": {
+                                        "effect": "minecraft:slowness",
+                                        "duration": 20,
+                                        "amplifier": 4
+                                    }
+                                },
+                                {
+                                    "type": "origins:apply_effect",
+                                    "effect": {
+                                        "effect": "minecraft:resistance",
+                                        "duration": 20,
+                                        "amplifier": 3
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:actor_condition",
+                        "condition": {
+                            "type": "origins:resource",
+                            "resource": "*:*_i-potion",
+                            "comparison": "==",
+                            "compare_to": 30
+                        }
+                    },
+                    "action": {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type": "origins:apply_effect",
+                            "effect": {
+                                "effect": "minecraft:water_breathing",
+                                "duration": 3200,
+                                "amplifier": 0
+                            }
+                        }
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:actor_condition",
+                        "condition": {
+                            "type": "origins:resource",
+                            "resource": "*:*_i-potion",
+                            "comparison": "==",
+                            "compare_to": 31
+                        }
+                    },
+                    "action": {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type": "origins:apply_effect",
+                            "effect": {
+                                "effect": "minecraft:water_breathing",
+                                "duration": 9200,
+                                "amplifier": 0
+                            }
+                        }
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:actor_condition",
+                        "condition": {
+                            "type": "origins:resource",
+                            "resource": "*:*_i-potion",
+                            "comparison": "==",
+                            "compare_to": 32
+                        }
+                    },
+                    "action": {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type": "origins:apply_effect",
+                            "effect": {
+                                "effect": "minecraft:weakness",
+                                "duration": 1400,
+                                "amplifier": 0
+                            }
+                        }
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:actor_condition",
+                        "condition": {
+                            "type": "origins:resource",
+                            "resource": "*:*_i-potion",
+                            "comparison": "==",
+                            "compare_to": 33
+                        }
+                    },
+                    "action": {
+                        "type": "origins:target_action",
+                        "action": {
+                            "type": "origins:apply_effect",
+                            "effect": {
+                                "effect": "minecraft:weakness",
+                                "duration": 4400,
+                                "amplifier": 0
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    "on-cooldown-over": {
+        "info": "also executes if there is no 'potion-weapon' in inventory",
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "condition": {
+            "type": "origins:or",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_bar-duration",
+                    "comparison": "==",
+                    "compare_to": 0
+                },
+                {
+                    "type": "origins:command",
+                    "command": "clear @s #minecraft:tools{neverland_potion-weapon: 1b} 0",
+                    "comparison": "==",
+                    "compare_to": 0
+                }
+            ]
+        },
+        "rising_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_b-active",
+                    "operation": "set",
+                    "change": 0
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_b-can-use",
+                    "operation": "set",
+                    "change": 1
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_bar-duration",
+                    "operation": "set",
+                    "change": 400
+                }
+            ]
+        }
+    },
+    "anti-cheat": {
+        "info": "makes sure that there is always at most 1 potion-weapon in the players inventory",
+        "type": "origins:action_over_time",
+        "interval": 5,
+        "condition": {
+            "type": "origins:command",
+            "command": "clear @s #minecraft:tools{neverland_potion-weapon: 1b} 0",
+            "comparison": ">",
+            "compare_to": 1
+        },
+        "entity_action": {
+            "type": "origins:modify_inventory",
+            "inventory_type": "inventory",
+            "item_condition": {
+                "type": "origins:nbt",
+                "nbt": "{neverland_potion-weapon: 1b}"
+            },
+            "item_action": {
+                "type": "origins:merge_nbt",
+                "nbt": "{neverland_potion-weapon: 0b}"
+            }
+        }
+    }
+}

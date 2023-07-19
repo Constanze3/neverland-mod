@@ -1,0 +1,65 @@
+{
+    "name": "Flames of Valhalla",
+    "description": "TODO description",
+    "type": "origins:multiple",
+    "bar-cooldown": {
+        "type": "origins:cooldown",
+        "cooldown": 200,
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "origins:textures/gui/resource_bar.png",
+            "bar_index": 7
+        }
+    },
+    "action-on-hit": {
+        "type": "origins:action_on_hit",
+        "bientity_condition": {
+            "type": "origins:actor_condition",
+            "condition": {
+                "type": "origins:and",
+                "conditions": [
+                    {
+                        "type": "origins:resource",
+                        "resource": "neverland:origins/nordic-warrior/buffs/fire-on-hit_bar-cooldown",
+                        "comparison": "==",
+                        "compare_to": 0
+                    },
+                    {
+                        "type": "origins:sneaking",
+                        "inverted": true
+                    },
+                    {
+                        "type": "origins:equipped_item",
+                        "equipment_slot": "mainhand",
+                        "item_condition": {
+                            "type": "origins:enchantment",
+                            "enchantment": "minecraft:fire_aspect",
+                            "comparison": ">",
+                            "compare_to": 0
+                        },
+                        "inverted": true
+                    }
+                ]
+            }
+        },
+        "bientity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:actor_action",
+                    "action": {
+                        "type": "origins:trigger_cooldown",
+                        "power": "neverland:origins/nordic-warrior/buffs/fire-on-hit_bar-cooldown"
+                    }
+                },
+                {
+                    "type": "origins:target_action",
+                    "action": {
+                        "type": "origins:set_on_fire",
+                        "duration": 3
+                    }
+                }
+            ]
+        }
+    }
+}

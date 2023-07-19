@@ -1,0 +1,9 @@
+{
+	"name": "Auto Cooker",
+	"description": "In your inventory a piece of raw meat is cooked every 15 seconds. The cooldown can be hidden/shown with sneak+attack while having any type of meat in your mainhand.",
+	"impact": 2,
+	"icon": "minecraft:cooked_beef",
+	"powers": [
+		"neverland:traits/auto-cooker"
+	]
+}

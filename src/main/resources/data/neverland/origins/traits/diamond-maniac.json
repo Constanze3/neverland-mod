@@ -1,0 +1,9 @@
+{
+	"name": "Diamond Maniac",
+	"description": "If there is a hidden diamond ore in 2 blocks distance horizontally from you, it gets a blue glow effect.",
+	"impact": 2,
+	"icon": "minecraft:diamond",
+	"powers": [
+		"neverland:traits/diamond-maniac"
+	]
+}

@@ -1,0 +1,70 @@
+{
+    "type": "origins:multiple",
+    "bar-cooldown": {
+        "type": "origins:cooldown",
+        "cooldown": 80,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "on-callback": {
+        "type": "origins:action_on_callback",
+        "entity_action_gained": {
+            "type": "origins:trigger_cooldown",
+            "power": "*:*_bar-cooldown"
+        }
+    },
+    "while-active": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "info": "particle effects",
+                    "type": "origins:and",
+                    "actions": [
+                        {
+                            "type": "origins:execute_command",
+                            "command": "execute at @s run particle minecraft:dust 0.1 0.26 0.1 1 ~ ~1 ~ 1.2 1 1.2 7 100 normal"
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "execute at @s run particle minecraft:dust 0.1 0.36 0.1 1 ~ ~1 ~ 1.2 1 1.2 7 100 normal"
+                        }
+                    ]
+                },
+                {
+                    "info": "lock entities in range",
+                    "type": "origins:execute_command",
+                    "command": "execute at @s run power grant @e[tag=!neverland_nature-golem, distance=..2] neverland:origins/nature-golem/given/lock-in-place"
+                }
+            ]
+        }
+    },
+    "on-cooldown-over": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_bar-cooldown",
+            "comparison": "==",
+            "compare_to": 0
+        },
+        "rising_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:play_sound",
+                    "sound": "minecraft:entity.goat.horn_break",
+                    "volume": 2.0,
+                    "pitch": 0.2
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "kill @s"
+                }
+            ]
+        }
+    }
+}

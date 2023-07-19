@@ -1,0 +1,99 @@
+{
+    "hidden": true,
+    "type": "origins:action_on_callback",
+    "entity_action_gained": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:execute_command",
+                "command": "tag @s add neverland_jester"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "scoreboard objectives add neverland_marked-by-jester dummy"
+            }
+        ]
+    },
+    "entity_action_lost": {
+        "type": "origins:execute_command",
+        "command": "tag @s remove neverland_jester"
+    },
+    "entity_action_respawned": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "info": "reset mark",
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:change_resource",
+                        "resource": "*:origins/jester/abilities/mark_b-active",
+                        "operation": "set",
+                        "change": 0
+                    },
+                    {
+                        "type": "origins:change_resource",
+                        "resource": "*:origins/jester/abilities/mark_bar-duration",
+                        "operation": "set",
+                        "change": 100
+                    }
+                ]
+            },
+            {
+                "info": "reset phase",
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:change_resource",
+                        "resource": "*:origins/jester/abilities/phase_i-energy",
+                        "operation": "set",
+                        "change": 200
+                    },
+                    {
+                        "type": "origins:change_resource",
+                        "resource": "*:origins/jester/abilities/phase_bar-jump-cooldown",
+                        "operation": "set",
+                        "change": 20
+                    }
+                ]
+            },
+            {
+                "info": "reset trap",
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:change_resource",
+                        "resource": "*:origins/jester/abilities/trap_b-can-use",
+                        "operation": "set",
+                        "change": 1
+                    },
+                    {
+                        "type": "origins:change_resource",
+                        "resource": "*:origins/jester/abilities/trap_b-active",
+                        "operation": "set",
+                        "change": 0
+                    },
+                    {
+                        "type": "origins:change_resource",
+                        "resource": "*:origins/jester/abilities/trap_bar-duration",
+                        "operation": "set",
+                        "change": 140
+                    },
+                    {
+                        "type": "origins:change_resource",
+                        "resource": "*:origins/jester/abilities/trap_bar-cooldown",
+                        "operation": "set",
+                        "change": 1800
+                    }
+                ]
+            },
+            {
+                "info": "reset bloodthirst",
+                "type": "origins:change_resource",
+                "resource": "*:origins/jester/debuffs/bloodthirst_i-amount",
+                "operation": "set",
+                "change": 0
+            }
+        ]
+    }
+}

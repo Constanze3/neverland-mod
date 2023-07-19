@@ -1,0 +1,44 @@
+{
+    "name": "Thorny",
+    "description": "Because your skin is full of spikes, mobs and players that hit you with their hand get damaged, and you also deal more damage with bare hands.",
+    "type": "origins:multiple",
+    "increased_damage_with_hand": {
+        "type": "origins:modify_damage_dealt",
+        "damage_condition": {
+            "type": "origins:attacker",
+            "entity_condition": {
+                "type": "origins:equipped_item",
+                "equipment_slot": "mainhand",
+                "item_condition": {
+                    "type": "origins:empty"
+                }
+            }
+        },
+        "modifier": {
+            "name": "extra damage when empty mainhand",
+            "operation": "add_base_early",
+            "value": 1
+        }
+    },
+    "damage-barehanded-attacker": {
+        "type": "origins:action_when_hit",
+        "damage_condition": {
+            "type": "origins:attacker",
+            "entity_condition": {
+                "type": "origins:equipped_item",
+                "equipment_slot": "mainhand",
+                "item_condition": {
+                    "type": "origins:empty"
+                }
+            }
+        },
+        "bientity_action": {
+            "type": "origins:actor_action",
+            "action": {
+                "type": "origins:damage",
+                "amount": 4,
+                "damage_type": "minecraft:thorns"
+            }
+        }
+    }
+}

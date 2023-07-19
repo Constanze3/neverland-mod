@@ -1,0 +1,16 @@
+{
+    "hidden": true,
+    "type": "origins:action_over_time",
+    "interval": 1,
+    "entity_action": {
+        "type": "origins:modify_inventory",
+        "item_condition": {
+            "type": "origins:nbt",
+            "nbt": "{neverland_stolen: 1b}"
+        },
+        "item_action": {
+            "type": "origins:merge_nbt",
+            "nbt": "{neverland_stolen: 0b}"
+        }
+    }
+}

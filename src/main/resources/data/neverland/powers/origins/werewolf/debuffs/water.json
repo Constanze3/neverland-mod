@@ -1,0 +1,33 @@
+{
+	"name": "Weak in Water",
+	"description": "TODO description",
+	"type": "origins:multiple",
+	"effects": {
+		"type": "origins:stacking_status_effect",
+		"min_stacks": 1,
+		"max_stacks": 5,
+		"duration_per_stack": 50,
+		"tick_rate": 20,
+		"effects": [
+			{
+				"effect": "minecraft:weakness",
+				"is_ambient": true,
+				"show_particles": false,
+				"show_icon": true
+			}
+		],
+		"condition": {
+			"type": "origins:fluid_height",
+			"fluid": "minecraft:water",
+			"comparison": ">",
+			"compare_to": 0
+		}
+	},
+	"slower-swim-speed": {
+		"type": "origins:modify_swim_speed",
+		"modifier": {
+			"operation": "multiply_total",
+			"value": -0.25
+		}
+	}
+}

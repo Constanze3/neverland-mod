@@ -1,0 +1,174 @@
+{
+    "name": "Phase",
+    "description": "TODO description",
+    "type": "origins:multiple",
+    "bar-jump-cooldown": {
+        "type": "origins:cooldown",
+        "cooldown": 20
+    },
+    "i-energy": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 200,
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_01.png",
+            "bar_index": 17,
+            "condition": {
+                "type": "origins:resource",
+                "resource": "*:*_i-energy",
+                "comparison": "!=",
+                "compare_to": 200
+            }
+        },
+        "start_value": 200
+    },
+    "main": {
+        "type": "origins:phasing",
+        "blacklist": true,
+        "block_condition": {
+            "type": "origins:in_tag",
+            "tag": "origins:unphasable"
+        },
+        "render_type": "remove_blocks",
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:sneaking"
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_i-energy",
+                    "comparison": ">",
+                    "compare_to": 0
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_bar-jump-cooldown",
+                    "comparison": "==",
+                    "compare_to": 0
+                }
+            ]
+        },
+        "phase_down_condition": {
+            "type": "origins:exists",
+            "inverted": true
+        }
+    },
+    "handle-energy": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "entity_action": {
+            "type": "origins:if_else_list",
+            "actions": [
+                {
+                    "condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:sneaking"
+                            },
+                            {
+                                "type": "origins:block_collision",
+                                "block_condition": {
+                                    "type": "origins:movement_blocking"
+                                }
+                            },
+                            {
+                                "type": "origins:resource",
+                                "resource": "*:*_i-energy",
+                                "comparison": ">",
+                                "compare_to": 0
+                            },
+                            {
+                                "type": "origins:resource",
+                                "resource": "*:*_bar-jump-cooldown",
+                                "comparison": "==",
+                                "compare_to": 0
+                            }
+                        ]
+                    },
+                    "action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_i-energy",
+                        "operation": "add",
+                        "change": -2
+                    }
+                },
+                {
+                    "condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:block_collision",
+                                "block_condition": {
+                                    "type": "origins:movement_blocking"
+                                },
+                                "inverted": true
+                            },
+                            {
+                                "type": "origins:resource",
+                                "resource": "*:*_i-energy",
+                                "comparison": "<",
+                                "compare_to": 200
+                            },
+                            {
+                                "type": "origins:block_collision",
+                                "block_condition": {
+                                    "type": "origins:movement_blocking",
+                                    "inverted": true
+                                }
+                            }
+                        ]
+                    },
+                    "action": {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_i-energy",
+                        "operation": "add",
+                        "change": 1
+                    }
+                }
+            ]
+        }
+    },
+    "on-jump-while-phased": {
+        "type": "origins:modify_jump",
+        "condition": {
+            "type": "origins:block_collision",
+            "block_condition": {
+                "type": "origins:movement_blocking"
+            }
+        },
+        "entity_action": {
+            "type": "origins:trigger_cooldown",
+            "power": "*:*_bar-jump-cooldown"
+        }
+    },
+    "standing-in-block-fix": {
+        "type": "origins:action_over_time",
+        "interval": 10,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:block_collision",
+                    "block_condition": {
+                        "type": "origins:movement_blocking"
+                    }
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_i-energy",
+                    "comparison": "<=",
+                    "compare_to": 0
+                }
+            ]
+        },
+        "entity_action": {
+            "type": "origins:damage",
+            "amount": 1,
+            "damage_type": "minecraft:in_wall"
+        }
+    }
+}

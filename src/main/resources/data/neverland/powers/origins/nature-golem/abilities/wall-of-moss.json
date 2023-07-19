@@ -1,0 +1,94 @@
+{
+    "name": "Wall of Moss",
+    "description": "Using your secondary create a thin wall of moss in the direction you are facing.",
+    "type": "origins:multiple",
+    "bar-cooldown": {
+        "type": "origins:cooldown",
+        "cooldown": 400,
+        "hud_render": {
+            "should_render": true,
+            "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_01.png",
+            "bar_index": 22,
+            "inverted": true
+        }
+    },
+    "b-can-use": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1,
+        "start_value": 1
+    },
+    "main": {
+        "type": "origins:active_self",
+        "key": {
+            "key": "key.origins.secondary_active"
+        },
+        "entity_action": {
+            "type": "origins:if_else",
+            "condition": {
+                "type": "origins:resource",
+                "resource": "*:*_b-can-use",
+                "comparison": "==",
+                "compare_to": 1
+            },
+            "if_action": {
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:change_resource",
+                        "resource": "*:*_b-can-use",
+                        "operation": "set",
+                        "change": 0
+                    },
+                    {
+                        "type": "origins:trigger_cooldown",
+                        "power": "*:*_bar-cooldown"
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "execute at @s[y_rotation=45..135] run fill ~-2 ~ ~-2 ~-2 ~3 ~2 minecraft:moss_block keep"
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "execute at @s[y_rotation=315..405] run fill ~-2 ~ ~2 ~2 ~3 ~2 minecraft:moss_block keep"
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "execute at @s[y_rotation=225..315] run fill ~2 ~ ~-2 ~2 ~3 ~2 minecraft:moss_block keep"
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "execute at @s[y_rotation=135..225] run fill ~-2 ~ ~-2 ~2 ~3 ~-2 minecraft:moss_block keep"
+                    }
+                ]
+            }
+        }
+    },
+    "on-cooldown-over": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_b-can-use",
+                    "comparison": "==",
+                    "compare_to": 0
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_bar-cooldown",
+                    "comparison": "==",
+                    "compare_to": 0
+                }
+            ]
+        },
+        "rising_action": {
+            "type": "origins:change_resource",
+            "resource": "*:*_b-can-use",
+            "operation": "set",
+            "change": 1
+        }
+    }
+}

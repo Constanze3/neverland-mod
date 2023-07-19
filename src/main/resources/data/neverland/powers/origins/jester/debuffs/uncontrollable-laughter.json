@@ -1,0 +1,23 @@
+{
+    "name": "Uncontrollable Laughter",
+    "description": "TODO description",
+    "type": "origins:action_over_time",
+    "interval": 1200,
+    "entity_action": {
+        "type": "origins:chance",
+        "action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:play_sound",
+                    "sound": "neverland:special.evil_laughter"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "power grant @s neverland:origins/jester/given/lock-movement"
+                }
+            ]
+        },
+        "chance": 0.1
+    }
+}

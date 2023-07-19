@@ -1,0 +1,93 @@
+{
+    "name": "Golems",
+    "description": "TODO description",
+    "type": "origins:action_over_time",
+    "interval": 1,
+    "entity_action": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:execute_command",
+                "command": "tag @s add neverland_golem-hate-selector"
+            },
+            {
+                "type": "origins:area_of_effect",
+                "radius": 30,
+                "bientity_condition": {
+                    "type": "origins:and",
+                    "conditions": [
+                        {
+                            "type": "origins:can_see"
+                        },
+                        {
+                            "type": "origins:target_condition",
+                            "condition": {
+                                "type": "origins:entity_type",
+                                "entity_type": "minecraft:iron_golem"
+                            }
+                        }
+                    ]
+                },
+                "bientity_action": {
+                    "type": "origins:target_action",
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:execute_command",
+                                "command": "data modify entity @s AngryAt set from entity @p[tag=neverland_golem-hate-selector] UUID"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "data modify entity @s AngerTime set value 200"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "tag @s add neverland_angry-golem"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "attribute @s minecraft:generic.follow_range base set 100"
+                            },
+                            {
+                                "type": "origins:apply_effect",
+                                "effects": {
+                                    "effect": "minecraft:speed",
+                                    "duration": 40,
+                                    "amplifier": 2,
+                                    "show_particles": false
+                                }
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "item replace entity @s armor.feet with minecraft:iron_boots{Enchantments:[{id:depth_strider, lvl:3}]}"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "tag @s remove neverland_golem-hate-selector"
+            },
+            {
+                "info": "clear special iron golem bonuses",
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:execute_command",
+                        "command": "attribute @e[tag=neverland_angry-golem, distance=40..] minecraft:generic.follow_range base set 32"
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "item replace entity @e[tag=neverland_angry-golem, distance=40..] armor.feet with minecraft:air"
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "tag @e[tag=neverland_angry-golem, distance=40..] remove neverland_angry-golem"
+                    }
+                ]
+            }
+        ]
+    }
+}

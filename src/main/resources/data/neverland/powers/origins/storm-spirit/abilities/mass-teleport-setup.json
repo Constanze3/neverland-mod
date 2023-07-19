@@ -1,0 +1,29 @@
+{
+    "hidden": true,
+    "type": "origins:fire_projectile",
+    "key": {
+        "key": "key.origins.secondary_active"
+    },
+    "entity_type": "minecraft:armor_stand",
+    "count": 5,
+    "speed": 0.2,
+    "divergence": 300,
+    "tag": "{Tags: [neverland_teleportmarker], Invulnerable: 1b, Silent: 1b, Invisible:1b}",
+    "condition": {
+        "type": "origins:and",
+        "conditions": [
+            {
+                "type": "origins:resource",
+                "resource": "*:origins/storm-spirit/abilities/mass-teleport_b-can-use",
+                "comparison": "==",
+                "compare_to": 1
+            },
+            {
+                "type": "origins:command",
+                "command": "scoreboard players get #global neverland_teleportmarker-id",
+                "comparison": "<=",
+                "compare_to": 0
+            }
+        ]
+    }
+}

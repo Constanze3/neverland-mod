@@ -1,0 +1,32 @@
+{
+	"name": "Water Sucking Plant",
+	"description": "You receive strength and regeneration when in water or in rain.",
+	"type": "origins:stacking_status_effect",
+	"min_stacks": 0,
+	"max_stacks": 1,
+	"duration_per_stack": 100,
+	"condition": {
+		"type": "origins:or",
+		"conditions": [
+			{
+				"type": "origins:fluid_height",
+				"fluid": "minecraft:water",
+				"comparison": ">",
+				"compare_to": 0
+			},
+			{
+				"type": "origins:in_rain"
+			}
+		]
+	},
+	"effects": [
+		{
+			"effect": "minecraft:strength",
+			"show_particles": false
+		},
+		{
+			"effect": "minecraft:regeneration",
+			"show_particles": false
+		}
+	]
+}

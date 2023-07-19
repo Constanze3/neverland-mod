@@ -1,0 +1,54 @@
+{
+    "type": "origins:multiple",
+    "bar-cooldown": {
+        "type": "origins:cooldown",
+        "cooldown": 5
+    },
+    "on_callback": {
+        "type": "origins:action_on_callback",
+        "entity_action_gained": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale delay set pehkui:motion 0 @s"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale set pehkui:motion 0 @s"
+                },
+                {
+                    "type": "origins:trigger_cooldown",
+                    "power": "*:*_bar-cooldown"
+                }
+            ]
+        },
+        "entity_action_lost": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale set pehkui:motion 1 @s"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "scale delay set pehkui:motion 1 @s"
+                }
+            ]
+        }
+    },
+    "on-cooldown-over": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_bar-cooldown",
+            "comparison": "==",
+            "compare_to": 0
+        },
+        "rising_action": {
+            "type": "origins:execute_command",
+            "command": "power remove @s neverland:origins/nature-golem/given/lock-in-place"
+        }
+    }
+}

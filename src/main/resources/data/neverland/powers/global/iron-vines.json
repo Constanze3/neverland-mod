@@ -1,0 +1,67 @@
+{
+    "hidden": true,
+    "type": "origins:multiple",
+    "b-active": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1
+    },
+    "set-b-active": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:origin",
+                    "origin": "neverland:nature-golem",
+                    "inverted": true
+                },
+                {
+                    "type": "origins:command",
+                    "command": "execute if entity @e[tag=neverland_nature-golem, distance=..7]",
+                    "comparison": ">",
+                    "compare_to": 0
+                }
+            ]
+        },
+        "rising_action": {
+            "type": "origins:change_resource",
+            "resource": "neverland:global/iron-vines_b-active",
+            "operation": "set",
+            "change": 1
+        },
+        "falling_action": {
+            "type": "origins:change_resource",
+            "resource": "neverland:global/iron-vines_b-active",
+            "operation": "set",
+            "change": 0
+        }
+    },
+    "modify-break-speed": {
+        "type": "origins:modify_break_speed",
+        "condition": {
+            "type": "origins:resource",
+            "resource": "neverland:global/iron-vines_b-active",
+            "comparison": "==",
+            "compare_to": 1
+        },
+        "block_condition": {
+            "type": "origins:or",
+            "conditions": [
+                {
+                    "type": "origins:block",
+                    "block": "minecraft:vine"
+                },
+                {
+                    "type": "origins:block",
+                    "block": "minecraft:moss_block"
+                }
+            ]
+        },
+        "modifier": {
+            "operation": "set_total",
+            "value": 0.001
+        }
+    }
+}

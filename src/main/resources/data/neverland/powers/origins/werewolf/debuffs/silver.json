@@ -1,0 +1,91 @@
+{
+	"name": "Weak to Silver",
+	"description": "TODO description",
+	"type": "origins:multiple",
+	"silver-weapon-buff": {
+		"type": "origins:modify_damage_taken",
+		"damage_condition": {
+			"type": "origins:attacker",
+			"entity_condition": {
+				"type": "origins:equipped_item",
+				"equipment_slot": "mainhand",
+				"item_condition": {
+					"type": "origins:or",
+					"conditions": [
+						{
+							"type": "origins:ingredient",
+							"ingredient": {
+								"item": "neverland:silver_sword"
+							}
+						},
+						{
+							"type": "origins:ingredient",
+							"ingredient": {
+								"item": "neverland:silver_axe"
+							}
+						}
+					]
+				}
+			}
+		},
+		"modifier": {
+			"operation": "addition",
+			"value": 3
+		}
+	},
+	"arrow-buff": {
+		"type": "origins:modify_damage_taken",
+		"modifier": {
+			"operation": "addition",
+			"value": 2
+		},
+		"damage_condition": {
+			"type": "origins:projectile",
+			"projectile": "neverland:silver_arrow"
+		}
+	},
+	"cant-pick-silver-up": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "execute as @e[type=item, nbt={Item:{id:'neverland:silver_ingot'}}, distance=..3] run data merge entity @s {PickupDelay: 3s}"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "execute as @e[type=item, nbt={Item:{id:'neverland:silver_sword'}}, distance=..3] run data merge entity @s {PickupDelay: 3s}"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "execute as @e[type=item, nbt={Item:{id:'neverland:silver_axe'}}, distance=..3] run data merge entity @s {PickupDelay: 3s}"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "execute as @e[type=item, nbt={Item:{id:'neverland:silver_arrow'}}, distance=..3] run data merge entity @s {PickupDelay: 3s}"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "execute as @e[type=neverland:silver_arrow, distance=..3] run data merge entity @s {pickup: 0b}"
+				}
+			]
+		}
+	},
+	"damage-if-silver-in-inventory": {
+		"type": "origins:action_over_time",
+		"interval": 10,
+		"condition": {
+			"type": "origins:command",
+			"command": "clear @s #c:silver 0",
+			"comparison": ">",
+			"compare_to": 0
+		},
+		"entity_action": {
+			"type": "origins:damage",
+			"amount": 1,
+			"damage_type": "minecraft:generic"
+		}
+	}
+}

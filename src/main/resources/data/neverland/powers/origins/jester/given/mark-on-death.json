@@ -1,0 +1,22 @@
+{
+    "type": "origins:self_action_when_hit",
+    "cooldown": 0,
+    "condition": {
+        "type": "origins:health",
+        "comparison": "<=",
+        "compare_to": 0
+    },
+    "entity_action": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:execute_command",
+                "command": "execute at @a[distance=0.1.., tag=neverland_jester] if score @p neverland_id = @s neverland_marked-by-jester run resource set @p neverland:origins/jester/abilities/finish-trap_b-run 1"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "power remove @s neverland:origins/jester/given/mark-on-death"
+            }
+        ]
+    }
+}

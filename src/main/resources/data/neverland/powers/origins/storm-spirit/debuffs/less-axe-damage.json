@@ -1,0 +1,15 @@
+{
+    "name": "Heavy wepons",
+    "description": "TODO description",
+    "type": "origins:modify_damage_dealt",
+    "item_condition": {
+        "type": "origins:ingredient",
+        "ingredient": {
+            "tag": "minecraft:axes"
+        }
+    },
+    "modifier": {
+        "operation": "multiply_total",
+        "value": -0.25
+    }
+}

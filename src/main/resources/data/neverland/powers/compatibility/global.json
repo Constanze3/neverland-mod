@@ -1,0 +1,74 @@
+{
+    "hidden": true,
+    "type": "origins:action_on_callback",
+    "entity_action_gained": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:grant_power",
+                "power": "neverland:global/blood-sense-effect",
+                "source": "neverland:compatibility"
+            },
+            {
+                "type": "origins:grant_power",
+                "power": "neverland:global/id",
+                "source": "neverland:compatibility"
+            },
+            {
+                "type": "origins:grant_power",
+                "power": "neverland:global/iron-vines",
+                "source": "neverland:compatibility"
+            },
+            {
+                "type": "origins:grant_power",
+                "power": "neverland:global/remove-stolen-tags",
+                "source": "neverland:compatibility"
+            },
+            {
+                "type": "origins:grant_power",
+                "power": "neverland:global/silver-arrow-pickup-fix",
+                "source": "neverland:compatibility"
+            },
+            {
+                "type": "origins:grant_power",
+                "power": "neverland:global/teleport-id",
+                "source": "neverland:compatibility"
+            }
+        ]
+    },
+    "entity_action_lost": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:revoke_power",
+                "power": "neverland:global/blood-sense-effect",
+                "source": "neverland:compatibility"
+            },
+            {
+                "type": "origins:revoke_power",
+                "power": "neverland:global/id",
+                "source": "neverland:compatibility"
+            },
+            {
+                "type": "origins:revoke_power",
+                "power": "neverland:global/iron-vines",
+                "source": "neverland:compatibility"
+            },
+            {
+                "type": "origins:revoke_power",
+                "power": "neverland:global/remove-stolen-tags",
+                "source": "neverland:compatibility"
+            },
+            {
+                "type": "origins:revoke_power",
+                "power": "neverland:global/silver-arrow-pickup-fix",
+                "source": "neverland:compatibility"
+            },
+            {
+                "type": "origins:revoke_power",
+                "power": "neverland:global/teleport-id",
+                "source": "neverland:compatibility"
+            }
+        ]
+    }
+}

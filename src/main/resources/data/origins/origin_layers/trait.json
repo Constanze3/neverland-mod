@@ -1,6 +1,4 @@
 {
-  "name": "Trait",
-  "order": 1,
   "origins": [
     "neverland:traits/auto-cooker",
     "neverland:traits/concrete-converter",

@@ -2,6 +2,8 @@ Only updated about two times a year.
 
 # Neverland
 
+Download: https://github.com/Constanze3/NeverlandMod/releases/download/0.2.2/neverland-0.2.2+1.20.1.jar
+
 Dependencies:
 - Fabric API
 - Origins

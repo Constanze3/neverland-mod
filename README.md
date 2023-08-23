@@ -1,6 +1,10 @@
 Only updated about two times a year.
 
 # Neverland
+A Minecraft mod featuring a collection of origins created originally for a server I hosted.
+The goal of the origins is to make playing Minecraft more fun in creative ways.
+
+## Installing
 
 Download: https://github.com/Constanze3/NeverlandMod/releases/download/0.2.2/neverland-0.2.2+1.20.1.jar
 
@@ -9,8 +13,7 @@ Dependencies:
 - Origins
 - Pehkui
 
-A collection of origins created originally for a server I hosted.
-The goal of the origins is to make playing minecraft more fun in creative ways.
+## Content
 
 Origins:
 - Harbinger

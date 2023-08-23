@@ -4,7 +4,7 @@ Only updated about two times a year.
 A Minecraft mod featuring a collection of origins created originally for a server I hosted.
 The goal of the origins is to make playing Minecraft more fun in creative ways.
 
-## Installing
+## Installation
 
 Download: https://github.com/Constanze3/NeverlandMod/releases/download/0.2.2/neverland-0.2.2+1.20.1.jar
 

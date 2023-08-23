@@ -1,6 +1,6 @@
 {
     "name": "Plants and Fire",
-    "description": "Since you are a plant you take 1.5x fire damage.",
+    "description": "You take 130% fire damage.",
     "type": "origins:modify_damage_taken",
     "damage_condition": {
         "type": "origins:fire"

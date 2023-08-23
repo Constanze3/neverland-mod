@@ -5,22 +5,18 @@ import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
+import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
 public class ModItemGroups {
     public static ItemGroup NEVERLAND;
 
-    private static ItemGroup.Builder create(String id) {
-        return create(new Identifier(Neverland.MODID, id));
-    }
-
-    private static ItemGroup.Builder create(Identifier id) {
-        return FabricItemGroup.builder(id);
-    }
-
     public static void register() {
-        NEVERLAND = create("neverland_group")
+        NEVERLAND = FabricItemGroup.builder()
                 .icon(() -> new ItemStack(Items.APPLE))
+                .displayName(Text.translatable("itemGroup.neverland.neverland_group"))
                 .entries((displayContext, entries) -> {
                     entries.add(ModItems.SILVER_INGOT);
                     entries.add(ModItems.SILVER_SWORD);
@@ -32,5 +28,7 @@ public class ModItemGroups {
                     entries.add(ModItems.RUNE_BLOCK);
                 })
                 .build();
+
+        Registry.register(Registries.ITEM_GROUP, new Identifier("neverland", "neverland_group"), NEVERLAND);
     }
 }

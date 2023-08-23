@@ -38,8 +38,17 @@
                                 "type": "origins:delay",
                                 "ticks": 10,
                                 "action": {
-                                    "type": "origins:execute_command",
-                                    "command": "execute as @a[tag=neverland_has-teleport-id] if score @s neverland_teleport-id = @e[distance=..0.1, sort=nearest, limit=1] neverland_teleportmarker-id rotated as @s run tp @s ~ ~ ~ ~ ~"
+                                    "type": "origins:and",
+                                    "actions": [
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "execute as @a[tag=neverland_has-teleport-id] if score @s neverland_teleport-id = @e[distance=..0.1, sort=nearest, limit=1] neverland_teleportmarker-id run clear @s neverland:orb_of_the_storm 1"
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "execute as @a[tag=neverland_has-teleport-id] if score @s neverland_teleport-id = @e[distance=..0.1, sort=nearest, limit=1] neverland_teleportmarker-id rotated as @s run tp @s ~ ~ ~ ~ ~"
+                                        }
+                                    ]
                                 }
                             }
                         ]

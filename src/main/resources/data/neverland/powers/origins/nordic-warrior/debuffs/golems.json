@@ -1,6 +1,5 @@
 {
-    "name": "Golems",
-    "description": "TODO description",
+    "hidden": true,
     "type": "origins:action_over_time",
     "interval": 1,
     "entity_action": {
@@ -43,20 +42,15 @@
                             },
                             {
                                 "type": "origins:execute_command",
+                                "command": "data modify entity @s ArmorDropChances set value [0f, 0f, 0f, 0f]"
+                            },
+                            {
+                                "type": "origins:execute_command",
                                 "command": "tag @s add neverland_angry-golem"
                             },
                             {
                                 "type": "origins:execute_command",
                                 "command": "attribute @s minecraft:generic.follow_range base set 100"
-                            },
-                            {
-                                "type": "origins:apply_effect",
-                                "effects": {
-                                    "effect": "minecraft:speed",
-                                    "duration": 40,
-                                    "amplifier": 2,
-                                    "show_particles": false
-                                }
                             },
                             {
                                 "type": "origins:execute_command",

@@ -1,6 +1,6 @@
 {
-    "name": "Skin Effect",
-    "description": "TODO description",
+    "name": "One with the Wind",
+    "description": "Toggle the blueish, transparent skin effect by sneaking+attacking while holding a lightning rod.",
     "type": "origins:multiple",
     "b-active": {
         "type": "origins:resource",

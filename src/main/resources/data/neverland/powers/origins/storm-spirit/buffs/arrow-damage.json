@@ -1,6 +1,6 @@
 {
 	"name": "Wind and Arrow",
-	"description": "TODO description",
+	"description": "Arrows that you fire deal damage an extra 1.5 hearts.",
 	"type": "origins:modify_projectile_damage",
 	"damage_condition": {
 		"type": "origins:name",

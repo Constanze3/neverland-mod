@@ -1,6 +1,6 @@
 {
-	"name": "Weak to Silver",
-	"description": "TODO description",
+	"name": "Silver",
+	"description": "Weapons made out of silver deal 1.5 hearts of extra damage to you, or 1 heart in the case of silver arrows. You can't pick anything made out of silver up and even if you do you get constantly damaged.",
 	"type": "origins:multiple",
 	"silver-weapon-buff": {
 		"type": "origins:modify_damage_taken",

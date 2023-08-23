@@ -1,8 +1,23 @@
 {
     "name": "Uncontrollable Laughter",
-    "description": "TODO description",
+    "description": "Every minute, there is a 10% chance that you start laughing for 2 seconds like a maniac. During this short interval, you can't move.",
     "type": "origins:action_over_time",
     "interval": 1200,
+    "condition": {
+        "type": "origins:and",
+        "conditions": [
+            {
+                "type": "origins:submerged_in",
+                "fluid": "minecraft:water",
+                "inverted": true
+            },
+            {
+                "type": "origins:submerged_in",
+                "fluid": "minecraft:lava",
+                "inverted": true
+            }
+        ]
+    },
     "entity_action": {
         "type": "origins:chance",
         "action": {

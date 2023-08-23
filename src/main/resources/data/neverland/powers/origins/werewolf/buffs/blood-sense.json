@@ -1,6 +1,6 @@
 {
 	"name": "Blood Sense",
-	"description": "TODO description",
+	"description": "Entities under 50% health get highlighted for you if they are in a 25 block radius or if you can see them.",
 	"type": "origins:entity_glow",
 	"use_teams": false,
 	"red": 1,

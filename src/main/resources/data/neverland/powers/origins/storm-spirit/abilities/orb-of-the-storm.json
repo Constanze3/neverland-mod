@@ -1,6 +1,6 @@
 {
     "name": "Orb of the Storm",
-    "description": "TODO description",
+    "description": "You can convert diamond into Orb of the Storm by sneak+use while holding it.",
     "type": "origins:active_self",
     "key": {
         "key": "key.use"

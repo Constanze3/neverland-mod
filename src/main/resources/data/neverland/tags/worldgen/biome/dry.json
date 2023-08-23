@@ -1,0 +1,10 @@
+{
+    "replace": false,
+    "values": [
+        "minecraft:badlands",
+        "minecraft:desert",
+        "minecraft:savanna",
+        "minecraft:savanna_plateau",
+        "minecraft:windswept_savanna"
+    ]
+}

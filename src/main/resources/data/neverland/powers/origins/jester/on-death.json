@@ -1,0 +1,92 @@
+{
+    "hidden": true,
+    "type": "origins:action_when_damage_taken",
+    "condition": {
+        "type": "origins:health",
+        "comparison": "<=",
+        "compare_to": 0
+    },
+    "entity_action": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "info": "reset mark",
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:change_resource",
+                        "resource": "*:origins/jester/abilities/mark_b-active",
+                        "operation": "set",
+                        "change": 0
+                    },
+                    {
+                        "type": "origins:change_resource",
+                        "resource": "*:origins/jester/abilities/mark_bar-duration",
+                        "operation": "set",
+                        "change": 100
+                    }
+                ]
+            },
+            {
+                "info": "reset phase",
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:change_resource",
+                        "resource": "*:origins/jester/abilities/phase_i-energy",
+                        "operation": "set",
+                        "change": 200
+                    },
+                    {
+                        "type": "origins:change_resource",
+                        "resource": "*:origins/jester/abilities/phase_bar-jump-cooldown",
+                        "operation": "set",
+                        "change": 20
+                    }
+                ]
+            },
+            {
+                "info": "reset trap",
+                "type": "origins:and",
+                "actions": [
+                    {
+                        "type": "origins:change_resource",
+                        "resource": "*:origins/jester/abilities/trap_b-can-use",
+                        "operation": "set",
+                        "change": 1
+                    },
+                    {
+                        "type": "origins:change_resource",
+                        "resource": "*:origins/jester/abilities/trap_b-active",
+                        "operation": "set",
+                        "change": 0
+                    },
+                    {
+                        "type": "origins:change_resource",
+                        "resource": "*:origins/jester/abilities/trap_bar-duration",
+                        "operation": "set",
+                        "change": 140
+                    },
+                    {
+                        "type": "origins:change_resource",
+                        "resource": "*:origins/jester/abilities/trap_bar-cooldown",
+                        "operation": "set",
+                        "change": 1800
+                    },
+                    {
+                        "type": "origins:execute_command",
+                        "command": "execute as @e[tag=neverland_trapmarker] if score @s neverland_id = @p neverland_id run resource set @s neverland:origins/jester/given/trapmarker_bar-cooldown 140"
+                    }
+                ]
+            },
+            {
+                "info": "reset bloodthirst",
+                "type": "origins:change_resource",
+                "resource": "*:origins/jester/debuffs/bloodthirst_i-amount",
+                "operation": "set",
+                "change": 0
+            }
+        ]
+    },
+    "cooldown": 0
+}

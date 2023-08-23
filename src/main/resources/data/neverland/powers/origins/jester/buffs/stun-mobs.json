@@ -1,6 +1,6 @@
 {
     "name": "Stun Mobs",
-    "description": "TODO description",
+    "description": "When hitting mobs, there is a 40% chance to apply extreme slowness, effectively stunning the mobs.",
     "type": "origins:action_on_hit",
     "bientity_condition": {
         "type": "origins:target_condition",

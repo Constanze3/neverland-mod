@@ -3,7 +3,7 @@ package com.constanzee.neverland.block;
 import com.constanzee.neverland.Neverland;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
-import net.minecraft.block.Material;
+import net.minecraft.block.Blocks;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
@@ -17,6 +17,6 @@ public class ModBlocks {
     }
 
     public static void register() {
-        RUNE_BLOCK = register("rune_block", new Block(FabricBlockSettings.of(Material.STONE).requiresTool().strength(50.0f, 1200.0f)));
+        RUNE_BLOCK = register("rune_block", new Block(FabricBlockSettings.copyOf(Blocks.STONE).requiresTool().strength(50.0f, 1200.0f)));
     }
 }

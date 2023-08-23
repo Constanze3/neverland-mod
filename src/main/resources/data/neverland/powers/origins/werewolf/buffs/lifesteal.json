@@ -1,6 +1,6 @@
 {
     "name": "Lifesteal",
-    "description": "TODO description",    
+    "description": "After killing a player you heal 3 hearts and when killing any other entity 1 heart.",    
     "type": "origins:action_on_hit",
     "cooldown": 0,
     "bientity_condition": {

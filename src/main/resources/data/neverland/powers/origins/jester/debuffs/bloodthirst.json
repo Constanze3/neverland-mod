@@ -1,13 +1,12 @@
 {
     "name": "Bloodthirst",
-    "description": "TODO description",
+    "description": "As time goes on your 'blood bar' goes down every 4 minutes and once it gets empty you start taking damage. The bar can be increased by killing entities.",
     "type": "origins:multiple",
     "i-amount": {
         "type": "origins:resource",
         "min": 0,
         "max": 10,
         "hud_render": {
-            "should_render": true,
             "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_01.png",
             "bar_index": 5,
             "inverted": true

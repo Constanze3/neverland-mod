@@ -1,6 +1,6 @@
 {
-    "name": "Faster Boat",
-    "description": "TODO description",
+    "name": "Skidbladnir",
+    "description": "Boats become bigger and 30% faster when you use them.",
     "type": "origins:action_over_time",
     "interval": 1,
     "condition": {
@@ -60,6 +60,14 @@
     "falling_action": {
         "type": "origins:and",
         "actions": [
+            {
+                "type": "origins:delay",
+                "ticks": 5,
+                "action": {
+                    "type": "origins:add_velocity",
+                    "y": 0.5
+                }
+            },
             {
                 "type": "origins:execute_command",
                 "command": "execute as @e[type=minecraft:boat] if score @s neverland_id = @p neverland_id run scale set pehkui:motion 1"

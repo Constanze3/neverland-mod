@@ -1,6 +1,6 @@
 {
 	"name": "Blood Donation",
-	"description": "TODO description",
+	"description": "While holding an empty glass bottle, pressing sneak+use will fill it with your blood, while slightly damaging you. Combining it with a Spider Eye, the Potion of Blood Sense can be crafted from it.",
 	"type": "origins:active_self",
 	"key": {
 		"key": "key.use"

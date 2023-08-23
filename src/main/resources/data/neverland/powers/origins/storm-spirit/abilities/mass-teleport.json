@@ -1,6 +1,6 @@
 {
     "name": "Mass Teleport",
-    "description": "TODO description",
+    "description": "Using your secondary in the overworld while standing under the sky, you can summon up to 5 people who are holding an Orb of the Storm in their mainhand. The teleportation consumes the orbs, and the ability has a 2-minute cooldown.",
     "type": "origins:multiple",
     "bar-cooldown": {
         "type": "origins:cooldown",
@@ -40,6 +40,9 @@
                     "command": "scoreboard players get #global neverland_teleportmarker-id",
                     "comparison": "<=",
                     "compare_to": 0
+                },
+                {
+                    "type": "origins:exposed_to_sky"
                 }
             ]
         },

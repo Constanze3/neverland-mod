@@ -1,5 +1,5 @@
 {
-	"name": "Concrete Converter",
+	"name": "Converter",
 	"description": "If you hold a dye in your offhand all cobblestone in your inventory is slowly converted into concrete with the same color as the dye.",
 	"impact": 2,
 	"icon": "minecraft:red_concrete",

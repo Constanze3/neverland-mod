@@ -1,6 +1,6 @@
 {
-    "name": "Steal",
-    "description": "TODO description",
+    "name": "Loki's Hand",
+    "description": "You can steal items from the mainhand of other players, but only if the item isn't too valuable. Stealing has a cooldown of 1.5 minutes.",
     "type": "origins:multiple",
     "bar-duration": {
         "type": "origins:cooldown",
@@ -10,7 +10,6 @@
         "type": "origins:cooldown",
         "cooldown": 1800,
         "hud_render": {
-            "should_render": true,
             "sprite_location": "origins:textures/gui/community/huang/resource_bar_02.png",
             "bar_index": 13
         }

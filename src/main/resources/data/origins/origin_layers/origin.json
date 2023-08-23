@@ -1,5 +1,7 @@
 {
   "replace": false,
+  "order": 0,
+  "name": "Origin",
   "origins": [
     "neverland:human",
     "neverland:jester",

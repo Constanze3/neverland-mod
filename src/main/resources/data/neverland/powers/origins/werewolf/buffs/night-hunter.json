@@ -1,6 +1,6 @@
 {
     "name": "Night Hunter",
-    "description": "TODO description",
+    "description": "At night you deal 1 heart of extra damage, and you also have night vision.",
     "type": "origins:multiple",
     "damage": {
         "type": "origins:modify_damage_dealt",

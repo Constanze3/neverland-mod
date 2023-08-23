@@ -1,12 +1,11 @@
 {
     "name": "Dash",
-    "description": "TODO description",
+    "description": "Using your primary, you can dash when standing on ground. You have 3 dashes and they each load back over 6 seconds.",
     "type": "origins:multiple",
     "bar-cooldown": {
         "type": "origins:cooldown",
         "cooldown": 120,
         "hud_render": {
-            "should_render": true,
             "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_03.png",
             "bar_index": 4
         }
@@ -17,7 +16,6 @@
         "max": 3,
         "start_value": 3,
         "hud_render": {
-            "should_render": true,
             "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_03.png",
             "bar_index": 16
         }

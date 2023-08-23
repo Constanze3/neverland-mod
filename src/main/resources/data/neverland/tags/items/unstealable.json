@@ -1,6 +1,25 @@
 {
     "replace": false,
     "values": [
-        "minecraft:diamond_sword"
+        "#minecraft:tools",
+        "#minecraft:swords",
+        "minecraft:totem_of_undying",
+        "minecraft:nether_star",
+        "minecraft:golden_apple",
+        "minecraft:experience_bottle",
+        "minecraft:enchanted_book",
+        "#minecraft:ores",
+        "#minecraft:gems",
+        "minecraft:ancient_debris",
+        "minecraft:netherite_ingot",
+        "minecraft:netherite_scrap",
+        "#neverland:helmets",
+        "#neverland:boots",
+        "#neverland:chestplates",
+        "#neverland:leggings",
+        "minecraft:dragon_head",
+        "minecraft:shulker_box",
+        "minecraft:beacon",
+        "#minecraft:potions"
     ]
 }

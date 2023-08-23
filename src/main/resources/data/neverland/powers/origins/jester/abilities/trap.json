@@ -1,12 +1,11 @@
 {
     "name": "Trap",
-    "description": "TODO description",
+    "description": "When punching an entity, you mark them for a duration. If you press your primary active button during this interval, a trap will appear around you and the marked entity gets teleported to you as well. The trap disappears after a short while or also if you kill the entity, die, or go too far. This ability has a 1.5-minute cooldown.",
     "type": "origins:multiple",
     "bar-duration": {
         "type": "origins:cooldown",
         "cooldown": 140,
         "hud_render": {
-            "should_render": true,
             "bar_index": 5,
             "inverted": true
         }
@@ -15,7 +14,6 @@
         "type": "origins:cooldown",
         "cooldown": 1800,
         "hud_render": {
-            "should_render": true,
             "bar_index": 5
         }
     },
@@ -83,7 +81,11 @@
                 },
                 {
                     "type": "origins:execute_command",
-                    "command": "execute store result score @e[distance=..1, tag=neverland_trapmarker, sort=nearest, limit=1] neverland_id run scoreboard players get @s neverland_id"
+                    "command": "execute as @e[tag=neverland_trapmarker, distance=..20] if entity @s[tag=!neverland_has-id] store result score @s neverland_id run scoreboard players get @p neverland_id"
+                },
+                {
+                    "type": "origins:execute_command",
+                    "command": "execute as @e[tag=neverland_trapmarker, distance=..20] if entity @s[tag=!neverland_has-id] run tag @s add neverland_has-id"
                 },
                 {
                     "type": "origins:execute_command",
@@ -134,7 +136,7 @@
                     },
                     {
                         "type": "origins:execute_command",
-                        "command": "execute as @e[tag=neverland_trapmarker] if score @s neverland_id = @p neverland_id run resource set @s neverland:origins/jester/given/trapmarker_bar-cooldown 100"
+                        "command": "execute as @e[tag=neverland_trapmarker] if score @s neverland_id = @p neverland_id run resource set @s neverland:origins/jester/given/trapmarker_bar-cooldown 140"
                     },
                     {
                         "type": "origins:trigger_cooldown",

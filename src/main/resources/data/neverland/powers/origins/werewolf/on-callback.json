@@ -8,40 +8,5 @@
     "entity_action_lost": {
         "type": "origins:execute_command",
         "command": "tag @s remove neverland_werewolf"
-    },
-    "entity_action_respawned": {
-        "type": "origins:and",
-        "actions": [
-            {
-                "info": "reset dash",
-                "type": "origins:and",
-                "actions": [
-                    {
-                        "type": "origins:change_resource",
-                        "resource": "*:origins/werewolf/abilities/dash_b-run-reload-dashes",
-                        "operation": "set",
-                        "change": 0
-                    },
-                    {
-                        "type": "origins:change_resource",
-                        "resource": "*:origins/werewolf/abilities/dash_b-reloading-dashes",
-                        "operation": "set",
-                        "change": 0
-                    },
-                    {
-                        "type": "origins:change_resource",
-                        "resource": "*:origins/werewolf/abilities/dash_i-dash-count",
-                        "operation": "set",
-                        "change": 3
-                    },
-                    {
-                        "type": "origins:change_resource",
-                        "resource": "*:origins/werewolf/abilities/dash_bar-cooldown",
-                        "operation": "set",
-                        "change": 120
-                    }
-                ]
-            }
-        ]
     }
 }

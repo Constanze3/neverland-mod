@@ -1,7 +1,7 @@
 {
 	"name": "Jester",
 	"description": "Secretly evil trickster.",
-	"icon": "minecraft:wither_rose",
+	"icon": "minecraft:oxeye_daisy",
 	"impact": 3,
 	"powers": [
 		"neverland:origins/jester/abilities/mark",
@@ -16,6 +16,7 @@
 		"neverland:origins/jester/debuffs/uncontrollable-laughter",
 
 		"neverland:origins/jester/on-callback",
+		"neverland:origins/jester/on-death",
 
 		"neverland:global/blood-sense-effect",
 		"neverland:global/id",
@@ -24,5 +25,5 @@
 		"neverland:global/silver-arrow-pickup-fix",
 		"neverland:global/teleport-id"
 	],
-	"order": 1
+	"order": 2
 }

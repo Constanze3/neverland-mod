@@ -1,32 +1,79 @@
 {
 	"name": "Water Sucking Plant",
-	"description": "You receive strength and regeneration when in water or in rain.",
-	"type": "origins:stacking_status_effect",
-	"min_stacks": 0,
-	"max_stacks": 1,
-	"duration_per_stack": 100,
-	"condition": {
-		"type": "origins:or",
-		"conditions": [
-			{
-				"type": "origins:fluid_height",
-				"fluid": "minecraft:water",
-				"comparison": ">",
-				"compare_to": 0
-			},
-			{
-				"type": "origins:in_rain"
-			}
-		]
+	"description": "In water or rain you gain strength and also some regeneration for a few seconds.",
+	"type": "origins:multiple",
+	"bar-cooldown": {
+		"type": "origins:cooldown",
+		"cooldown": 600
 	},
-	"effects": [
-		{
+	"strength": {
+		"type": "origins:stacking_status_effect",
+		"min_stacks": 0,
+		"max_stacks": 1,
+		"duration_per_stack": 100,
+		"condition": {
+			"type": "origins:or",
+			"conditions": [
+				{
+					"type": "origins:fluid_height",
+					"fluid": "minecraft:water",
+					"comparison": ">",
+					"compare_to": 0
+				},
+				{
+					"type": "origins:in_rain"
+				}
+			]
+		},
+		"effect": {
 			"effect": "minecraft:strength",
 			"show_particles": false
-		},
-		{
-			"effect": "minecraft:regeneration",
-			"show_particles": false
 		}
-	]
+	},
+	"regeneration": {
+		"type": "origins:action_over_time",
+		"interval": 1,
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:resource",
+					"resource": "*:*_bar-cooldown",
+					"comparison": "==",
+					"compare_to": 0
+				},
+				{
+					"type": "origins:or",
+					"conditions": [
+						{
+							"type": "origins:fluid_height",
+							"fluid": "minecraft:water",
+							"comparison": ">",
+							"compare_to": 0
+						},
+						{
+							"type": "origins:in_rain"
+						}
+					]
+				}
+			]
+		},
+		"rising_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:apply_effect",
+					"effect": {
+						"effect": "minecraft:regeneration",
+						"duration": 200,
+						"show_particles": false
+					}
+				},
+				{
+					"type": "origins:trigger_cooldown",
+					"power": "*:*_bar-cooldown"
+				}
+			]
+		}
+	}
 }

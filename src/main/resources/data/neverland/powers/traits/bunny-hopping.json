@@ -1,0 +1,328 @@
+{
+    "hidden": true,
+    "type": "origins:multiple",
+    "bar-duration": {
+        "type": "origins:cooldown",
+        "cooldown": 5
+    },
+    "i-energy": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 14,
+        "hud_render": {
+            "sprite_location": "origins:textures/gui/community/huang/resource_bar_01.png",
+            "bar_index": 20,
+            "condition": {
+                "type": "origins:resource",
+                "resource": "*:*_b-show-energy",
+                "comparison": "==",
+                "compare_to": 1
+            }
+        }
+    },
+    "b-grounded": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1,
+        "start_value": 1
+    },
+    "b-show-energy": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1,
+        "start_value": 1
+    },
+    "increase-energy-on-jump": {
+        "type": "origins:modify_jump",
+        "condition": {
+            "type": "origins:equipped_item",
+            "equipment_slot": "chest",
+            "item_condition": {
+                "type": "origins:ingredient",
+                "ingredient": {
+                    "item": "minecraft:elytra"
+                }
+            },
+            "inverted": true
+        },
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_b-grounded",
+                    "operation": "set",
+                    "change": 0
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_bar-duration",
+                    "operation": "set",
+                    "change": 40
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_i-energy",
+                    "operation": "add",
+                    "change": 1
+                }
+            ]
+        }
+    },
+    "reset-energy-when-not-jumping": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "condition": {
+            "type": "origins:or",
+            "conditions": [
+                {
+                    "type": "origins:block_collision",
+                    "offset_y": -0.1
+                },
+                {
+                    "type": "origins:fluid_height",
+                    "fluid": "minecraft:water",
+                    "comparison": ">",
+                    "compare_to": 0
+                },
+                {
+                    "type": "origins:fluid_height",
+                    "fluid": "minecraft:lava",
+                    "comparison": ">",
+                    "compare_to": 0
+                },
+                {
+                    "type": "origins:equipped_item",
+                    "equipment_slot": "chest",
+                    "item_condition": {
+                        "type": "origins:ingredient",
+                        "ingredient": {
+                            "item": "minecraft:elytra"
+                        }
+                    }
+                }
+            ]
+        },
+        "rising_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_b-grounded",
+                    "operation": "set",
+                    "change": 1
+                },
+                {
+                    "type": "origins:trigger_cooldown",
+                    "power": "*:*_bar-duration"
+                }
+            ]
+        }
+    },
+    "on-duration-over": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_b-grounded",
+                    "comparison": "==",
+                    "compare_to": 1
+                },
+                {
+                    "type": "origins:resource",
+                    "resource": "*:*_bar-duration",
+                    "comparison": "==",
+                    "compare_to": 0
+                }
+            ]
+        },
+        "rising_action": {
+            "type": "origins:change_resource",
+            "resource": "*:*_i-energy",
+            "operation": "set",
+            "change": 0
+        }
+    },
+    "modify-speed-1": {
+        "type": "origins:modify_velocity",
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_i-energy",
+            "comparison": ">=",
+            "compare_to": 2
+        },
+        "modifier": {
+            "value": 0.05,
+            "operation": "multiply_total_multiplicative"
+        },
+        "axes": [
+            "x",
+            "z"
+        ]
+    },
+    "modify-speed-2": {
+        "type": "origins:modify_velocity",
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_i-energy",
+            "comparison": ">=",
+            "compare_to": 4
+        },
+        "modifier": {
+            "value": 0.05,
+            "operation": "multiply_total_multiplicative"
+        },
+        "axes": [
+            "x",
+            "z"
+        ]
+    },
+    "modify-speed-3": {
+        "type": "origins:modify_velocity",
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_i-energy",
+            "comparison": ">=",
+            "compare_to": 6
+        },
+        "modifier": {
+            "value": 0.05,
+            "operation": "multiply_total_multiplicative"
+        },
+        "axes": [
+            "x",
+            "z"
+        ]
+    },
+    "modify-speed-4": {
+        "type": "origins:modify_velocity",
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_i-energy",
+            "comparison": ">=",
+            "compare_to": 8
+        },
+        "modifier": {
+            "value": 0.05,
+            "operation": "multiply_total_multiplicative"
+        },
+        "axes": [
+            "x",
+            "z"
+        ]
+    },
+    "modify-speed-5": {
+        "type": "origins:modify_velocity",
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_i-energy",
+            "comparison": ">=",
+            "compare_to": 10
+        },
+        "modifier": {
+            "value": 0.05,
+            "operation": "multiply_total_multiplicative"
+        },
+        "axes": [
+            "x",
+            "z"
+        ]
+    },
+    "modify-speed-6": {
+        "type": "origins:modify_velocity",
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_i-energy",
+            "comparison": ">=",
+            "compare_to": 12
+        },
+        "modifier": {
+            "value": 0.05,
+            "operation": "multiply_total_multiplicative"
+        },
+        "axes": [
+            "x",
+            "z"
+        ]
+    },
+    "modify-speed-7": {
+        "type": "origins:modify_velocity",
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_i-energy",
+            "comparison": ">=",
+            "compare_to": 14
+        },
+        "modifier": {
+            "value": 0.05,
+            "operation": "multiply_total_multiplicative"
+        },
+        "axes": [
+            "x",
+            "z"
+        ]
+    },
+    "modify-speed-faster": {
+        "type": "origins:modify_velocity",
+        "condition": {
+            "type": "origins:origin",
+            "origin": "neverland:storm-spirit"
+        },
+        "modifier": {
+            "value": 0.2,
+            "operation": "multiply_total_multiplicative"
+        },
+        "axes": [
+            "x",
+            "z"
+        ]
+    },
+    "toggle-show-cooldown": {
+        "type": "origins:active_self",
+        "key": {
+            "key": "key.attack"
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:equipped_item",
+                    "equipment_slot": "mainhand",
+                    "item_condition": {
+                        "type": "origins:ingredient",
+                        "ingredient": {
+                            "item": "minecraft:rabbit_foot"
+                        }
+                    }
+                },
+                {
+                    "type": "origins:sneaking"
+                }
+            ]
+        },
+        "entity_action": {
+            "type": "origins:if_else",
+            "condition": {
+                "type": "origins:resource",
+                "resource": "*:*_b-show-energy",
+                "comparison": "==",
+                "compare_to": 0
+            },
+            "if_action": {
+                "type": "origins:change_resource",
+                "resource": "*:*_b-show-energy",
+                "operation": "set",
+                "change": 1
+            },
+            "else_action": {
+                "type": "origins:change_resource",
+                "resource": "*:*_b-show-energy",
+                "operation": "set",
+                "change": 0
+            }
+        }
+    }
+}

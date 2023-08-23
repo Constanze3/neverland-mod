@@ -1,6 +1,6 @@
 {
     "name": "Thorny",
-    "description": "Because your skin is full of spikes, mobs and players that hit you with their hand get damaged, and you also deal more damage with bare hands.",
+    "description": "You damage deal half a heart more with your bare hands and anyone hitting you with bare hands is hurt for 2 hearts.",
     "type": "origins:multiple",
     "increased_damage_with_hand": {
         "type": "origins:modify_damage_dealt",

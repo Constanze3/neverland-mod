@@ -1,10 +1,20 @@
 {
   "name": "Photosynthesis",
-  "description": "You are a literal plant and plants eat sunlight so you do it too.",
+  "description": "You gain 3 food and 3 saturation points every 20 seconds when exposed to the sun.",
   "type": "origins:action_over_time",
   "interval": 400,
   "condition": {
-    "type": "origins:exposed_to_sun"
+    "type": "origins:and",
+    "conditions": [
+      {
+        "type": "origins:exposed_to_sun"
+      },
+      {
+        "type": "origins:health",
+        "comparison": ">=",
+        "compare_to": 20
+      }
+    ]
   },
   "entity_action": {
     "type": "origins:feed",

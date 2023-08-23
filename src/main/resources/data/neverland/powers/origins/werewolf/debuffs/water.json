@@ -1,6 +1,6 @@
 {
-	"name": "Weak in Water",
-	"description": "TODO description",
+	"name": "Water Hater",
+	"description": "You gain a stacking weakness effect in water leading up to lasting 12.5 seconds after leaving the water, and you even swim 25% slower.",
 	"type": "origins:multiple",
 	"effects": {
 		"type": "origins:stacking_status_effect",

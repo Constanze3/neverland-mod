@@ -1,12 +1,11 @@
 {
-    "name": "Bonemeal Yourself",
-    "description": "Use bonemeal in your hand while sneaking to heal some of your damaged plant cells.",
+    "name": "Bone Meal Yourself",
+    "description": "When you are under half health, use bone meal in your mainhand while sneaking to heal 2 hearts. This ability has a 10-second cooldown.",
     "type": "origins:multiple",
     "bar-cooldown": {
         "type": "origins:cooldown",
         "cooldown": 200,
         "hud_render": {
-            "should_render": true,
             "sprite_location": "origins:textures/gui/community/huang/resource_bar_02.png",
             "bar_index": 8
         }
@@ -21,10 +20,6 @@
         "type": "origins:active_self",
         "key": {
             "key": "key.use"
-        },
-        "cooldown": 1,
-        "hud_render": {
-            "should_render": false
         },
         "condition": {
             "type": "origins:and",

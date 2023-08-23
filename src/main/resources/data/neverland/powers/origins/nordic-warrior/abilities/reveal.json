@@ -1,12 +1,11 @@
 {
     "name": "Sight of Heimdall",
-    "description": "TODO description",
+    "description": "At a cost of half heart, everyone closer than 30 blocks gets highlighted for 4 seconds, the ability has 12.5 seconds cooldown. Also, if the entity is in a 4 block range of a rune block, the sight gets blocked.",
     "type": "origins:multiple",
     "bar-duration": {
         "type": "origins:cooldown",
         "cooldown": 80,
         "hud_render": {
-            "should_render": true,
             "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_02.png",
             "bar_index": 7,
             "inverted": true
@@ -16,7 +15,6 @@
         "type": "origins:cooldown",
         "cooldown": 250,
         "hud_render": {
-            "should_render": true,
             "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_02.png",
             "bar_index": 7
         }
@@ -47,9 +45,9 @@
                     "compare_to": 1
                 },
                 {
-                    "type": "origins:xp_levels",
+                    "type": "origins:health",
                     "comparison": ">=",
-                    "compare_to": 2
+                    "compare_to": 1
                 }
             ]
         },
@@ -77,8 +75,9 @@
                     }
                 },
                 {
-                    "type": "origins:add_xp",
-                    "levels": -2
+                    "type": "origins:damage",
+                    "amount": 1,
+                    "damage_type": "minecraft:generic"
                 },
                 {
                     "type": "origins:change_resource",

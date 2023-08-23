@@ -1,0 +1,9 @@
+{
+	"name": "Bunny Hopping",
+	"description": "As you bunny hop you gain extra momentum that you immediately lose when staying on the ground. The energy bar can be hidden/shown with sneak+attack while having a rabbit foot in your mainhand.",
+	"impact": 2,
+	"icon": "minecraft:rabbit_foot",
+	"powers": [
+		"neverland:traits/bunny-hopping"
+	]
+}

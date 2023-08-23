@@ -1,6 +1,6 @@
 {
 	"name": "Werewolf",
-	"description": "The true beast of the night with amazing strenght and agility.",
+	"description": "The beast of the night.",
 	"icon": "minecraft:redstone",
 	"impact": 3,
 	"powers": [
@@ -17,6 +17,7 @@
 		"neverland:origins/werewolf/debuffs/water",
 
 		"neverland:origins/werewolf/on-callback",
+		"neverland:origins/werewolf/on-death",
 
 		"neverland:global/id",
         "neverland:global/iron-vines",

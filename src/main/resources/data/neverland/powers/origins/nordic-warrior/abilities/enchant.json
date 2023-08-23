@@ -1,6 +1,6 @@
 {
-    "name": "Enchant",
-    "description": "TODO description",
+    "name": "Apprentice of Brokkr and Eitri",
+    "description": "You learned from legendary masters of blacksmithing: You can get a random enchant for 5 xp levels on any weapon, armor or tool by using an anvil while holding such item.",
     "type": "origins:multiple",
     "b-can-enchant": {
         "type": "origins:resource",
@@ -24,8 +24,21 @@
                     "entity": false,
                     "shape_type": "collider",
                     "block_condition": {
-                        "type": "origins:block",
-                        "block": "minecraft:anvil"
+                        "type": "origins:or",
+                        "conditions": [
+                            {
+                                "type": "origins:block",
+                                "block": "minecraft:anvil"
+                            },
+                            {
+                                "type": "origins:block",
+                                "block": "minecraft:chipped_anvil"
+                            },
+                            {
+                                "type": "origins:block",
+                                "block": "minecraft:damaged_anvil"
+                            }
+                        ]
                     }
                 },
                 {
@@ -165,8 +178,21 @@
     "prevent-block-use": {
         "type": "origins:prevent_block_use",
         "block_condition": {
-            "type": "origins:block",
-            "block": "minecraft:anvil"
+            "type": "origins:or",
+            "conditions": [
+                {
+                    "type": "origins:block",
+                    "block": "minecraft:anvil"
+                },
+                {
+                    "type": "origins:block",
+                    "block": "minecraft:chipped_anvil"
+                },
+                {
+                    "type": "origins:block",
+                    "block": "minecraft:damaged_anvil"
+                }
+            ]
         },
         "condition": {
             "type": "origins:resource",
@@ -222,20 +248,6 @@
                                 "action": {
                                     "type": "origins:choice",
                                     "actions": [
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:bane_of_arthropods',lvl: 1}]}"
-                                            },
-                                            "weight": 50
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:bane_of_arthropods',lvl: 2}]}"
-                                            },
-                                            "weight": 40
-                                        },
                                         {
                                             "element": {
                                                 "type": "origins:merge_nbt",
@@ -295,13 +307,6 @@
                                         {
                                             "element": {
                                                 "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:looting',lvl: 1}]}"
-                                            },
-                                            "weight": 40
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
                                                 "nbt": "{Enchantments: [{id: 'minecraft:looting',lvl: 2}]}"
                                             },
                                             "weight": 30
@@ -319,20 +324,6 @@
                                                 "nbt": "{Enchantments: [{id: 'minecraft:mending',lvl: 1}]}"
                                             },
                                             "weight": 10
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:sharpness',lvl: 1}]}"
-                                            },
-                                            "weight": 50
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:sharpness',lvl: 2}]}"
-                                            },
-                                            "weight": 40
                                         },
                                         {
                                             "element": {
@@ -358,20 +349,6 @@
                                         {
                                             "element": {
                                                 "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:smite',lvl: 1}]}"
-                                            },
-                                            "weight": 50
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:smite',lvl: 2}]}"
-                                            },
-                                            "weight": 40
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
                                                 "nbt": "{Enchantments: [{id: 'minecraft:smite',lvl: 3}]}"
                                             },
                                             "weight": 30
@@ -389,13 +366,6 @@
                                                 "nbt": "{Enchantments: [{id: 'minecraft:smite',lvl: 5}]}"
                                             },
                                             "weight": 10
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:sweeping',lvl: 1}]}"
-                                            },
-                                            "weight": 40
                                         },
                                         {
                                             "element": {
@@ -455,20 +425,6 @@
                                         {
                                             "element": {
                                                 "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:efficiency',lvl: 1}]}"
-                                            },
-                                            "weight": 50
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:efficiency',lvl: 2}]}"
-                                            },
-                                            "weight": 40
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
                                                 "nbt": "{Enchantments: [{id: 'minecraft:efficiency',lvl: 3}]}"
                                             },
                                             "weight": 30
@@ -486,13 +442,6 @@
                                                 "nbt": "{Enchantments: [{id: 'minecraft:efficiency',lvl: 5}]}"
                                             },
                                             "weight": 10
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:fortune',lvl: 1}]}"
-                                            },
-                                            "weight": 30
                                         },
                                         {
                                             "element": {
@@ -566,20 +515,6 @@
                                         {
                                             "element": {
                                                 "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:efficiency',lvl: 1}]}"
-                                            },
-                                            "weight": 50
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:efficiency',lvl: 2}]}"
-                                            },
-                                            "weight": 40
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
                                                 "nbt": "{Enchantments: [{id: 'minecraft:efficiency',lvl: 3}]}"
                                             },
                                             "weight": 30
@@ -597,13 +532,6 @@
                                                 "nbt": "{Enchantments: [{id: 'minecraft:efficiency',lvl: 5}]}"
                                             },
                                             "weight": 10
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:fortune',lvl: 1}]}"
-                                            },
-                                            "weight": 30
                                         },
                                         {
                                             "element": {
@@ -670,20 +598,6 @@
                                         {
                                             "element": {
                                                 "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:bane_of_arthropods',lvl: 1}]}"
-                                            },
-                                            "weight": 50
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:bane_of_arthropods',lvl: 2}]}"
-                                            },
-                                            "weight": 40
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
                                                 "nbt": "{Enchantments: [{id: 'minecraft:bane_of_arthropods',lvl: 3}]}"
                                             },
                                             "weight": 30
@@ -712,20 +626,6 @@
                                         {
                                             "element": {
                                                 "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:efficiency',lvl: 1}]}"
-                                            },
-                                            "weight": 50
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:efficiency',lvl: 2}]}"
-                                            },
-                                            "weight": 40
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
                                                 "nbt": "{Enchantments: [{id: 'minecraft:efficiency',lvl: 3}]}"
                                             },
                                             "weight": 30
@@ -747,13 +647,6 @@
                                         {
                                             "element": {
                                                 "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:fortune',lvl: 1}]}"
-                                            },
-                                            "weight": 30
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
                                                 "nbt": "{Enchantments: [{id: 'minecraft:fortune',lvl: 2}]}"
                                             },
                                             "weight": 20
@@ -771,20 +664,6 @@
                                                 "nbt": "{Enchantments: [{id: 'minecraft:mending',lvl: 1}]}"
                                             },
                                             "weight": 10
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:sharpness',lvl: 1}]}"
-                                            },
-                                            "weight": 50
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:sharpness',lvl: 2}]}"
-                                            },
-                                            "weight": 40
                                         },
                                         {
                                             "element": {
@@ -813,20 +692,6 @@
                                                 "nbt": "{Enchantments: [{id: 'minecraft:silk_touch',lvl: 1}]}"
                                             },
                                             "weight": 30
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:smite',lvl: 1}]}"
-                                            },
-                                            "weight": 50
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:smite',lvl: 2}]}"
-                                            },
-                                            "weight": 40
                                         },
                                         {
                                             "element": {
@@ -893,20 +758,6 @@
                                         {
                                             "element": {
                                                 "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:efficiency',lvl: 1}]}"
-                                            },
-                                            "weight": 50
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:efficiency',lvl: 2}]}"
-                                            },
-                                            "weight": 40
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
                                                 "nbt": "{Enchantments: [{id: 'minecraft:efficiency',lvl: 3}]}"
                                             },
                                             "weight": 30
@@ -924,13 +775,6 @@
                                                 "nbt": "{Enchantments: [{id: 'minecraft:efficiency',lvl: 5}]}"
                                             },
                                             "weight": 10
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:fortune',lvl: 1}]}"
-                                            },
-                                            "weight": 30
                                         },
                                         {
                                             "element": {
@@ -1004,20 +848,6 @@
                                         {
                                             "element": {
                                                 "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:blast_protection',lvl: 1}]}"
-                                            },
-                                            "weight": 50
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:blast_protection',lvl: 2}]}"
-                                            },
-                                            "weight": 40
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
                                                 "nbt": "{Enchantments: [{id: 'minecraft:blast_protection',lvl: 3}]}"
                                             },
                                             "weight": 30
@@ -1046,20 +876,6 @@
                                         {
                                             "element": {
                                                 "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:fire_protection',lvl: 1}]}"
-                                            },
-                                            "weight": 50
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:fire_protection',lvl: 2}]}"
-                                            },
-                                            "weight": 40
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
                                                 "nbt": "{Enchantments: [{id: 'minecraft:fire_protection',lvl: 3}]}"
                                             },
                                             "weight": 30
@@ -1081,20 +897,6 @@
                                         {
                                             "element": {
                                                 "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:projectile_protection',lvl: 1}]}"
-                                            },
-                                            "weight": 50
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:projectile_protection',lvl: 2}]}"
-                                            },
-                                            "weight": 40
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
                                                 "nbt": "{Enchantments: [{id: 'minecraft:projectile_protection',lvl: 3}]}"
                                             },
                                             "weight": 30
@@ -1105,20 +907,6 @@
                                                 "nbt": "{Enchantments: [{id: 'minecraft:projectile_protection',lvl: 4}]}"
                                             },
                                             "weight": 20
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:protection',lvl: 1}]}"
-                                            },
-                                            "weight": 50
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:protection',lvl: 2}]}"
-                                            },
-                                            "weight": 40
                                         },
                                         {
                                             "element": {
@@ -1154,13 +942,6 @@
                                                 "nbt": "{Enchantments: [{id: 'minecraft:respiration',lvl: 3}]}"
                                             },
                                             "weight": 20
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:thorns',lvl: 1}]}"
-                                            },
-                                            "weight": 40
                                         },
                                         {
                                             "element": {
@@ -1213,20 +994,6 @@
                                         {
                                             "element": {
                                                 "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:blast_protection',lvl: 1}]}"
-                                            },
-                                            "weight": 50
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:blast_protection',lvl: 2}]}"
-                                            },
-                                            "weight": 40
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
                                                 "nbt": "{Enchantments: [{id: 'minecraft:blast_protection',lvl: 3}]}"
                                             },
                                             "weight": 30
@@ -1255,20 +1022,6 @@
                                         {
                                             "element": {
                                                 "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:fire_protection',lvl: 1}]}"
-                                            },
-                                            "weight": 50
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:fire_protection',lvl: 2}]}"
-                                            },
-                                            "weight": 40
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
                                                 "nbt": "{Enchantments: [{id: 'minecraft:fire_protection',lvl: 3}]}"
                                             },
                                             "weight": 30
@@ -1290,20 +1043,6 @@
                                         {
                                             "element": {
                                                 "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:projectile_protection',lvl: 1}]}"
-                                            },
-                                            "weight": 50
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:projectile_protection',lvl: 2}]}"
-                                            },
-                                            "weight": 40
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
                                                 "nbt": "{Enchantments: [{id: 'minecraft:projectile_protection',lvl: 3}]}"
                                             },
                                             "weight": 30
@@ -1318,20 +1057,6 @@
                                         {
                                             "element": {
                                                 "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:protection',lvl: 1}]}"
-                                            },
-                                            "weight": 50
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:protection',lvl: 2}]}"
-                                            },
-                                            "weight": 40
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
                                                 "nbt": "{Enchantments: [{id: 'minecraft:protection',lvl: 3}]}"
                                             },
                                             "weight": 20
@@ -1342,13 +1067,6 @@
                                                 "nbt": "{Enchantments: [{id: 'minecraft:protection',lvl: 4}]}"
                                             },
                                             "weight": 10
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:thorns',lvl: 1}]}"
-                                            },
-                                            "weight": 40
                                         },
                                         {
                                             "element": {
@@ -1401,20 +1119,6 @@
                                         {
                                             "element": {
                                                 "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:blast_protection',lvl: 1}]}"
-                                            },
-                                            "weight": 50
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:blast_protection',lvl: 2}]}"
-                                            },
-                                            "weight": 40
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
                                                 "nbt": "{Enchantments: [{id: 'minecraft:blast_protection',lvl: 3}]}"
                                             },
                                             "weight": 30
@@ -1443,20 +1147,6 @@
                                         {
                                             "element": {
                                                 "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:fire_protection',lvl: 1}]}"
-                                            },
-                                            "weight": 50
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:fire_protection',lvl: 2}]}"
-                                            },
-                                            "weight": 40
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
                                                 "nbt": "{Enchantments: [{id: 'minecraft:fire_protection',lvl: 3}]}"
                                             },
                                             "weight": 30
@@ -1478,20 +1168,6 @@
                                         {
                                             "element": {
                                                 "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:projectile_protection',lvl: 1}]}"
-                                            },
-                                            "weight": 50
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:projectile_protection',lvl: 2}]}"
-                                            },
-                                            "weight": 40
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
                                                 "nbt": "{Enchantments: [{id: 'minecraft:projectile_protection',lvl: 3}]}"
                                             },
                                             "weight": 30
@@ -1502,20 +1178,6 @@
                                                 "nbt": "{Enchantments: [{id: 'minecraft:projectile_protection',lvl: 4}]}"
                                             },
                                             "weight": 20
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:protection',lvl: 1}]}"
-                                            },
-                                            "weight": 50
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:protection',lvl: 2}]}"
-                                            },
-                                            "weight": 40
                                         },
                                         {
                                             "element": {
@@ -1548,7 +1210,7 @@
                                         {
                                             "element": {
                                                 "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:swift_sneak',lvl: 1}]}"
+                                                "nbt": "{Enchantments: [{id: 'minecraft:swift_sneak',lvl: 2}]}"
                                             },
                                             "weight": 20
                                         },
@@ -1565,13 +1227,6 @@
                                                 "nbt": "{Enchantments: [{id: 'minecraft:thorns',lvl: 2}]}"
                                             },
                                             "weight": 30
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:thorns',lvl: 3}]}"
-                                            },
-                                            "weight": 20
                                         },
                                         {
                                             "element": {
@@ -1607,20 +1262,6 @@
                                 "action": {
                                     "type": "origins:choice",
                                     "actions": [
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:blast_protection',lvl: 1}]}"
-                                            },
-                                            "weight": 50
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:blast_protection',lvl: 2}]}"
-                                            },
-                                            "weight": 40
-                                        },
                                         {
                                             "element": {
                                                 "type": "origins:merge_nbt",
@@ -1673,20 +1314,6 @@
                                         {
                                             "element": {
                                                 "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:feather_falling',lvl: 1}]}"
-                                            },
-                                            "weight": 50
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:feather_falling',lvl: 2}]}"
-                                            },
-                                            "weight": 40
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
                                                 "nbt": "{Enchantments: [{id: 'minecraft:feather_falling',lvl: 3}]}"
                                             },
                                             "weight": 30
@@ -1697,20 +1324,6 @@
                                                 "nbt": "{Enchantments: [{id: 'minecraft:feather_falling',lvl: 4}]}"
                                             },
                                             "weight": 20
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:fire_protection',lvl: 1}]}"
-                                            },
-                                            "weight": 50
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:fire_protection',lvl: 2}]}"
-                                            },
-                                            "weight": 40
                                         },
                                         {
                                             "element": {
@@ -1750,20 +1363,6 @@
                                         {
                                             "element": {
                                                 "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:projectile_protection',lvl: 1}]}"
-                                            },
-                                            "weight": 50
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:projectile_protection',lvl: 2}]}"
-                                            },
-                                            "weight": 40
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
                                                 "nbt": "{Enchantments: [{id: 'minecraft:projectile_protection',lvl: 3}]}"
                                             },
                                             "weight": 30
@@ -1778,20 +1377,6 @@
                                         {
                                             "element": {
                                                 "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:protection',lvl: 1}]}"
-                                            },
-                                            "weight": 50
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:protection',lvl: 2}]}"
-                                            },
-                                            "weight": 40
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
                                                 "nbt": "{Enchantments: [{id: 'minecraft:protection',lvl: 3}]}"
                                             },
                                             "weight": 20
@@ -1802,13 +1387,6 @@
                                                 "nbt": "{Enchantments: [{id: 'minecraft:protection',lvl: 4}]}"
                                             },
                                             "weight": 10
-                                        },
-                                        {
-                                            "element": {
-                                                "type": "origins:merge_nbt",
-                                                "nbt": "{Enchantments: [{id: 'minecraft:soul_speed',lvl: 1}]}"
-                                            },
-                                            "weight": 40
                                         },
                                         {
                                             "element": {

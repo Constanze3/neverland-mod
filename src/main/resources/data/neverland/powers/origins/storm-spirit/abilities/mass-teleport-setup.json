@@ -23,6 +23,9 @@
                 "command": "scoreboard players get #global neverland_teleportmarker-id",
                 "comparison": "<=",
                 "compare_to": 0
+            },
+            {
+                "type": "origins:exposed_to_sky"
             }
         ]
     }

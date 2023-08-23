@@ -1,6 +1,6 @@
 {
     "name": "Viking Feast",
-    "description": "TODO description",
+    "description": "You really, really like bread, so you get a few seconds of regeneration when eating bread, you can also eat it when you aren't hungry.",
     "type": "origins:modify_food",
     "item_condition": {
         "type": "origins:ingredient",

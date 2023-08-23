@@ -1,0 +1,68 @@
+{
+    "name": "Drought",
+    "description": "You are 20% slower and get 2x faster exhausted (hungry) in dry biomes (badlands, desert, savanna) when exposed to the sun.",
+    "type": "origins:multiple",
+    "b-active": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1
+    },
+    "set-active": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "condition": {
+            "type": "origins:and",
+            "conditions": [
+                {
+                    "type": "origins:biome",
+                    "condition": {
+                        "type": "origins:in_tag",
+                        "tag": "neverland:dry"
+                    }
+                },
+                {
+                    "type": "origins:exposed_to_sun"
+                }
+            ]
+        },
+        "rising_action": {
+            "type": "origins:change_resource",
+            "resource": "*:*_b-active",
+            "operation": "set",
+            "change": 1
+        },
+        "falling_action": {
+            "type": "origins:change_resource",
+            "resource": "*:*_b-active",
+            "operation": "set",
+            "change": 0
+        }
+    },
+    "modify-speed": {
+        "type": "origins:conditioned_attribute",
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_b-active",
+            "comparison": "==",
+            "compare_to": 1
+        },
+        "modifier": {
+            "attribute": "minecraft:generic.movement_speed",
+            "operation": "multiply_total",
+            "value": -0.2
+        }
+    },
+    "modify-exhaustion": {
+        "type": "origins:modify_exhaustion",
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_b-active",
+            "comparison": "==",
+            "compare_to": 1
+        },
+        "modifier": {
+            "operation": "multiply_base",
+            "value": 1.0
+        }
+    }
+}

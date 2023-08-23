@@ -1,0 +1,6 @@
+{
+    "info": "Visual for golems and prevent-trading",
+    "name": "Foe of the Village",
+    "description": "Villagers won't trade with you, and Iron Golems gain speed 3 and attack you when you are near them.",
+    "type": "origins:simple"
+}

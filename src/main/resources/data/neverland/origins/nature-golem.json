@@ -1,6 +1,6 @@
 {
 	"name": "Nature Golem",
-	"description": "Elemental guardian, a nature golem defends the wild's delicate balance.",
+	"description": "The guardian of the forest.",
 	"icon": "minecraft:vine",
 	"impact": 3,
 	"powers": [
@@ -15,12 +15,14 @@
 		"neverland:origins/nature-golem/buffs/thorny",
 
 		"neverland:origins/nature-golem/debuffs/anti-vegan",
+		"neverland:origins/nature-golem/debuffs/drought",
 		"neverland:origins/nature-golem/debuffs/increased-fire-damage",
 
 		"neverland:origins/nature-golem/visual/skin",
 		"neverland:origins/nature-golem/visual/spore-particles",
 
 		"neverland:origins/nature-golem/on-callback",
+		"neverland:origins/nature-golem/on-death",
 
 		"neverland:global/blood-sense-effect",
 		"neverland:global/id",
@@ -29,5 +31,5 @@
 		"neverland:global/silver-arrow-pickup-fix",
 		"neverland:global/teleport-id"
 	],
-	"order": 2
+	"order": 3
 }

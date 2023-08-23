@@ -1,6 +1,6 @@
 {
-    "name": "Armor and Wind",
-    "description": "TODO description",
+    "name": "Wind and Armor",
+    "description": "The more armor you wear, the slower you get, but when you don't wear any armor you are a bit faster than normal.",
     "type": "origins:conditioned_attribute",
     "condition": {
         "type": "origins:equipped_item",

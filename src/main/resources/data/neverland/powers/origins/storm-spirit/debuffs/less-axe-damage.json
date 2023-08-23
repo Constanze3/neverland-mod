@@ -1,6 +1,6 @@
 {
-    "name": "Heavy wepons",
-    "description": "TODO description",
+    "name": "Weak Being",
+    "description": "You deal 25% less damage with axes.",
     "type": "origins:modify_damage_dealt",
     "item_condition": {
         "type": "origins:ingredient",

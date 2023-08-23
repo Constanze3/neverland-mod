@@ -1,6 +1,5 @@
 {
-    "name": "Prevent Trading",
-    "description": "TODO description",
+    "hidden": true,
     "type": "origins:prevent_entity_use",
     "bientity_condition": {
         "type": "origins:target_condition",

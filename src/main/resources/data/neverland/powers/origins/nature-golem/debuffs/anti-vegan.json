@@ -1,6 +1,6 @@
 {
   "name": "Anti Vegan",
-  "description": "TODO description",
+  "description": "You only eat meat, since you don't want to eat what you are supposed to be defending.",
   "type": "origins:prevent_item_use",
   "item_condition": {
     "type": "origins:and",
@@ -9,7 +9,10 @@
         "type": "origins:food"
       },
       {
-        "type": "origins:meat",
+        "type": "origins:ingredient",
+        "ingredient": {
+          "tag": "origins:meat"
+        },
         "inverted": true
       }
     ]

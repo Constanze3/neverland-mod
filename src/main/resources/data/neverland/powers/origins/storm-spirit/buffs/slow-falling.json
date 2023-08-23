@@ -1,6 +1,6 @@
 {
-  "name": "From Air",
-  "description": "TODO description",
+  "name": "Slow Falling",
+  "description": "You fall slower and don't take fall damage. You can still sneak to fall normally.",
   "type": "origins:modify_falling",
   "velocity": 0.009,
   "take_fall_damage": false,

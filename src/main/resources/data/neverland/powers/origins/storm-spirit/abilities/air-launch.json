@@ -1,6 +1,6 @@
 {
-  "name": "Air burst",
-  "description": "TODO description",
+  "name": "Air Launch",
+  "description": "Use your primary to launch yourself into the air. This ability has a 19-second cooldown.",
   "type": "origins:launch",
   "key": {
     "key": "key.origins.primary_active"

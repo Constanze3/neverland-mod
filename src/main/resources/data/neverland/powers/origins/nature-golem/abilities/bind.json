@@ -1,12 +1,11 @@
 {
     "name": "Bind",
-    "description": "Use your primary to launch a strand of vines that form an area, where any entities other than nature golems get bound by the greenery.",
+    "description": "Use your primary to launch a strand of vines that form an area for a duration of 4 seconds, where any entities other than nature golems get bound by the greenery. This ability has a 14-second cooldown.",
     "type": "origins:multiple",
     "bar-duration": {
         "type": "origins:cooldown",
         "cooldown": 80,
         "hud_render": {
-            "should_render": true,
             "sprite_location": "origins:textures/gui/resource_bar.png",
             "bar_index": 8,
             "inverted": true
@@ -16,7 +15,6 @@
         "type": "origins:cooldown",
         "cooldown": 280,
         "hud_render": {
-            "should_render": true,
             "sprite_location": "origins:textures/gui/resource_bar.png",
             "bar_index": 8
         }

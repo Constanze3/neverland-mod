@@ -1,12 +1,11 @@
 {
     "name": "Potion Effect on Weapon",
-    "description": "Take a weapon in your offhand, a potion in your mainhand and sneak+attack to pour the potion on the weapon.",
+    "description": "Take a weapon in your offhand, a potion in your mainhand and sneak+attack to pour the potion on the weapon. The effect on the weapon will last for 20 seconds, and you can only use it with one weapon at once.",
     "type": "origins:multiple",
     "bar-duration": {
         "type": "origins:cooldown",
         "cooldown": 400,
         "hud_render": {
-            "should_render": true,
             "sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_02.png",
             "bar_index": 13,
             "inverted": true

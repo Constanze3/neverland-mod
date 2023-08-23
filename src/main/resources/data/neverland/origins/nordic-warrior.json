@@ -1,23 +1,25 @@
 {
-    "name": "Asgardian",
-    "description": "TODO description",
-    "icon": "minecraft:golden_sword",
+    "name": "Harbinger",
+    "description": "Harbinger of the All Father, blessed by the gods.",
+    "icon": "minecraft:iron_sword",
     "impact": 3,
     "powers": [
-        "neverland:origins/nordic-warrior/abilities/enchant",
         "neverland:origins/nordic-warrior/abilities/ragnarok",
         "neverland:origins/nordic-warrior/abilities/reveal",
+        "neverland:origins/nordic-warrior/buffs/fire-on-hit",
         "neverland:origins/nordic-warrior/abilities/steal",
+        "neverland:origins/nordic-warrior/abilities/enchant",
 
         "neverland:origins/nordic-warrior/buffs/bread",
         "neverland:origins/nordic-warrior/buffs/faster-boat",
-        "neverland:origins/nordic-warrior/buffs/fire-on-hit",
         "neverland:origins/nordic-warrior/buffs/taming",
-
+        
+        "neverland:origins/nordic-warrior/debuffs/foe-of-the-village",
         "neverland:origins/nordic-warrior/debuffs/golems",
         "neverland:origins/nordic-warrior/debuffs/prevent-trading",
 
         "neverland:origins/nordic-warrior/on-callback",
+        "neverland:origins/nordic-warrior/on-death",
 
 		"neverland:global/blood-sense-effect",
 		"neverland:global/id",
@@ -26,5 +28,5 @@
         "neverland:global/silver-arrow-pickup-fix",
 		"neverland:global/teleport-id"
     ],
-    "order": 3
+    "order": 1
 }

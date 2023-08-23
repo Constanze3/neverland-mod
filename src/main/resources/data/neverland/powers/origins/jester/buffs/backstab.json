@@ -1,6 +1,6 @@
 {
     "name": "Backstab",
-    "description": "TODO description",
+    "description": "Hitting an entity from behind will make a special sound, while applying an extra damage of 1.5 hearts and poison, or in the case of undead mobs and spiders instead of poison a further damage of 1.5 hearts.",
     "type": "origins:modify_damage_dealt",
     "bientity_condition": {
         "type": "origins:and",

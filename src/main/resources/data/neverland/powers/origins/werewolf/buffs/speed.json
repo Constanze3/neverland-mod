@@ -1,6 +1,6 @@
 {
 	"name": "Speed",
-	"description": "TODO description",
+	"description": "You are a bit faster than normal.",
 	"type": "origins:attribute",
 	"modifier": {
 		"attribute": "minecraft:generic.movement_speed",

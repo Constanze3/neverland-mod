@@ -35,3 +35,11 @@ Let me know if you find any major issues/bugs.
 Credits:
 - Constanze3
 - IceMakerBOI
+
+Others who helped with ideas:
+- H1RUk0
+- IronVines
+- Overlord
+- Piteq3t1
+- Sans
+- [SPQR] Tomi

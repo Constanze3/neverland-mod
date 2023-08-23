@@ -1,6 +1,6 @@
 Only updated about two times a year.
 
-# Neverland
+# Neverland Mod
 A Minecraft mod featuring a collection of origins created originally for a server I hosted.
 The goal of the origins is to make playing Minecraft more fun in creative ways.
 
